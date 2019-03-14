@@ -6,6 +6,7 @@ purrr::walk(
     output_dir = "gallery-highlight/",
     output_options = list(
       toc = TRUE, 
+      toc_float = TRUE,
       theme = "cosmo",
       highlight = .x
     )
