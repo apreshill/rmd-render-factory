@@ -6,21 +6,25 @@ params:
 date: "`r params$reportdate`"
 ---
 
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE)
+```
+
 
 From: https://rmarkdown.rstudio.com/lesson-6.html
 
 # Packages
 
-```{r warning = FALSE, message = FALSE}
-library(marmap)
-library(ggplot2)
+```{r}
+library(marmap) # for data and map
+library(ggplot2) # needed for map
 ```
 
-# Marine Map
+# Marine map
 
 The [marmap](https://cran.r-project.org/web/packages/marmap/index.html) package provides tools and data for visualizing the ocean floor. Here is an example contour plot of marmap's ``r params$data`` dataset.
 
 ```{r}
 data(list = params$data)
-autoplot(get(params$data))
+autoplot(get(params$data)) 
 ```
