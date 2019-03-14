@@ -1,0 +1,26 @@
+---
+title: "Visualizing the ocean floor"
+params:
+  data: hawaii
+  reportdate: !r Sys.Date()
+date: "`r params$reportdate`"
+---
+
+
+From: https://rmarkdown.rstudio.com/lesson-6.html
+
+# Packages
+
+```{r warning = FALSE, message = FALSE}
+library(marmap)
+library(ggplot2)
+```
+
+# Marine Map
+
+The [marmap](https://cran.r-project.org/web/packages/marmap/index.html) package provides tools and data for visualizing the ocean floor. Here is an example contour plot of marmap's ``r params$data`` dataset.
+
+```{r}
+data(list = params$data)
+autoplot(get(params$data))
+```
