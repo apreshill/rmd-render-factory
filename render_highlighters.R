@@ -1,0 +1,13 @@
+purrr::walk(
+  .x = as.list(rmarkdown:::highlighters()),
+  ~ rmarkdown::render(
+    "index.Rmd",
+    output_file = glue::glue("highlighter_{.}.html"),
+    output_dir = "gallery-highlight/",
+    output_options = list(
+      toc = TRUE, 
+      theme = "cosmo",
+      highlight = .x
+    )
+  )
+)
