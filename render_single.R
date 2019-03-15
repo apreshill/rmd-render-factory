@@ -6,6 +6,6 @@ rmarkdown::render("index.Rmd",
                     theme = "flatly",
                     highlight = "tango"
                   ),
-                  params = list(dynamictitle = "Visualizing the ocean floor: flatly theme, tango highlight")
+                  params = list(dynamictitle = "Visualizing Texas: flatly theme, tango highlight")
 )
 

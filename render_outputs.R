@@ -5,35 +5,24 @@ purrr::walk(
   .x = doc_outputs,
   ~ rmarkdown::render(
     "index.Rmd",
-    output_dir = "gallery-output/docs/",
+    output_dir = "gallery/outputs/docs/",
     output_format = .,
-    params = list(dynamictitle = glue::glue("Visualizing the ocean floor: `{.}`"))
+    params = list(dynamictitle = glue::glue("Visualizing Texas: `{.}`"))
     )
 )
 
 slide_outputs <- c("ioslides_presentation", "slidy_presentation", "beamer_presentation", "powerpoint_presentation")
+slide_exts <- c("html", "html", "pdf", "pptx")
 
-purrr::walk(
-  .x = slide_outputs,
-  ~ rmarkdown::render(
-    "index.Rmd",
-    output_dir = "gallery-output/slides/",
-    output_format = .,
-    params = list(dynamictitle = glue::glue("Visualizing the ocean floor: `{.}`"))
-  )
-)
-
-# minimal example
 purrr::walk2(
-  .x = c("ioslides_presentation", "slidy_presentation", "powerpoint_presentation"),
-  .y = c("html", "html", "pptx"),
+  .x = slide_outputs,
+  .y = slide_exts,
   ~ rmarkdown::render(
     "index.Rmd",
-    output_file = glue::glue("slide_{.x}.{.y}"),
-    output_dir = "gallery-output/test/",
-    output_format = .x,
+    output_file = glue::glue("{.x}.{.y}"),
+    output_dir = "gallery/outputs/slides/",
+    output_format = .,
+    params = list(dynamictitle = glue::glue("Visualizing Texas: `{.}`"))
   )
 )
-
-
 
