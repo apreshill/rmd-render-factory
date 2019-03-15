@@ -1,0 +1,73 @@
+---
+always_allow_html: yes
+output:
+  github_document:
+    toc: true
+---
+
+Herein lies a `README` to help you navigate the galleries.
+
+```{r include = FALSE}
+library(fs)
+library(kableExtra)
+library(tidyverse)
+```
+
+# Themes
+
+R Markdown comes with some several built-in `theme`s. Themes are drawn from the Bootswatch theme library. Valid themes include `r knitr::combine_words(rmarkdown:::themes(), before='\x60')`. Pass `null` for no theme. To use a theme for a single .html file output from a .Rmd file, you edit your YAML:
+
+```yaml
+title: "README.Rmd"
+output_format: 
+  html_document:
+    theme: flatly
+```
+
+```{r}
+themes <- dir_ls("gallery/themes", recursive = TRUE, glob = "*.html") %>% 
+  enframe(name = "path", value = "junk") %>% 
+  select(-junk) %>% 
+  mutate(link_read = path %>% fs::path_file(.) %>% path_ext_remove(.) %>% as.character())
+```
+
+```{r make-gallery, results = 'asis'}
+themes %>% 
+  mutate(link = cell_spec(link_read, 
+                           "html", 
+                          link = path)
+         ) %>% 
+  select("Theme Gallery" = link) %>% 
+  kable("html", escape = FALSE) %>%
+  kable_styling(bootstrap_options = c("hover", "condensed")) 
+```
+
+```{r}
+library(dplyr)
+library(knitr)
+library(kableExtra)
+dt_url <- c("https://en.wikipedia.org/wiki/Cadillac_Fleetwood",
+            "https://www.lincoln.com/luxury-cars/continental/",
+            "http://shop.honda.com/civics.aspx",
+            "https://bringatrailer.com/2011/12/28/striking-1973-maserati-bora-4-9/")
+
+mtcars[c(15,16,19,31),1:3] %>% 
+  mutate(model = cell_spec(row.names(.), "html", link = dt_url)) %>%
+  kable("html", escape = FALSE) %>%
+  kable_styling(bootstrap_options = c("hover", "condensed")) 
+```
+
+
+
+# Highlighters
+
+R Markdown also comes with several built-in syntax highlighting styles. Supported styles include `r knitr::combine_words(rmarkdown:::html_highlighters(), before='\x60')`. Pass `null` to prevent syntax highlighting. To use a highlighter for a single .html file output from a .Rmd file, you edit your YAML:
+
+```yaml
+title: "README.Rmd"
+output_format: 
+  html_document:
+    highlighter: tango
+```
+
+# Output formats
