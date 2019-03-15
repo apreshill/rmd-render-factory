@@ -14,7 +14,7 @@ theme_set(theme_minimal())
 ```
 
 
-Inspired by: https://rmarkdown.rstudio.com/lesson-6.html
+
 
 # Packages
 
@@ -83,3 +83,7 @@ ggplot(data = txsamp, aes(x = year, y = inventory, colour = city)) +
   scale_colour_viridis_d("City\nCenter", option = params$viridis_palette) 
 ```
 
+# Thanks to...
+
++ Jennifer Thompson: https://github.com/jenniferthompson/ParamRmdExample
++ Garrett Grolemund: https://rmarkdown.rstudio.com/lesson-6.html

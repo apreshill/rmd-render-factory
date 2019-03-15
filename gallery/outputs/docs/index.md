@@ -2,8 +2,6 @@ Visualizing Texas: `github_document`
 ================
 2019-03-15
 
-Inspired by: <https://rmarkdown.rstudio.com/lesson-6.html>
-
 # Packages
 
 We’ll use `ggplot2` for visualization, and some light `dplyr` for data
@@ -113,3 +111,9 @@ ggplot(data = txsamp, aes(x = year, y = inventory, colour = city)) +
 ```
 
 ![](/Users/alison/rprojs/rmd-render-factory/gallery/outputs/docs/index_files/figure-gfm/unnamed-chunk-7-1.png)<!-- -->
+
+# Thanks to…
+
+  - Jennifer Thompson:
+    <https://github.com/jenniferthompson/ParamRmdExample>
+  - Garrett Grolemund: <https://rmarkdown.rstudio.com/lesson-6.html>
