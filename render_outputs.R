@@ -5,9 +5,9 @@ purrr::walk(
   .x = doc_outputs,
   ~ rmarkdown::render(
     "index.Rmd",
-   # output_file = glue::glue("param_report_{.}.html"),
     output_dir = "gallery-output/docs/",
     output_format = .,
+    params = list(dynamictitle = glue::glue("Visualizing the ocean floor: `{.}`"))
     )
 )
 
@@ -17,9 +17,9 @@ purrr::walk(
   .x = slide_outputs,
   ~ rmarkdown::render(
     "index.Rmd",
-   # output_file = glue::glue("param_report_{.}.html"),
     output_dir = "gallery-output/slides/",
     output_format = .,
+    params = list(dynamictitle = glue::glue("Visualizing the ocean floor: `{.}`"))
   )
 )
 

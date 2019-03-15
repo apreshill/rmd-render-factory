@@ -1,4 +1,4 @@
-Visualizing the ocean floor
+Visualizing the ocean floor: `github_document`
 ================
 2019-03-14
 

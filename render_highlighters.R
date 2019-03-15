@@ -9,6 +9,7 @@ purrr::walk(
       toc_float = TRUE,
       theme = "cosmo",
       highlight = .x
-    )
+    ),
+    params = list(dynamictitle = glue::glue("Visualizing the ocean floor: `{.}` highlighter"))
   )
 )

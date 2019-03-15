@@ -8,6 +8,7 @@ purrr::walk(
       toc = TRUE, 
       toc_float = TRUE,
       theme = .x
-    )
+    ),
+    params = list(dynamictitle = glue::glue("Visualizing the ocean floor: `{.}` theme"))
   )
 )

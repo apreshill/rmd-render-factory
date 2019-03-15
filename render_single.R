@@ -5,6 +5,7 @@ rmarkdown::render("index.Rmd",
                     toc_float = TRUE,
                     theme = "flatly",
                     highlight = "tango"
-                  )
+                  ),
+                  params = list(dynamictitle = "Visualizing the ocean floor: flatly theme, tango highlight")
 )
 

@@ -1,7 +1,8 @@
 ---
-title: "Visualizing the ocean floor"
+title: "`r params$dynamictitle`"
 params:
   data: hawaii
+  dynamictitle: Visualizing the ocean floor
   reportdate: !r Sys.Date()
 date: "`r params$reportdate`"
 ---
@@ -28,3 +29,5 @@ The [marmap](https://cran.r-project.org/web/packages/marmap/index.html) package 
 data(list = params$data)
 autoplot(get(params$data)) 
 ```
+
+
