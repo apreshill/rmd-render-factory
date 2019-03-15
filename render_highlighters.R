@@ -10,6 +10,6 @@ purrr::walk(
       theme = "cosmo",
       highlight = .x
     ),
-    params = list(dynamictitle = glue::glue("Visualizing the ocean floor: `{.}` highlighter"))
+    params = list(dynamictitle = glue::glue("Visualizing Texas: `{.}` highlighter"))
   )
 )
