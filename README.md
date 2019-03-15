@@ -21,6 +21,7 @@ output_format:
 themes <- dir_ls("gallery/themes", recursive = TRUE, glob = "*.html") %>% 
   enframe(name = "path", value = "junk") %>% 
   select(-junk) %>% 
+  mutate(path = glue::glue("{root}{path}")) %>% 
   mutate(link_read = path %>% fs::path_file(.) %>% path_ext_remove(.) %>% as.character())
 ```
 
@@ -43,7 +44,8 @@ themes %>%
 
 <th style="text-align:left;">
 
-Theme Gallery
+Theme
+Gallery
 
 </th>
 
@@ -57,7 +59,7 @@ Theme Gallery
 
 <td style="text-align:left;">
 
-<a href="gallery/themes/cerulean.html" style="     ">cerulean</a>
+<a href="https://apreshill.github.io/rmd-render-factory/gallery/themes/cerulean.html" style="     ">cerulean</a>
 
 </td>
 
@@ -67,7 +69,7 @@ Theme Gallery
 
 <td style="text-align:left;">
 
-<a href="gallery/themes/cosmo.html" style="     ">cosmo</a>
+<a href="https://apreshill.github.io/rmd-render-factory/gallery/themes/cosmo.html" style="     ">cosmo</a>
 
 </td>
 
@@ -77,7 +79,7 @@ Theme Gallery
 
 <td style="text-align:left;">
 
-<a href="gallery/themes/darkly.html" style="     ">darkly</a>
+<a href="https://apreshill.github.io/rmd-render-factory/gallery/themes/darkly.html" style="     ">darkly</a>
 
 </td>
 
@@ -87,7 +89,7 @@ Theme Gallery
 
 <td style="text-align:left;">
 
-<a href="gallery/themes/default.html" style="     ">default</a>
+<a href="https://apreshill.github.io/rmd-render-factory/gallery/themes/default.html" style="     ">default</a>
 
 </td>
 
@@ -97,7 +99,7 @@ Theme Gallery
 
 <td style="text-align:left;">
 
-<a href="gallery/themes/flatly.html" style="     ">flatly</a>
+<a href="https://apreshill.github.io/rmd-render-factory/gallery/themes/flatly.html" style="     ">flatly</a>
 
 </td>
 
@@ -107,7 +109,7 @@ Theme Gallery
 
 <td style="text-align:left;">
 
-<a href="gallery/themes/journal.html" style="     ">journal</a>
+<a href="https://apreshill.github.io/rmd-render-factory/gallery/themes/journal.html" style="     ">journal</a>
 
 </td>
 
@@ -117,7 +119,7 @@ Theme Gallery
 
 <td style="text-align:left;">
 
-<a href="gallery/themes/lumen.html" style="     ">lumen</a>
+<a href="https://apreshill.github.io/rmd-render-factory/gallery/themes/lumen.html" style="     ">lumen</a>
 
 </td>
 
@@ -127,7 +129,7 @@ Theme Gallery
 
 <td style="text-align:left;">
 
-<a href="gallery/themes/paper.html" style="     ">paper</a>
+<a href="https://apreshill.github.io/rmd-render-factory/gallery/themes/paper.html" style="     ">paper</a>
 
 </td>
 
@@ -137,7 +139,7 @@ Theme Gallery
 
 <td style="text-align:left;">
 
-<a href="gallery/themes/readable.html" style="     ">readable</a>
+<a href="https://apreshill.github.io/rmd-render-factory/gallery/themes/readable.html" style="     ">readable</a>
 
 </td>
 
@@ -147,7 +149,7 @@ Theme Gallery
 
 <td style="text-align:left;">
 
-<a href="gallery/themes/sandstone.html" style="     ">sandstone</a>
+<a href="https://apreshill.github.io/rmd-render-factory/gallery/themes/sandstone.html" style="     ">sandstone</a>
 
 </td>
 
@@ -157,7 +159,7 @@ Theme Gallery
 
 <td style="text-align:left;">
 
-<a href="gallery/themes/simplex.html" style="     ">simplex</a>
+<a href="https://apreshill.github.io/rmd-render-factory/gallery/themes/simplex.html" style="     ">simplex</a>
 
 </td>
 
@@ -167,7 +169,7 @@ Theme Gallery
 
 <td style="text-align:left;">
 
-<a href="gallery/themes/spacelab.html" style="     ">spacelab</a>
+<a href="https://apreshill.github.io/rmd-render-factory/gallery/themes/spacelab.html" style="     ">spacelab</a>
 
 </td>
 
@@ -177,7 +179,7 @@ Theme Gallery
 
 <td style="text-align:left;">
 
-<a href="gallery/themes/united.html" style="     ">united</a>
+<a href="https://apreshill.github.io/rmd-render-factory/gallery/themes/united.html" style="     ">united</a>
 
 </td>
 
@@ -187,7 +189,7 @@ Theme Gallery
 
 <td style="text-align:left;">
 
-<a href="gallery/themes/yeti.html" style="     ">yeti</a>
+<a href="https://apreshill.github.io/rmd-render-factory/gallery/themes/yeti.html" style="     ">yeti</a>
 
 </td>
 

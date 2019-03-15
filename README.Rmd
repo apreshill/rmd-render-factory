@@ -11,6 +11,7 @@ Herein lies a `README` to help you navigate the galleries.
 library(fs)
 library(kableExtra)
 library(tidyverse)
+root <- "https://apreshill.github.io/rmd-render-factory/"
 ```
 
 # Themes
@@ -28,6 +29,7 @@ output_format:
 themes <- dir_ls("gallery/themes", recursive = TRUE, glob = "*.html") %>% 
   enframe(name = "path", value = "junk") %>% 
   select(-junk) %>% 
+  mutate(path = glue::glue("{root}{path}")) %>% 
   mutate(link_read = path %>% fs::path_file(.) %>% path_ext_remove(.) %>% as.character())
 ```
 
