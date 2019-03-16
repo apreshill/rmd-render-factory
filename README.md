@@ -358,7 +358,7 @@ outputs
 
 <td style="text-align:left;">
 
-<a href="https://apreshill.github.io/rmd-render-factory/gallery/outputs/docs/index.html" style="     ">index</a>
+<a href="https://apreshill.github.io/rmd-render-factory/gallery/outputs/docs/github_document.html" style="     ">github\_document</a>
 
 </td>
 
@@ -368,7 +368,17 @@ outputs
 
 <td style="text-align:left;">
 
-<a href="https://apreshill.github.io/rmd-render-factory/gallery/outputs/docs/index.nb.html" style="     ">index.nb</a>
+<a href="https://apreshill.github.io/rmd-render-factory/gallery/outputs/docs/html_document.html" style="     ">html\_document</a>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+<a href="https://apreshill.github.io/rmd-render-factory/gallery/outputs/docs/html_notebook.nb.html" style="     ">html\_notebook.nb</a>
 
 </td>
 
@@ -422,11 +432,14 @@ And here is the script to generate the outputs:
 
     doc_outputs <- c("html_notebook", "html_document", "pdf_document", 
                      "word_document", "odt_document", "rtf_document", "github_document")
+    doc_exts <- c("nb.html", "html", "pdf", ".docx", "odt", "rtf", "md")
     
-    purrr::walk(
+    purrr::walk2(
       .x = doc_outputs,
+      .y = doc_exts,
       ~ rmarkdown::render(
         "index.Rmd",
+        output_file = glue::glue("{.x}.{.y}"),
         output_dir = "gallery/outputs/docs/",
         output_format = .,
         params = list(dynamictitle = glue::glue("Visualizing Texas: `{.}`"))

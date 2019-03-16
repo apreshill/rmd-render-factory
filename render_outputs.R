@@ -1,10 +1,13 @@
 doc_outputs <- c("html_notebook", "html_document", "pdf_document", 
                  "word_document", "odt_document", "rtf_document", "github_document")
+doc_exts <- c("nb.html", "html", "pdf", ".docx", "odt", "rtf", "md")
 
-purrr::walk(
+purrr::walk2(
   .x = doc_outputs,
+  .y = doc_exts,
   ~ rmarkdown::render(
     "index.Rmd",
+    output_file = glue::glue("{.x}.{.y}"),
     output_dir = "gallery/outputs/docs/",
     output_format = .,
     params = list(dynamictitle = glue::glue("Visualizing Texas: `{.}`"))
