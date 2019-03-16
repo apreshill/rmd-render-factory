@@ -1,5 +1,6 @@
 Visualizing Texas: `github_document`
 ================
+Alison Hill
 2019-03-15
 
 # Packages
