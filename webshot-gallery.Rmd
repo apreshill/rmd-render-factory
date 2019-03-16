@@ -1,0 +1,50 @@
+---
+title: "webshot-gallery"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE, error = TRUE, warning = FALSE, message = FALSE)
+library(gt)
+library(tidyverse)
+library(fs)
+```
+
+Let's try themes first...
+
+```{r try1}
+tab_1 <- fs::dir_ls(path = "thumbnails", regexp = "highlighters") %>% 
+  tibble(image_path = ., image_placeholder = 1:length(.)) %>% 
+  gt() %>% 
+  text_transform(
+    locations = cells_data(vars(image_placeholder)),
+    fn = function(x) {
+      local_image(
+        file = image_path,
+      )
+    }
+  )
+
+tab1
+```
+
+```{r try2}
+paths <- fs::dir_ls(path = "thumbnails", regexp = "highlighters") %>% 
+  tibble(image_path = .) 
+
+tab2 <- dplyr::tibble(
+  image_placeholder = 1:nrow(paths)) %>% 
+  gt() %>% 
+  text_transform(
+    locations = cells_data(vars(image_placeholder)),
+    fn = function(x) {
+      local_image(
+        file = paths$image_path,
+      )
+    }
+  )
+
+tab2
+```
+
+
