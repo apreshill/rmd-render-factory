@@ -25,7 +25,7 @@ output_format:
 
 <th style="text-align:left;">
 
-Gallery of
+List of
 themes
 
 </th>
@@ -220,7 +220,7 @@ output_format:
 
 <th style="text-align:left;">
 
-Gallery of
+List of
 highlighters
 
 </th>
@@ -343,7 +343,7 @@ And here is the script to generate the highlighters:
 
 <th style="text-align:left;">
 
-Gallery of
+List of
 outputs
 
 </th>
@@ -432,7 +432,7 @@ And here is the script to generate the outputs:
 
     doc_outputs <- c("html_notebook", "html_document", "pdf_document", 
                      "word_document", "odt_document", "rtf_document", "github_document")
-    doc_exts <- c("nb.html", "html", "pdf", ".docx", "odt", "rtf", "md")
+    doc_exts <- c("nb.html", "html", "pdf", "docx", "odt", "rtf", "md")
     
     purrr::walk2(
       .x = doc_outputs,
@@ -471,7 +471,7 @@ And here is the script to generate the outputs:
 
 <th style="text-align:left;">
 
-Gallery of
+List of
 viridis-options
 
 </th>
