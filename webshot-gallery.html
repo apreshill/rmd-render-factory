@@ -379,7 +379,7 @@ $(document).ready(function () {
 
 
 <p>Let’s try themes first…</p>
-<pre class="r"><code>tab_1 &lt;- fs::dir_ls(path = &quot;thumbnails&quot;, regexp = &quot;highlighters&quot;) %&gt;% 
+<pre class="r"><code>tab_1 &lt;- fs::dir_ls(path = &quot;thumbnails&quot;, regexp = &quot;themes&quot;) %&gt;% 
   tibble(image_path = ., image_placeholder = 1:length(.)) %&gt;% 
   gt() %&gt;% 
   text_transform(
@@ -393,7 +393,7 @@ $(document).ready(function () {
 
 tab1</code></pre>
 <pre><code>## Error in eval(expr, envir, enclos): object 'tab1' not found</code></pre>
-<pre class="r"><code>paths &lt;- fs::dir_ls(path = &quot;thumbnails&quot;, regexp = &quot;highlighters&quot;) %&gt;% 
+<pre class="r"><code>paths &lt;- fs::dir_ls(path = &quot;thumbnails&quot;, regexp = &quot;themes&quot;) %&gt;% 
   tibble(image_path = .) 
 
 tab2 &lt;- dplyr::tibble(

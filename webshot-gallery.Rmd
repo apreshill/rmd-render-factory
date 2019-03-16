@@ -13,7 +13,7 @@ library(fs)
 Let's try themes first...
 
 ```{r try1}
-tab_1 <- fs::dir_ls(path = "thumbnails", regexp = "highlighters") %>% 
+tab_1 <- fs::dir_ls(path = "thumbnails", regexp = "themes") %>% 
   tibble(image_path = ., image_placeholder = 1:length(.)) %>% 
   gt() %>% 
   text_transform(
@@ -29,7 +29,7 @@ tab1
 ```
 
 ```{r try2}
-paths <- fs::dir_ls(path = "thumbnails", regexp = "highlighters") %>% 
+paths <- fs::dir_ls(path = "thumbnails", regexp = "themes") %>% 
   tibble(image_path = .) 
 
 tab2 <- dplyr::tibble(
