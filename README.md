@@ -180,6 +180,23 @@ themes
 
 </table>
 
+And here is the script to generate the themes:
+
+    purrr::walk(
+      .x = as.list(rmarkdown:::themes()),
+      ~ rmarkdown::render(
+        "index.Rmd",
+        output_file = glue::glue("{.}.html"),
+        output_dir = "gallery/themes/",
+        output_options = list(
+          toc = TRUE, 
+          toc_float = TRUE,
+          theme = .x
+        ),
+        params = list(dynamictitle = glue::glue("Visualizing Texas: `{.}` theme"))
+      )
+    )
+
 # Highlighters
 
 R Markdown also comes with several built-in syntax highlighting styles.
@@ -298,6 +315,24 @@ highlighters
 
 </table>
 
+And here is the script to generate the highlighters:
+
+    purrr::walk(
+      .x = as.list(rmarkdown:::highlighters()),
+      ~ rmarkdown::render(
+        "index.Rmd",
+        output_file = glue::glue("{.}.html"),
+        output_dir = "gallery/highlighters/",
+        output_options = list(
+          toc = TRUE, 
+          toc_float = TRUE,
+          theme = "cosmo",
+          highlight = .x
+        ),
+        params = list(dynamictitle = glue::glue("Visualizing Texas: `{.}` highlighter"))
+      )
+    )
+
 # Output formats
 
 <table class="table table-hover table-condensed" style="margin-left: auto; margin-right: auto;">
@@ -383,6 +418,36 @@ outputs
 
 </table>
 
+And here is the script to generate the outputs:
+
+    doc_outputs <- c("html_notebook", "html_document", "pdf_document", 
+                     "word_document", "odt_document", "rtf_document", "github_document")
+    
+    purrr::walk(
+      .x = doc_outputs,
+      ~ rmarkdown::render(
+        "index.Rmd",
+        output_dir = "gallery/outputs/docs/",
+        output_format = .,
+        params = list(dynamictitle = glue::glue("Visualizing Texas: `{.}`"))
+        )
+    )
+    
+    slide_outputs <- c("ioslides_presentation", "slidy_presentation", "beamer_presentation", "powerpoint_presentation")
+    slide_exts <- c("html", "html", "pdf", "pptx")
+    
+    purrr::walk2(
+      .x = slide_outputs,
+      .y = slide_exts,
+      ~ rmarkdown::render(
+        "index.Rmd",
+        output_file = glue::glue("{.x}.{.y}"),
+        output_dir = "gallery/outputs/slides/",
+        output_format = .,
+        params = list(dynamictitle = glue::glue("Visualizing Texas: `{.}`"))
+      )
+    )
+
 # Viridis options
 
 <table class="table table-hover table-condensed" style="margin-left: auto; margin-right: auto;">
@@ -457,3 +522,22 @@ viridis-options
 </tbody>
 
 </table>
+
+And here is the script to generate the viridis palettes:
+
+    purrr::walk(
+      .x = c("magma", "inferno", "plasma", "viridis", "cividis"),
+      ~ rmarkdown::render(
+        "index.Rmd",
+        output_file = glue::glue("{.}.html"),
+        output_dir = "gallery/viridis-options/",
+        output_options = list(
+          toc = TRUE, 
+          toc_float = TRUE,
+          theme = "cosmo",
+          highlight = "tango"
+        ),
+        params = list(dynamictitle = glue::glue("Visualizing Texas: viridis color palette `{.}`"),
+                      viridis_palette = .)
+      )
+    )

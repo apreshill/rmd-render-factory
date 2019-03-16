@@ -11,7 +11,7 @@ Herein lies a `README` to help you navigate the galleries.
 library(fs)
 library(kableExtra)
 library(tidyverse)
-knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE, comment = NA)
 root <- "https://apreshill.github.io/rmd-render-factory/"
 ```
 
@@ -35,6 +35,12 @@ gallery_factory <- function(dir = "gallery",
     kable_styling(bootstrap_options = c("hover", "condensed"))
   return(html_table)
 }
+
+gallery_render <- function(type = c("single", "themes", "highlighters", "outputs", "palettes")){
+  type <- match.arg(type)
+  script <- readLines(glue::glue("render_{type}.R"))
+  cat(script, sep = "\n")
+}
 ```
 
 # Themes
@@ -50,6 +56,12 @@ output_format:
 
 ```{r}
 gallery_factory(type = "themes")
+```
+
+And here is the script to generate the themes:
+
+```{r}
+gallery_render("themes")
 ```
 
 # Highlighters
@@ -68,16 +80,35 @@ output_format:
 gallery_factory(type = "highlighters")
 ```
 
+And here is the script to generate the highlighters:
+
+```{r}
+gallery_render("highlighters")
+```
+
 # Output formats 
+
 
 ```{r}
 gallery_factory(type = "outputs")
+```
+
+And here is the script to generate the outputs:
+
+```{r}
+gallery_render("outputs")
 ```
 
 # Viridis options
 
 ```{r}
 gallery_factory(type = "viridis-options")
+```
+
+And here is the script to generate the viridis palettes:
+
+```{r}
+gallery_render("palettes")
 ```
 
 ```{r eval = FALSE, include = FALSE}
