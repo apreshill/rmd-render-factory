@@ -17,25 +17,6 @@ output_format:
     theme: flatly
 ```
 
-``` r
-themes <- dir_ls("gallery/themes", recursive = TRUE, glob = "*.html") %>% 
-  enframe(name = "path", value = "junk") %>% 
-  select(-junk) %>% 
-  mutate(path = glue::glue("{root}{path}")) %>% 
-  mutate(link_read = path %>% fs::path_file(.) %>% path_ext_remove(.) %>% as.character())
-```
-
-``` r
-themes %>% 
-  mutate(link = cell_spec(link_read, 
-                           "html", 
-                          link = path)
-         ) %>% 
-  select("Theme Gallery" = link) %>% 
-  kable("html", escape = FALSE) %>%
-  kable_styling(bootstrap_options = c("hover", "condensed")) 
-```
-
 <table class="table table-hover table-condensed" style="margin-left: auto; margin-right: auto;">
 
 <thead>
@@ -44,8 +25,8 @@ themes %>%
 
 <th style="text-align:left;">
 
-Theme
-Gallery
+Gallery of
+themes
 
 </th>
 
@@ -199,182 +180,6 @@ Gallery
 
 </table>
 
-``` r
-library(dplyr)
-library(knitr)
-```
-
-    ## Warning: package 'knitr' was built under R version 3.5.2
-
-``` r
-library(kableExtra)
-dt_url <- c("https://en.wikipedia.org/wiki/Cadillac_Fleetwood",
-            "https://www.lincoln.com/luxury-cars/continental/",
-            "http://shop.honda.com/civics.aspx",
-            "https://bringatrailer.com/2011/12/28/striking-1973-maserati-bora-4-9/")
-
-mtcars[c(15,16,19,31),1:3] %>% 
-  mutate(model = cell_spec(row.names(.), "html", link = dt_url)) %>%
-  kable("html", escape = FALSE) %>%
-  kable_styling(bootstrap_options = c("hover", "condensed")) 
-```
-
-<table class="table table-hover table-condensed" style="margin-left: auto; margin-right: auto;">
-
-<thead>
-
-<tr>
-
-<th style="text-align:right;">
-
-mpg
-
-</th>
-
-<th style="text-align:right;">
-
-cyl
-
-</th>
-
-<th style="text-align:right;">
-
-disp
-
-</th>
-
-<th style="text-align:left;">
-
-model
-
-</th>
-
-</tr>
-
-</thead>
-
-<tbody>
-
-<tr>
-
-<td style="text-align:right;">
-
-10.4
-
-</td>
-
-<td style="text-align:right;">
-
-8
-
-</td>
-
-<td style="text-align:right;">
-
-472.0
-
-</td>
-
-<td style="text-align:left;">
-
-<a href="https://en.wikipedia.org/wiki/Cadillac_Fleetwood" style="     ">Cadillac
-Fleetwood</a>
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style="text-align:right;">
-
-10.4
-
-</td>
-
-<td style="text-align:right;">
-
-8
-
-</td>
-
-<td style="text-align:right;">
-
-460.0
-
-</td>
-
-<td style="text-align:left;">
-
-<a href="https://www.lincoln.com/luxury-cars/continental/" style="     ">Lincoln
-Continental</a>
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style="text-align:right;">
-
-30.4
-
-</td>
-
-<td style="text-align:right;">
-
-4
-
-</td>
-
-<td style="text-align:right;">
-
-75.7
-
-</td>
-
-<td style="text-align:left;">
-
-<a href="http://shop.honda.com/civics.aspx" style="     ">Honda
-Civic</a>
-
-</td>
-
-</tr>
-
-<tr>
-
-<td style="text-align:right;">
-
-15.0
-
-</td>
-
-<td style="text-align:right;">
-
-8
-
-</td>
-
-<td style="text-align:right;">
-
-301.0
-
-</td>
-
-<td style="text-align:left;">
-
-<a href="https://bringatrailer.com/2011/12/28/striking-1973-maserati-bora-4-9/" style="     ">Maserati
-Bora</a>
-
-</td>
-
-</tr>
-
-</tbody>
-
-</table>
-
 # Highlighters
 
 R Markdown also comes with several built-in syntax highlighting styles.
@@ -390,4 +195,265 @@ output_format:
     highlighter: tango
 ```
 
+<table class="table table-hover table-condensed" style="margin-left: auto; margin-right: auto;">
+
+<thead>
+
+<tr>
+
+<th style="text-align:left;">
+
+Gallery of
+highlighters
+
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td style="text-align:left;">
+
+<a href="https://apreshill.github.io/rmd-render-factory/gallery/highlighters/default.html" style="     ">default</a>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+<a href="https://apreshill.github.io/rmd-render-factory/gallery/highlighters/espresso.html" style="     ">espresso</a>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+<a href="https://apreshill.github.io/rmd-render-factory/gallery/highlighters/haddock.html" style="     ">haddock</a>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+<a href="https://apreshill.github.io/rmd-render-factory/gallery/highlighters/kate.html" style="     ">kate</a>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+<a href="https://apreshill.github.io/rmd-render-factory/gallery/highlighters/monochrome.html" style="     ">monochrome</a>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+<a href="https://apreshill.github.io/rmd-render-factory/gallery/highlighters/pygments.html" style="     ">pygments</a>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+<a href="https://apreshill.github.io/rmd-render-factory/gallery/highlighters/tango.html" style="     ">tango</a>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+<a href="https://apreshill.github.io/rmd-render-factory/gallery/highlighters/zenburn.html" style="     ">zenburn</a>
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
 # Output formats
+
+<table class="table table-hover table-condensed" style="margin-left: auto; margin-right: auto;">
+
+<thead>
+
+<tr>
+
+<th style="text-align:left;">
+
+Gallery of
+outputs
+
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td style="text-align:left;">
+
+<a href="https://apreshill.github.io/rmd-render-factory/gallery/outputs/docs/index.html" style="     ">index</a>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+<a href="https://apreshill.github.io/rmd-render-factory/gallery/outputs/docs/index.nb.html" style="     ">index.nb</a>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+<a href="https://apreshill.github.io/rmd-render-factory/gallery/outputs/exts/flexdashboard::flex_dashboard.html" style="     ">flexdashboard::flex\_dashboard</a>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+<a href="https://apreshill.github.io/rmd-render-factory/gallery/outputs/exts/revealjs::revealjs_presentation.html" style="     ">revealjs::revealjs\_presentation</a>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+<a href="https://apreshill.github.io/rmd-render-factory/gallery/outputs/slides/ioslides_presentation.html" style="     ">ioslides\_presentation</a>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+<a href="https://apreshill.github.io/rmd-render-factory/gallery/outputs/slides/slidy_presentation.html" style="     ">slidy\_presentation</a>
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+# Viridis options
+
+<table class="table table-hover table-condensed" style="margin-left: auto; margin-right: auto;">
+
+<thead>
+
+<tr>
+
+<th style="text-align:left;">
+
+Gallery of
+viridis-options
+
+</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr>
+
+<td style="text-align:left;">
+
+<a href="https://apreshill.github.io/rmd-render-factory/gallery/viridis-options/cividis.html" style="     ">cividis</a>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+<a href="https://apreshill.github.io/rmd-render-factory/gallery/viridis-options/inferno.html" style="     ">inferno</a>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+<a href="https://apreshill.github.io/rmd-render-factory/gallery/viridis-options/magma.html" style="     ">magma</a>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+<a href="https://apreshill.github.io/rmd-render-factory/gallery/viridis-options/plasma.html" style="     ">plasma</a>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td style="text-align:left;">
+
+<a href="https://apreshill.github.io/rmd-render-factory/gallery/viridis-options/viridis.html" style="     ">viridis</a>
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
