@@ -1,10 +1,14 @@
 ---
 title: "`r params$dynamictitle`"
+output_format:
+  html_document:
+    highlighter: null
+    theme: null
+date: "`r params$reportdate`"
 params:
   dynamictitle: Texas Housing Prices
   reportdate: !r Sys.Date()
   viridis_palette: viridis
-date: "`r params$reportdate`"
 ---
 
 ```{r setup, include = FALSE}
