@@ -14,42 +14,20 @@ output_format:
 
 ```{r setup, include = FALSE}
 knitr::opts_chunk$set(warning = FALSE, message = FALSE)
-library(tidyverse) 
-theme_set(theme_minimal())
+ggplot2::theme_set(ggplot2::theme_minimal())
 ```
 
 
+# Packages and data
 
+We'll use `ggplot2` for visualization, and some light `dplyr` for data wrangling. The `txhousing` data is loaded for you when you install and load the `ggplot2` package.
 
-# Packages
-
-We'll use `ggplot2` for visualization, and some light `dplyr` for data wrangling. 
-
-```{r eval = FALSE}
+```{r}
 library(ggplot2) # plotting
 library(dplyr) # wrangling
-```
-
-# Texas housing data
-
-This data is loaded for you when you install and load the `ggplot2` package.
-
-```{r}
 txsamp <- txhousing %>% 
   filter(city %in% c("Houston", "Fort Worth", "San Antonio", "Dallas", "Austin"))
-glimpse(txsamp)
 ```
-
-# Our data is monthly
-
-Here is just a sample of rows from one city to show that we have data for each of the 12 months for each year, except for 2015.
-
-```{r}
-txsamp %>% 
-  filter(city == "Austin") %>% 
-  count(year)
-```
-
 
 # Austin is expensive
 

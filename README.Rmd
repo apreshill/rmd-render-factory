@@ -128,4 +128,7 @@ themes %>%
   select("Theme Gallery" = link) %>% 
   kable("html", escape = FALSE) %>%
   kable_styling(bootstrap_options = c("hover", "condensed")) 
+
+# testing out screenshots for thumbnails
+webshot("https://apreshill.github.io/rmd-render-factory/gallery/themes/darkly.html", "themes-darkly.png", cliprect = "viewport")
 ```
