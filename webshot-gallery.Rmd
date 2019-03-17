@@ -13,8 +13,12 @@ library(fs)
 Let's try themes first...
 
 ```{r try1}
-tab_1 <- fs::dir_ls(path = "thumbnails", regexp = "themes") %>% 
-  tibble(image_path = ., image_placeholder = 1:length(.)) %>% 
+paths <- fs::dir_ls(path = "thumbnails", regexp = "themes") %>% 
+  tibble(image_path = ., image_placeholder = 1:length(.))
+
+paths
+
+tab_1 <- paths %>% 
   gt() %>% 
   text_transform(
     locations = cells_data(vars(image_placeholder)),
@@ -30,7 +34,7 @@ tab1
 
 ```{r try2}
 paths <- fs::dir_ls(path = "thumbnails", regexp = "themes") %>% 
-  tibble(image_path = .) 
+  tibble(image_path = ., image_placeholder = 1:length(.))
 
 tab2 <- dplyr::tibble(
   image_placeholder = 1:nrow(paths)) %>% 

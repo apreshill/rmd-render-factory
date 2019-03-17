@@ -7,10 +7,11 @@ purrr::walk(
     output_options = list(
       toc = TRUE, 
       toc_float = TRUE,
+      code_download = TRUE,
       theme = "cosmo",
       highlight = "tango"
     ),
-    params = list(dynamictitle = glue::glue("Visualizing Texas: viridis color palette `{.}`"),
+    params = list(dynamictitle = glue::glue("Texas Housing Prices: viridis color palette `{.}`"),
                   viridis_palette = .)
   )
 )

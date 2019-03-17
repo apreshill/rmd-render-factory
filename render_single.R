@@ -4,8 +4,9 @@ rmarkdown::render("index.Rmd",
                     toc = TRUE, 
                     toc_float = TRUE,
                     theme = "flatly",
-                    highlight = "tango"
+                    highlight = "tango",
+                    code_download = TRUE
                   ),
-                  params = list(dynamictitle = "Visualizing Texas: flatly theme, tango highlight")
+                  params = list(dynamictitle = "Texas Housing Prices: flatly theme, tango highlight")
 )
 

@@ -9,6 +9,7 @@ Herein lies a `README` to help you navigate the galleries.
 
 ```{r include = FALSE}
 knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE, comment = NA)
+library(tidyverse)
 ```
 
 ```{r factory_functions}
@@ -61,6 +62,13 @@ render_factory <- function(type = c("single", "themes", "highlighters", "outputs
 }
 ```
 
+# The single file
+
+All of the links below derive from a single R Markdown file titled `index.Rmd`. Here is the YAML:
+
+```{r}
+cat(readr::read_lines("index.Rmd", n_max = 11), sep = "\n")
+```
 
 
 

@@ -1,10 +1,8 @@
 ---
 title: "`r params$dynamictitle`"
 author: "Alison Hill"
-date: "`r params$reportdate`"
 params:
   dynamictitle: Texas Housing Prices
-  reportdate: !r Sys.Date()
   viridis_palette: viridis
 output_format:
   html_document:

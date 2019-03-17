@@ -10,7 +10,7 @@ purrr::walk2(
     output_file = glue::glue("{.x}.{.y}"),
     output_dir = "gallery/outputs/docs/",
     output_format = .,
-    params = list(dynamictitle = glue::glue("Visualizing Texas: `{.}`"))
+    params = list(dynamictitle = glue::glue("Texas Housing Prices: `{.}`"))
     )
 )
 
@@ -25,7 +25,7 @@ purrr::walk2(
     output_file = glue::glue("{.x}.{.y}"),
     output_dir = "gallery/outputs/slides/",
     output_format = .,
-    params = list(dynamictitle = glue::glue("Visualizing Texas: `{.}`"))
+    params = list(dynamictitle = glue::glue("Texas Housing Prices: `{.}`"))
   )
 )
 

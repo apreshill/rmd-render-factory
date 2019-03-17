@@ -1,6 +1,23 @@
 
 Herein lies a `README` to help you navigate the galleries.
 
+# The single file
+
+All of the links below derive from a single R Markdown file titled
+`index.Rmd`. Here is the YAML:
+
+    ---
+    title: "`r params$dynamictitle`"
+    author: "Alison Hill"
+    params:
+      dynamictitle: Texas Housing Prices
+      viridis_palette: viridis
+    output_format:
+      html_document:
+        highlighter: null
+        theme: null
+    ---
+
 # Themes
 
 R Markdown comes with some several built-in `theme`s. Themes are drawn
@@ -191,9 +208,10 @@ And here is the script to generate the themes:
         output_options = list(
           toc = TRUE, 
           toc_float = TRUE,
+          code_download = TRUE,
           theme = .x
         ),
-        params = list(dynamictitle = glue::glue("Visualizing Texas: `{.}` theme"))
+        params = list(dynamictitle = glue::glue("Texas Housing Prices: `{.}` theme"))
       )
     )
 
@@ -327,9 +345,10 @@ And here is the script to generate the highlighters:
           toc = TRUE, 
           toc_float = TRUE,
           theme = "cosmo",
+          code_download = TRUE,
           highlight = .x
         ),
-        params = list(dynamictitle = glue::glue("Visualizing Texas: `{.}` highlighter"))
+        params = list(dynamictitle = glue::glue("Texas Housing Prices: `{.}` highlighter"))
       )
     )
 
@@ -442,7 +461,7 @@ And here is the script to generate the outputs:
         output_file = glue::glue("{.x}.{.y}"),
         output_dir = "gallery/outputs/docs/",
         output_format = .,
-        params = list(dynamictitle = glue::glue("Visualizing Texas: `{.}`"))
+        params = list(dynamictitle = glue::glue("Texas Housing Prices: `{.}`"))
         )
     )
     
@@ -457,7 +476,7 @@ And here is the script to generate the outputs:
         output_file = glue::glue("{.x}.{.y}"),
         output_dir = "gallery/outputs/slides/",
         output_format = .,
-        params = list(dynamictitle = glue::glue("Visualizing Texas: `{.}`"))
+        params = list(dynamictitle = glue::glue("Texas Housing Prices: `{.}`"))
       )
     )
 
@@ -547,10 +566,11 @@ And here is the script to generate the viridis palettes:
         output_options = list(
           toc = TRUE, 
           toc_float = TRUE,
+          code_download = TRUE,
           theme = "cosmo",
           highlight = "tango"
         ),
-        params = list(dynamictitle = glue::glue("Visualizing Texas: viridis color palette `{.}`"),
+        params = list(dynamictitle = glue::glue("Texas Housing Prices: viridis color palette `{.}`"),
                       viridis_palette = .)
       )
     )

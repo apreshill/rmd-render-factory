@@ -7,8 +7,9 @@ purrr::walk(
     output_options = list(
       toc = TRUE, 
       toc_float = TRUE,
+      code_download = TRUE,
       theme = .x
     ),
-    params = list(dynamictitle = glue::glue("Visualizing Texas: `{.}` theme"))
+    params = list(dynamictitle = glue::glue("Texas Housing Prices: `{.}` theme"))
   )
 )

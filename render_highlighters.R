@@ -8,8 +8,9 @@ purrr::walk(
       toc = TRUE, 
       toc_float = TRUE,
       theme = "cosmo",
+      code_download = TRUE,
       highlight = .x
     ),
-    params = list(dynamictitle = glue::glue("Visualizing Texas: `{.}` highlighter"))
+    params = list(dynamictitle = glue::glue("Texas Housing Prices: `{.}` highlighter"))
   )
 )
