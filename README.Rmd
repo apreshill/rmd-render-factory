@@ -86,7 +86,7 @@ output_format:
 ```
 
 
-```{r}
+```{r results = "asis"}
 theme_links <- link_factory(type = "themes")
 table_factory(links = theme_links)
 ```
@@ -110,7 +110,7 @@ output_format:
 ```
 
 
-```{r}
+```{r results = "asis"}
 hl_links <- link_factory(type = "highlighters")
 table_factory(links = hl_links)
 ```
@@ -123,7 +123,7 @@ render_factory("highlighters")
 
 # Output formats 
 
-```{r}
+```{r results = "asis"}
 output_links <- link_factory(type = "outputs")
 table_factory(links = output_links)
 ```
@@ -136,7 +136,7 @@ render_factory("outputs")
 
 # Viridis options
 
-```{r}
+```{r results = "asis"}
 viridis_links <- link_factory(type = "viridis-options")
 table_factory(links = viridis_links)
 ```
