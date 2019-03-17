@@ -1,7 +1,7 @@
 purrr::walk(
   .x = as.list(rmarkdown:::highlighters()),
   ~ rmarkdown::render(
-    "index.Rmd",
+    "input/single.Rmd",
     output_file = glue::glue("{.}.html"),
     output_dir = "gallery/highlighters/",
     output_options = list(

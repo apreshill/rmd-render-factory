@@ -6,7 +6,7 @@ purrr::walk2(
   .x = doc_outputs,
   .y = doc_exts,
   ~ rmarkdown::render(
-    "index.Rmd",
+    "input/single.Rmd",
     output_file = glue::glue("{.x}.{.y}"),
     output_dir = "gallery/outputs/docs/",
     output_format = .,
@@ -21,7 +21,7 @@ purrr::walk2(
   .x = slide_outputs,
   .y = slide_exts,
   ~ rmarkdown::render(
-    "index.Rmd",
+    "input/single.Rmd",
     output_file = glue::glue("{.x}.{.y}"),
     output_dir = "gallery/outputs/slides/",
     output_format = .,

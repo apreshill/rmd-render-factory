@@ -1,4 +1,4 @@
-rmarkdown::render("index.Rmd", 
+rmarkdown::render("input/single.Rmd", 
                   output_dir = "single-output/",
                   output_options = list(
                     toc = TRUE, 

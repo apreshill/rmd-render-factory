@@ -6,7 +6,7 @@ purrr::walk2(
   .x = exts,
   .y = file_exts,
   ~ rmarkdown::render(
-    "index.Rmd",
+    "input/single.Rmd",
     output_file = glue::glue("{.x}.{.y}"),
     output_dir = "gallery/outputs/exts/",
     output_format = .x,

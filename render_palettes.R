@@ -1,7 +1,7 @@
 purrr::walk(
   .x = c("magma", "inferno", "plasma", "viridis", "cividis"),
   ~ rmarkdown::render(
-    "index.Rmd",
+    "input/single.Rmd",
     output_file = glue::glue("{.}.html"),
     output_dir = "gallery/viridis-options/",
     output_options = list(

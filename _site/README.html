@@ -1,0 +1,2382 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<style type="text/css">
+@font-face {
+font-family: octicons-link;
+src: url(data:font/woff;charset=utf-8;base64,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) format('woff');
+}
+body {
+-webkit-text-size-adjust: 100%;
+text-size-adjust: 100%;
+color: #333;
+font-family: "Helvetica Neue", Helvetica, "Segoe UI", Arial, freesans, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+font-size: 16px;
+line-height: 1.6;
+word-wrap: break-word;
+}
+a {
+background-color: transparent;
+}
+a:active,
+a:hover {
+outline: 0;
+}
+strong {
+font-weight: bold;
+}
+h1 {
+font-size: 2em;
+margin: 0.67em 0;
+}
+img {
+border: 0;
+}
+hr {
+box-sizing: content-box;
+height: 0;
+}
+pre {
+overflow: auto;
+}
+code,
+kbd,
+pre {
+font-family: monospace, monospace;
+font-size: 1em;
+}
+input {
+color: inherit;
+font: inherit;
+margin: 0;
+}
+html input[disabled] {
+cursor: default;
+}
+input {
+line-height: normal;
+}
+input[type="checkbox"] {
+box-sizing: border-box;
+padding: 0;
+}
+table {
+border-collapse: collapse;
+border-spacing: 0;
+}
+td,
+th {
+padding: 0;
+}
+* {
+box-sizing: border-box;
+}
+input {
+font: 13px / 1.4 Helvetica, arial, nimbussansl, liberationsans, freesans, clean, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+}
+a {
+color: #4078c0;
+text-decoration: none;
+}
+a:hover,
+a:active {
+text-decoration: underline;
+}
+hr {
+height: 0;
+margin: 15px 0;
+overflow: hidden;
+background: transparent;
+border: 0;
+border-bottom: 1px solid #ddd;
+}
+hr:before {
+display: table;
+content: "";
+}
+hr:after {
+display: table;
+clear: both;
+content: "";
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+margin-top: 15px;
+margin-bottom: 15px;
+line-height: 1.1;
+}
+h1 {
+font-size: 30px;
+}
+h2 {
+font-size: 21px;
+}
+h3 {
+font-size: 16px;
+}
+h4 {
+font-size: 14px;
+}
+h5 {
+font-size: 12px;
+}
+h6 {
+font-size: 11px;
+}
+blockquote {
+margin: 0;
+}
+ul,
+ol {
+padding: 0;
+margin-top: 0;
+margin-bottom: 0;
+}
+ol ol,
+ul ol {
+list-style-type: lower-roman;
+}
+ul ul ol,
+ul ol ol,
+ol ul ol,
+ol ol ol {
+list-style-type: lower-alpha;
+}
+dd {
+margin-left: 0;
+}
+code {
+font-family: Consolas, "Liberation Mono", Menlo, Courier, monospace;
+font-size: 12px;
+}
+pre {
+margin-top: 0;
+margin-bottom: 0;
+font: 12px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+}
+.select::-ms-expand {
+opacity: 0;
+}
+.octicon {
+font: normal normal normal 16px/1 octicons-link;
+display: inline-block;
+text-decoration: none;
+text-rendering: auto;
+-webkit-font-smoothing: antialiased;
+-moz-osx-font-smoothing: grayscale;
+-webkit-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+}
+.octicon-link:before {
+content: '\f05c';
+}
+.markdown-body:before {
+display: table;
+content: "";
+}
+.markdown-body:after {
+display: table;
+clear: both;
+content: "";
+}
+.markdown-body>*:first-child {
+margin-top: 0 !important;
+}
+.markdown-body>*:last-child {
+margin-bottom: 0 !important;
+}
+a:not([href]) {
+color: inherit;
+text-decoration: none;
+}
+.anchor {
+display: inline-block;
+padding-right: 2px;
+margin-left: -18px;
+}
+.anchor:focus {
+outline: none;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+margin-top: 1em;
+margin-bottom: 16px;
+font-weight: bold;
+line-height: 1.4;
+}
+h1 .octicon-link,
+h2 .octicon-link,
+h3 .octicon-link,
+h4 .octicon-link,
+h5 .octicon-link,
+h6 .octicon-link {
+color: #000;
+vertical-align: middle;
+visibility: hidden;
+}
+h1:hover .anchor,
+h2:hover .anchor,
+h3:hover .anchor,
+h4:hover .anchor,
+h5:hover .anchor,
+h6:hover .anchor {
+text-decoration: none;
+}
+h1:hover .anchor .octicon-link,
+h2:hover .anchor .octicon-link,
+h3:hover .anchor .octicon-link,
+h4:hover .anchor .octicon-link,
+h5:hover .anchor .octicon-link,
+h6:hover .anchor .octicon-link {
+visibility: visible;
+}
+h1 {
+padding-bottom: 0.3em;
+font-size: 2.25em;
+line-height: 1.2;
+border-bottom: 1px solid #eee;
+}
+h1 .anchor {
+line-height: 1;
+}
+h2 {
+padding-bottom: 0.3em;
+font-size: 1.75em;
+line-height: 1.225;
+border-bottom: 1px solid #eee;
+}
+h2 .anchor {
+line-height: 1;
+}
+h3 {
+font-size: 1.5em;
+line-height: 1.43;
+}
+h3 .anchor {
+line-height: 1.2;
+}
+h4 {
+font-size: 1.25em;
+}
+h4 .anchor {
+line-height: 1.2;
+}
+h5 {
+font-size: 1em;
+}
+h5 .anchor {
+line-height: 1.1;
+}
+h6 {
+font-size: 1em;
+color: #777;
+}
+h6 .anchor {
+line-height: 1.1;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table,
+pre {
+margin-top: 0;
+margin-bottom: 16px;
+}
+hr {
+height: 4px;
+padding: 0;
+margin: 16px 0;
+background-color: #e7e7e7;
+border: 0 none;
+}
+ul,
+ol {
+padding-left: 2em;
+}
+ul ul,
+ul ol,
+ol ol,
+ol ul {
+margin-top: 0;
+margin-bottom: 0;
+}
+li>p {
+margin-top: 16px;
+}
+dl {
+padding: 0;
+}
+dl dt {
+padding: 0;
+margin-top: 16px;
+font-size: 1em;
+font-style: italic;
+font-weight: bold;
+}
+dl dd {
+padding: 0 16px;
+margin-bottom: 16px;
+}
+blockquote {
+padding: 0 15px;
+color: #777;
+border-left: 4px solid #ddd;
+}
+blockquote>:first-child {
+margin-top: 0;
+}
+blockquote>:last-child {
+margin-bottom: 0;
+}
+table {
+display: block;
+width: 100%;
+overflow: auto;
+word-break: normal;
+word-break: keep-all;
+}
+table th {
+font-weight: bold;
+}
+table th,
+table td {
+padding: 6px 13px;
+border: 1px solid #ddd;
+}
+table tr {
+background-color: #fff;
+border-top: 1px solid #ccc;
+}
+table tr:nth-child(2n) {
+background-color: #f8f8f8;
+}
+img {
+max-width: 100%;
+box-sizing: content-box;
+background-color: #fff;
+}
+code {
+padding: 0;
+padding-top: 0.2em;
+padding-bottom: 0.2em;
+margin: 0;
+font-size: 85%;
+background-color: rgba(0,0,0,0.04);
+border-radius: 3px;
+}
+code:before,
+code:after {
+letter-spacing: -0.2em;
+content: "\00a0";
+}
+pre>code {
+padding: 0;
+margin: 0;
+font-size: 100%;
+word-break: normal;
+white-space: pre;
+background: transparent;
+border: 0;
+}
+.highlight {
+margin-bottom: 16px;
+}
+.highlight pre,
+pre {
+padding: 16px;
+overflow: auto;
+font-size: 85%;
+line-height: 1.45;
+background-color: #f7f7f7;
+border-radius: 3px;
+}
+.highlight pre {
+margin-bottom: 0;
+word-break: normal;
+}
+pre {
+word-wrap: normal;
+}
+pre code {
+display: inline;
+max-width: initial;
+padding: 0;
+margin: 0;
+overflow: initial;
+line-height: inherit;
+word-wrap: normal;
+background-color: transparent;
+border: 0;
+}
+pre code:before,
+pre code:after {
+content: normal;
+}
+kbd {
+display: inline-block;
+padding: 3px 5px;
+font-size: 11px;
+line-height: 10px;
+color: #555;
+vertical-align: middle;
+background-color: #fcfcfc;
+border: solid 1px #ccc;
+border-bottom-color: #bbb;
+border-radius: 3px;
+box-shadow: inset 0 -1px 0 #bbb;
+}
+.pl-c {
+color: #969896;
+}
+.pl-c1,
+.pl-s .pl-v {
+color: #0086b3;
+}
+.pl-e,
+.pl-en {
+color: #795da3;
+}
+.pl-s .pl-s1,
+.pl-smi {
+color: #333;
+}
+.pl-ent {
+color: #63a35c;
+}
+.pl-k {
+color: #a71d5d;
+}
+.pl-pds,
+.pl-s,
+.pl-s .pl-pse .pl-s1,
+.pl-sr,
+.pl-sr .pl-cce,
+.pl-sr .pl-sra,
+.pl-sr .pl-sre {
+color: #183691;
+}
+.pl-v {
+color: #ed6a43;
+}
+.pl-id {
+color: #b52a1d;
+}
+.pl-ii {
+background-color: #b52a1d;
+color: #f8f8f8;
+}
+.pl-sr .pl-cce {
+color: #63a35c;
+font-weight: bold;
+}
+.pl-ml {
+color: #693a17;
+}
+.pl-mh,
+.pl-mh .pl-en,
+.pl-ms {
+color: #1d3e81;
+font-weight: bold;
+}
+.pl-mq {
+color: #008080;
+}
+.pl-mi {
+color: #333;
+font-style: italic;
+}
+.pl-mb {
+color: #333;
+font-weight: bold;
+}
+.pl-md {
+background-color: #ffecec;
+color: #bd2c00;
+}
+.pl-mi1 {
+background-color: #eaffea;
+color: #55a532;
+}
+.pl-mdr {
+color: #795da3;
+font-weight: bold;
+}
+.pl-mo {
+color: #1d3e81;
+}
+kbd {
+display: inline-block;
+padding: 3px 5px;
+font: 11px Consolas, "Liberation Mono", Menlo, Courier, monospace;
+line-height: 10px;
+color: #555;
+vertical-align: middle;
+background-color: #fcfcfc;
+border: solid 1px #ccc;
+border-bottom-color: #bbb;
+border-radius: 3px;
+box-shadow: inset 0 -1px 0 #bbb;
+}
+.task-list-item {
+list-style-type: none;
+}
+.task-list-item+.task-list-item {
+margin-top: 3px;
+}
+.task-list-item input {
+margin: 0 0.35em 0.25em -1.6em;
+vertical-align: middle;
+}
+:checked+.radio-label {
+z-index: 1;
+position: relative;
+border-color: #4078c0;
+}
+.sourceLine {
+display: inline-block;
+}
+code .kw { color: #000000; }
+code .dt { color: #ed6a43; }
+code .dv { color: #009999; }
+code .bn { color: #009999; }
+code .fl { color: #009999; }
+code .ch { color: #009999; }
+code .st { color: #183691; }
+code .co { color: #969896; }
+code .ot { color: #0086b3; }
+code .al { color: #a61717; }
+code .fu { color: #63a35c; }
+code .er { color: #a61717; background-color: #e3d2d2; }
+code .wa { color: #000000; }
+code .cn { color: #008080; }
+code .sc { color: #008080; }
+code .vs { color: #183691; }
+code .ss { color: #183691; }
+code .im { color: #000000; }
+code .va {color: #008080; }
+code .cf { color: #000000; }
+code .op { color: #000000; }
+code .bu { color: #000000; }
+code .ex { color: #000000; }
+code .pp { color: #999999; }
+code .at { color: #008080; }
+code .do { color: #969896; }
+code .an { color: #008080; }
+code .cv { color: #008080; }
+code .in { color: #008080; }
+</style>
+<style>
+body {
+  box-sizing: border-box;
+  min-width: 200px;
+  max-width: 980px;
+  margin: 0 auto;
+  padding: 45px;
+  padding-top: 0px;
+}
+</style>
+
+</head>
+
+<body>
+
+<p>Herein lies a <code>README</code> to help you navigate the galleries.</p>
+<h1 id="the-single-file">The single file</h1>
+<p>All of the links below derive from a single R Markdown file titled <code>index.Rmd</code>. Here is the YAML:</p>
+<pre><code>---
+title: &quot;`r params$dynamictitle`&quot;
+author: &quot;Alison Hill&quot;
+params:
+  dynamictitle: Texas Housing Prices
+  viridis_palette: viridis
+output_format:
+  html_document:
+    highlighter: null
+    theme: null
+---
+</code></pre>
+<h1 id="themes">Themes</h1>
+<p>R Markdown comes with some several built-in <code>theme</code>s. Themes are drawn from the Bootswatch theme library. Valid themes include <code>default</code>, <code>cerulean</code>, <code>journal</code>, <code>flatly</code>, <code>darkly</code>, <code>readable</code>, <code>spacelab</code>, <code>united</code>, <code>cosmo</code>, <code>lumen</code>, <code>paper</code>, <code>sandstone</code>, <code>simplex</code>, and <code>yeti</code>. Pass <code>null</code> for no theme. To use a theme for a single .html file output from a .Rmd file, you edit your YAML:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="fu">title:</span><span class="at"> </span><span class="st">&quot;README.Rmd&quot;</span></a>
+<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="fu">output_format:</span><span class="at"> </span></a>
+<a class="sourceLine" id="cb2-3" data-line-number="3">  <span class="fu">html_document:</span></a>
+<a class="sourceLine" id="cb2-4" data-line-number="4">    <span class="fu">theme:</span><span class="at"> flatly</span></a></code></pre></div>
+<!--html_preserve-->
+
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#fvjdnuzbga .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #000000;
+  font-size: 16px;
+  background-color: #FFFFFF;
+  /* table.background.color */
+  width: auto;
+  /* table.width */
+  border-top-style: solid;
+  /* table.border.top.style */
+  border-top-width: 2px;
+  /* table.border.top.width */
+  border-top-color: #A8A8A8;
+  /* table.border.top.color */
+}
+
+#fvjdnuzbga .gt_heading {
+  background-color: #FFFFFF;
+  /* heading.background.color */
+  border-bottom-color: #FFFFFF;
+}
+
+#fvjdnuzbga .gt_title {
+  color: #000000;
+  font-size: 125%;
+  /* heading.title.font.size */
+  padding-top: 4px;
+  /* heading.top.padding */
+  padding-bottom: 1px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#fvjdnuzbga .gt_subtitle {
+  color: #000000;
+  font-size: 85%;
+  /* heading.subtitle.font.size */
+  padding-top: 1px;
+  padding-bottom: 4px;
+  /* heading.bottom.padding */
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#fvjdnuzbga .gt_bottom_border {
+  border-bottom-style: solid;
+  /* heading.border.bottom.style */
+  border-bottom-width: 2px;
+  /* heading.border.bottom.width */
+  border-bottom-color: #A8A8A8;
+  /* heading.border.bottom.color */
+}
+
+#fvjdnuzbga .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#fvjdnuzbga .gt_col_heading {
+  color: #000000;
+  background-color: #FFFFFF;
+  /* column_labels.background.color */
+  font-size: 16px;
+  /* column_labels.font.size */
+  font-weight: initial;
+  /* column_labels.font.weight */
+  vertical-align: middle;
+  padding: 10px;
+  margin: 10px;
+}
+
+#fvjdnuzbga .gt_sep_right {
+  border-right: 5px solid #FFFFFF;
+}
+
+#fvjdnuzbga .gt_group_heading {
+  padding: 8px;
+  color: #000000;
+  background-color: #FFFFFF;
+  /* row_group.background.color */
+  font-size: 16px;
+  /* row_group.font.size */
+  font-weight: initial;
+  /* row_group.font.weight */
+  border-top-style: solid;
+  /* row_group.border.top.style */
+  border-top-width: 2px;
+  /* row_group.border.top.width */
+  border-top-color: #A8A8A8;
+  /* row_group.border.top.color */
+  border-bottom-style: solid;
+  /* row_group.border.bottom.style */
+  border-bottom-width: 2px;
+  /* row_group.border.bottom.width */
+  border-bottom-color: #A8A8A8;
+  /* row_group.border.bottom.color */
+  vertical-align: middle;
+}
+
+#fvjdnuzbga .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #000000;
+  background-color: #FFFFFF;
+  /* row_group.background.color */
+  font-size: 16px;
+  /* row_group.font.size */
+  font-weight: initial;
+  /* row_group.font.weight */
+  border-top-style: solid;
+  /* row_group.border.top.style */
+  border-top-width: 2px;
+  /* row_group.border.top.width */
+  border-top-color: #A8A8A8;
+  /* row_group.border.top.color */
+  border-bottom-style: solid;
+  /* row_group.border.bottom.style */
+  border-bottom-width: 2px;
+  /* row_group.border.bottom.width */
+  border-bottom-color: #A8A8A8;
+  /* row_group.border.bottom.color */
+  vertical-align: middle;
+}
+
+#fvjdnuzbga .gt_striped {
+  background-color: #f2f2f2;
+}
+
+#fvjdnuzbga .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#fvjdnuzbga .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#fvjdnuzbga .gt_row {
+  padding: 10px;
+  /* row.padding */
+  margin: 10px;
+  vertical-align: middle;
+}
+
+#fvjdnuzbga .gt_stub {
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #A8A8A8;
+  padding-left: 12px;
+}
+
+#fvjdnuzbga .gt_stub.gt_row {
+  background-color: #FFFFFF;
+}
+
+#fvjdnuzbga .gt_summary_row {
+  background-color: #FFFFFF;
+  /* summary_row.background.color */
+  padding: 6px;
+  /* summary_row.padding */
+  text-transform: inherit;
+  /* summary_row.text_transform */
+}
+
+#fvjdnuzbga .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+}
+
+#fvjdnuzbga .gt_table_body {
+  border-top-style: solid;
+  /* table_body.border.top.style */
+  border-top-width: 2px;
+  /* table_body.border.top.width */
+  border-top-color: #A8A8A8;
+  /* table_body.border.top.color */
+  border-bottom-style: solid;
+  /* table_body.border.bottom.style */
+  border-bottom-width: 2px;
+  /* table_body.border.bottom.width */
+  border-bottom-color: #A8A8A8;
+  /* table_body.border.bottom.color */
+}
+
+#fvjdnuzbga .gt_footnote {
+  font-size: 90%;
+  /* footnote.font.size */
+  padding: 4px;
+  /* footnote.padding */
+}
+
+#fvjdnuzbga .gt_sourcenote {
+  font-size: 90%;
+  /* sourcenote.font.size */
+  padding: 4px;
+  /* sourcenote.padding */
+}
+
+#fvjdnuzbga .gt_center {
+  text-align: center;
+}
+
+#fvjdnuzbga .gt_left {
+  text-align: left;
+}
+
+#fvjdnuzbga .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#fvjdnuzbga .gt_font_normal {
+  font-weight: normal;
+}
+
+#fvjdnuzbga .gt_font_bold {
+  font-weight: bold;
+}
+
+#fvjdnuzbga .gt_font_italic {
+  font-style: italic;
+}
+
+#fvjdnuzbga .gt_super {
+  font-size: 65%;
+}
+
+#fvjdnuzbga .gt_footnote_glyph {
+  font-style: italic;
+  font-size: 65%;
+}
+</style>
+
+<div id="fvjdnuzbga" style="overflow-x:auto;">
+
+<!--gt table start-->
+
+<table class="gt_table">
+
+<tr>
+
+<th class="gt_col_heading gt_center" rowspan="1" colspan="1">
+
+<p>List of themes</p>
+</th>
+
+</tr>
+
+<tbody class="gt_table_body">
+
+<tr>
+
+<td class="gt_row gt_center">
+
+<div class="gt_from_md">
+
+<p>
+
+<p><a href="https://apreshill.github.io/rmd-render-factory/gallery/themes/cerulean.html">cerulean</a></p>
+</p>
+
+</div>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td class="gt_row gt_center gt_striped">
+
+<div class="gt_from_md">
+
+<p>
+
+<p><a href="https://apreshill.github.io/rmd-render-factory/gallery/themes/cosmo.html">cosmo</a></p>
+</p>
+
+</div>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td class="gt_row gt_center">
+
+<div class="gt_from_md">
+
+<p>
+
+<p><a href="https://apreshill.github.io/rmd-render-factory/gallery/themes/darkly.html">darkly</a></p>
+</p>
+
+</div>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td class="gt_row gt_center gt_striped">
+
+<div class="gt_from_md">
+
+<p>
+
+<p><a href="https://apreshill.github.io/rmd-render-factory/gallery/themes/default.html">default</a></p>
+</p>
+
+</div>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td class="gt_row gt_center">
+
+<div class="gt_from_md">
+
+<p>
+
+<p><a href="https://apreshill.github.io/rmd-render-factory/gallery/themes/flatly.html">flatly</a></p>
+</p>
+
+</div>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td class="gt_row gt_center gt_striped">
+
+<div class="gt_from_md">
+
+<p>
+
+<p><a href="https://apreshill.github.io/rmd-render-factory/gallery/themes/journal.html">journal</a></p>
+</p>
+
+</div>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td class="gt_row gt_center">
+
+<div class="gt_from_md">
+
+<p>
+
+<p><a href="https://apreshill.github.io/rmd-render-factory/gallery/themes/lumen.html">lumen</a></p>
+</p>
+
+</div>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td class="gt_row gt_center gt_striped">
+
+<div class="gt_from_md">
+
+<p>
+
+<p><a href="https://apreshill.github.io/rmd-render-factory/gallery/themes/paper.html">paper</a></p>
+</p>
+
+</div>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td class="gt_row gt_center">
+
+<div class="gt_from_md">
+
+<p>
+
+<p><a href="https://apreshill.github.io/rmd-render-factory/gallery/themes/readable.html">readable</a></p>
+</p>
+
+</div>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td class="gt_row gt_center gt_striped">
+
+<div class="gt_from_md">
+
+<p>
+
+<p><a href="https://apreshill.github.io/rmd-render-factory/gallery/themes/sandstone.html">sandstone</a></p>
+</p>
+
+</div>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td class="gt_row gt_center">
+
+<div class="gt_from_md">
+
+<p>
+
+<p><a href="https://apreshill.github.io/rmd-render-factory/gallery/themes/simplex.html">simplex</a></p>
+</p>
+
+</div>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td class="gt_row gt_center gt_striped">
+
+<div class="gt_from_md">
+
+<p>
+
+<p><a href="https://apreshill.github.io/rmd-render-factory/gallery/themes/spacelab.html">spacelab</a></p>
+</p>
+
+</div>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td class="gt_row gt_center">
+
+<div class="gt_from_md">
+
+<p>
+
+<p><a href="https://apreshill.github.io/rmd-render-factory/gallery/themes/united.html">united</a></p>
+</p>
+
+</div>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td class="gt_row gt_center gt_striped">
+
+<div class="gt_from_md">
+
+<p>
+
+<p><a href="https://apreshill.github.io/rmd-render-factory/gallery/themes/yeti.html">yeti</a></p>
+</p>
+
+</div>
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+<!--gt table end-->
+
+</div>
+
+<!--/html_preserve-->
+
+<p>And here is the script to generate the themes:</p>
+<pre><code>purrr::walk(
+  .x = as.list(rmarkdown:::themes()),
+  ~ rmarkdown::render(
+    &quot;input/single.Rmd&quot;,
+    output_file = glue::glue(&quot;{.}.html&quot;),
+    output_dir = &quot;gallery/themes/&quot;,
+    output_options = list(
+      toc = TRUE, 
+      toc_float = TRUE,
+      code_download = TRUE,
+      theme = .x
+    ),
+    params = list(dynamictitle = glue::glue(&quot;Texas Housing Prices: `{.}` theme&quot;))
+  )
+)
+</code></pre>
+<h1 id="highlighters">Highlighters</h1>
+<p>R Markdown also comes with several built-in syntax highlighting styles. Supported styles include <code>default</code>, <code>tango</code>, <code>pygments</code>, <code>kate</code>, <code>monochrome</code>, <code>espresso</code>, <code>zenburn</code>, <code>haddock</code>, and <code>textmate</code>. Pass <code>null</code> to prevent syntax highlighting. To use a highlighter for a single .html file output from a .Rmd file, you edit your YAML:</p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="fu">title:</span><span class="at"> </span><span class="st">&quot;README.Rmd&quot;</span></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="fu">output_format:</span><span class="at"> </span></a>
+<a class="sourceLine" id="cb4-3" data-line-number="3">  <span class="fu">html_document:</span></a>
+<a class="sourceLine" id="cb4-4" data-line-number="4">    <span class="fu">highlighter:</span><span class="at"> tango</span></a></code></pre></div>
+<!--html_preserve-->
+
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#rantzvnitf .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #000000;
+  font-size: 16px;
+  background-color: #FFFFFF;
+  /* table.background.color */
+  width: auto;
+  /* table.width */
+  border-top-style: solid;
+  /* table.border.top.style */
+  border-top-width: 2px;
+  /* table.border.top.width */
+  border-top-color: #A8A8A8;
+  /* table.border.top.color */
+}
+
+#rantzvnitf .gt_heading {
+  background-color: #FFFFFF;
+  /* heading.background.color */
+  border-bottom-color: #FFFFFF;
+}
+
+#rantzvnitf .gt_title {
+  color: #000000;
+  font-size: 125%;
+  /* heading.title.font.size */
+  padding-top: 4px;
+  /* heading.top.padding */
+  padding-bottom: 1px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#rantzvnitf .gt_subtitle {
+  color: #000000;
+  font-size: 85%;
+  /* heading.subtitle.font.size */
+  padding-top: 1px;
+  padding-bottom: 4px;
+  /* heading.bottom.padding */
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#rantzvnitf .gt_bottom_border {
+  border-bottom-style: solid;
+  /* heading.border.bottom.style */
+  border-bottom-width: 2px;
+  /* heading.border.bottom.width */
+  border-bottom-color: #A8A8A8;
+  /* heading.border.bottom.color */
+}
+
+#rantzvnitf .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#rantzvnitf .gt_col_heading {
+  color: #000000;
+  background-color: #FFFFFF;
+  /* column_labels.background.color */
+  font-size: 16px;
+  /* column_labels.font.size */
+  font-weight: initial;
+  /* column_labels.font.weight */
+  vertical-align: middle;
+  padding: 10px;
+  margin: 10px;
+}
+
+#rantzvnitf .gt_sep_right {
+  border-right: 5px solid #FFFFFF;
+}
+
+#rantzvnitf .gt_group_heading {
+  padding: 8px;
+  color: #000000;
+  background-color: #FFFFFF;
+  /* row_group.background.color */
+  font-size: 16px;
+  /* row_group.font.size */
+  font-weight: initial;
+  /* row_group.font.weight */
+  border-top-style: solid;
+  /* row_group.border.top.style */
+  border-top-width: 2px;
+  /* row_group.border.top.width */
+  border-top-color: #A8A8A8;
+  /* row_group.border.top.color */
+  border-bottom-style: solid;
+  /* row_group.border.bottom.style */
+  border-bottom-width: 2px;
+  /* row_group.border.bottom.width */
+  border-bottom-color: #A8A8A8;
+  /* row_group.border.bottom.color */
+  vertical-align: middle;
+}
+
+#rantzvnitf .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #000000;
+  background-color: #FFFFFF;
+  /* row_group.background.color */
+  font-size: 16px;
+  /* row_group.font.size */
+  font-weight: initial;
+  /* row_group.font.weight */
+  border-top-style: solid;
+  /* row_group.border.top.style */
+  border-top-width: 2px;
+  /* row_group.border.top.width */
+  border-top-color: #A8A8A8;
+  /* row_group.border.top.color */
+  border-bottom-style: solid;
+  /* row_group.border.bottom.style */
+  border-bottom-width: 2px;
+  /* row_group.border.bottom.width */
+  border-bottom-color: #A8A8A8;
+  /* row_group.border.bottom.color */
+  vertical-align: middle;
+}
+
+#rantzvnitf .gt_striped {
+  background-color: #f2f2f2;
+}
+
+#rantzvnitf .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#rantzvnitf .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#rantzvnitf .gt_row {
+  padding: 10px;
+  /* row.padding */
+  margin: 10px;
+  vertical-align: middle;
+}
+
+#rantzvnitf .gt_stub {
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #A8A8A8;
+  padding-left: 12px;
+}
+
+#rantzvnitf .gt_stub.gt_row {
+  background-color: #FFFFFF;
+}
+
+#rantzvnitf .gt_summary_row {
+  background-color: #FFFFFF;
+  /* summary_row.background.color */
+  padding: 6px;
+  /* summary_row.padding */
+  text-transform: inherit;
+  /* summary_row.text_transform */
+}
+
+#rantzvnitf .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+}
+
+#rantzvnitf .gt_table_body {
+  border-top-style: solid;
+  /* table_body.border.top.style */
+  border-top-width: 2px;
+  /* table_body.border.top.width */
+  border-top-color: #A8A8A8;
+  /* table_body.border.top.color */
+  border-bottom-style: solid;
+  /* table_body.border.bottom.style */
+  border-bottom-width: 2px;
+  /* table_body.border.bottom.width */
+  border-bottom-color: #A8A8A8;
+  /* table_body.border.bottom.color */
+}
+
+#rantzvnitf .gt_footnote {
+  font-size: 90%;
+  /* footnote.font.size */
+  padding: 4px;
+  /* footnote.padding */
+}
+
+#rantzvnitf .gt_sourcenote {
+  font-size: 90%;
+  /* sourcenote.font.size */
+  padding: 4px;
+  /* sourcenote.padding */
+}
+
+#rantzvnitf .gt_center {
+  text-align: center;
+}
+
+#rantzvnitf .gt_left {
+  text-align: left;
+}
+
+#rantzvnitf .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#rantzvnitf .gt_font_normal {
+  font-weight: normal;
+}
+
+#rantzvnitf .gt_font_bold {
+  font-weight: bold;
+}
+
+#rantzvnitf .gt_font_italic {
+  font-style: italic;
+}
+
+#rantzvnitf .gt_super {
+  font-size: 65%;
+}
+
+#rantzvnitf .gt_footnote_glyph {
+  font-style: italic;
+  font-size: 65%;
+}
+</style>
+
+<div id="rantzvnitf" style="overflow-x:auto;">
+
+<!--gt table start-->
+
+<table class="gt_table">
+
+<tr>
+
+<th class="gt_col_heading gt_center" rowspan="1" colspan="1">
+
+<p>List of highlighters</p>
+</th>
+
+</tr>
+
+<tbody class="gt_table_body">
+
+<tr>
+
+<td class="gt_row gt_center">
+
+<div class="gt_from_md">
+
+<p>
+
+<p><a href="https://apreshill.github.io/rmd-render-factory/gallery/highlighters/default.html">default</a></p>
+</p>
+
+</div>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td class="gt_row gt_center gt_striped">
+
+<div class="gt_from_md">
+
+<p>
+
+<p><a href="https://apreshill.github.io/rmd-render-factory/gallery/highlighters/espresso.html">espresso</a></p>
+</p>
+
+</div>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td class="gt_row gt_center">
+
+<div class="gt_from_md">
+
+<p>
+
+<p><a href="https://apreshill.github.io/rmd-render-factory/gallery/highlighters/haddock.html">haddock</a></p>
+</p>
+
+</div>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td class="gt_row gt_center gt_striped">
+
+<div class="gt_from_md">
+
+<p>
+
+<p><a href="https://apreshill.github.io/rmd-render-factory/gallery/highlighters/kate.html">kate</a></p>
+</p>
+
+</div>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td class="gt_row gt_center">
+
+<div class="gt_from_md">
+
+<p>
+
+<p><a href="https://apreshill.github.io/rmd-render-factory/gallery/highlighters/monochrome.html">monochrome</a></p>
+</p>
+
+</div>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td class="gt_row gt_center gt_striped">
+
+<div class="gt_from_md">
+
+<p>
+
+<p><a href="https://apreshill.github.io/rmd-render-factory/gallery/highlighters/pygments.html">pygments</a></p>
+</p>
+
+</div>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td class="gt_row gt_center">
+
+<div class="gt_from_md">
+
+<p>
+
+<p><a href="https://apreshill.github.io/rmd-render-factory/gallery/highlighters/tango.html">tango</a></p>
+</p>
+
+</div>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td class="gt_row gt_center gt_striped">
+
+<div class="gt_from_md">
+
+<p>
+
+<p><a href="https://apreshill.github.io/rmd-render-factory/gallery/highlighters/zenburn.html">zenburn</a></p>
+</p>
+
+</div>
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+<!--gt table end-->
+
+</div>
+
+<!--/html_preserve-->
+
+<p>And here is the script to generate the highlighters:</p>
+<pre><code>purrr::walk(
+  .x = as.list(rmarkdown:::highlighters()),
+  ~ rmarkdown::render(
+    &quot;input/single.Rmd&quot;,
+    output_file = glue::glue(&quot;{.}.html&quot;),
+    output_dir = &quot;gallery/highlighters/&quot;,
+    output_options = list(
+      toc = TRUE, 
+      toc_float = TRUE,
+      theme = &quot;cosmo&quot;,
+      code_download = TRUE,
+      highlight = .x
+    ),
+    params = list(dynamictitle = glue::glue(&quot;Texas Housing Prices: `{.}` highlighter&quot;))
+  )
+)
+</code></pre>
+<h1 id="output-formats">Output formats</h1>
+<!--html_preserve-->
+
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#auedfmyppx .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #000000;
+  font-size: 16px;
+  background-color: #FFFFFF;
+  /* table.background.color */
+  width: auto;
+  /* table.width */
+  border-top-style: solid;
+  /* table.border.top.style */
+  border-top-width: 2px;
+  /* table.border.top.width */
+  border-top-color: #A8A8A8;
+  /* table.border.top.color */
+}
+
+#auedfmyppx .gt_heading {
+  background-color: #FFFFFF;
+  /* heading.background.color */
+  border-bottom-color: #FFFFFF;
+}
+
+#auedfmyppx .gt_title {
+  color: #000000;
+  font-size: 125%;
+  /* heading.title.font.size */
+  padding-top: 4px;
+  /* heading.top.padding */
+  padding-bottom: 1px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#auedfmyppx .gt_subtitle {
+  color: #000000;
+  font-size: 85%;
+  /* heading.subtitle.font.size */
+  padding-top: 1px;
+  padding-bottom: 4px;
+  /* heading.bottom.padding */
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#auedfmyppx .gt_bottom_border {
+  border-bottom-style: solid;
+  /* heading.border.bottom.style */
+  border-bottom-width: 2px;
+  /* heading.border.bottom.width */
+  border-bottom-color: #A8A8A8;
+  /* heading.border.bottom.color */
+}
+
+#auedfmyppx .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#auedfmyppx .gt_col_heading {
+  color: #000000;
+  background-color: #FFFFFF;
+  /* column_labels.background.color */
+  font-size: 16px;
+  /* column_labels.font.size */
+  font-weight: initial;
+  /* column_labels.font.weight */
+  vertical-align: middle;
+  padding: 10px;
+  margin: 10px;
+}
+
+#auedfmyppx .gt_sep_right {
+  border-right: 5px solid #FFFFFF;
+}
+
+#auedfmyppx .gt_group_heading {
+  padding: 8px;
+  color: #000000;
+  background-color: #FFFFFF;
+  /* row_group.background.color */
+  font-size: 16px;
+  /* row_group.font.size */
+  font-weight: initial;
+  /* row_group.font.weight */
+  border-top-style: solid;
+  /* row_group.border.top.style */
+  border-top-width: 2px;
+  /* row_group.border.top.width */
+  border-top-color: #A8A8A8;
+  /* row_group.border.top.color */
+  border-bottom-style: solid;
+  /* row_group.border.bottom.style */
+  border-bottom-width: 2px;
+  /* row_group.border.bottom.width */
+  border-bottom-color: #A8A8A8;
+  /* row_group.border.bottom.color */
+  vertical-align: middle;
+}
+
+#auedfmyppx .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #000000;
+  background-color: #FFFFFF;
+  /* row_group.background.color */
+  font-size: 16px;
+  /* row_group.font.size */
+  font-weight: initial;
+  /* row_group.font.weight */
+  border-top-style: solid;
+  /* row_group.border.top.style */
+  border-top-width: 2px;
+  /* row_group.border.top.width */
+  border-top-color: #A8A8A8;
+  /* row_group.border.top.color */
+  border-bottom-style: solid;
+  /* row_group.border.bottom.style */
+  border-bottom-width: 2px;
+  /* row_group.border.bottom.width */
+  border-bottom-color: #A8A8A8;
+  /* row_group.border.bottom.color */
+  vertical-align: middle;
+}
+
+#auedfmyppx .gt_striped {
+  background-color: #f2f2f2;
+}
+
+#auedfmyppx .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#auedfmyppx .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#auedfmyppx .gt_row {
+  padding: 10px;
+  /* row.padding */
+  margin: 10px;
+  vertical-align: middle;
+}
+
+#auedfmyppx .gt_stub {
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #A8A8A8;
+  padding-left: 12px;
+}
+
+#auedfmyppx .gt_stub.gt_row {
+  background-color: #FFFFFF;
+}
+
+#auedfmyppx .gt_summary_row {
+  background-color: #FFFFFF;
+  /* summary_row.background.color */
+  padding: 6px;
+  /* summary_row.padding */
+  text-transform: inherit;
+  /* summary_row.text_transform */
+}
+
+#auedfmyppx .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+}
+
+#auedfmyppx .gt_table_body {
+  border-top-style: solid;
+  /* table_body.border.top.style */
+  border-top-width: 2px;
+  /* table_body.border.top.width */
+  border-top-color: #A8A8A8;
+  /* table_body.border.top.color */
+  border-bottom-style: solid;
+  /* table_body.border.bottom.style */
+  border-bottom-width: 2px;
+  /* table_body.border.bottom.width */
+  border-bottom-color: #A8A8A8;
+  /* table_body.border.bottom.color */
+}
+
+#auedfmyppx .gt_footnote {
+  font-size: 90%;
+  /* footnote.font.size */
+  padding: 4px;
+  /* footnote.padding */
+}
+
+#auedfmyppx .gt_sourcenote {
+  font-size: 90%;
+  /* sourcenote.font.size */
+  padding: 4px;
+  /* sourcenote.padding */
+}
+
+#auedfmyppx .gt_center {
+  text-align: center;
+}
+
+#auedfmyppx .gt_left {
+  text-align: left;
+}
+
+#auedfmyppx .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#auedfmyppx .gt_font_normal {
+  font-weight: normal;
+}
+
+#auedfmyppx .gt_font_bold {
+  font-weight: bold;
+}
+
+#auedfmyppx .gt_font_italic {
+  font-style: italic;
+}
+
+#auedfmyppx .gt_super {
+  font-size: 65%;
+}
+
+#auedfmyppx .gt_footnote_glyph {
+  font-style: italic;
+  font-size: 65%;
+}
+</style>
+
+<div id="auedfmyppx" style="overflow-x:auto;">
+
+<!--gt table start-->
+
+<table class="gt_table">
+
+<tr>
+
+<th class="gt_col_heading gt_center" rowspan="1" colspan="1">
+
+<p>List of outputs</p>
+</th>
+
+</tr>
+
+<tbody class="gt_table_body">
+
+<tr>
+
+<td class="gt_row gt_center">
+
+<div class="gt_from_md">
+
+<p>
+
+<p><a href="https://apreshill.github.io/rmd-render-factory/gallery/outputs/docs/github_document.html">github_document</a></p>
+</p>
+
+</div>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td class="gt_row gt_center gt_striped">
+
+<div class="gt_from_md">
+
+<p>
+
+<p><a href="https://apreshill.github.io/rmd-render-factory/gallery/outputs/docs/html_document.html">html_document</a></p>
+</p>
+
+</div>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td class="gt_row gt_center">
+
+<div class="gt_from_md">
+
+<p>
+
+<p><a href="https://apreshill.github.io/rmd-render-factory/gallery/outputs/docs/html_notebook.nb.html">html_notebook.nb</a></p>
+</p>
+
+</div>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td class="gt_row gt_center gt_striped">
+
+<div class="gt_from_md">
+
+<p>
+
+<p><a href="https://apreshill.github.io/rmd-render-factory/gallery/outputs/exts/flexdashboard::flex_dashboard.html">flexdashboard::flex_dashboard</a></p>
+</p>
+
+</div>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td class="gt_row gt_center">
+
+<div class="gt_from_md">
+
+<p>
+
+<p><a href="https://apreshill.github.io/rmd-render-factory/gallery/outputs/exts/revealjs::revealjs_presentation.html">revealjs::revealjs_presentation</a></p>
+</p>
+
+</div>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td class="gt_row gt_center gt_striped">
+
+<div class="gt_from_md">
+
+<p>
+
+<p><a href="https://apreshill.github.io/rmd-render-factory/gallery/outputs/slides/ioslides_presentation.html">ioslides_presentation</a></p>
+</p>
+
+</div>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td class="gt_row gt_center">
+
+<div class="gt_from_md">
+
+<p>
+
+<p><a href="https://apreshill.github.io/rmd-render-factory/gallery/outputs/slides/slidy_presentation.html">slidy_presentation</a></p>
+</p>
+
+</div>
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+<!--gt table end-->
+
+</div>
+
+<!--/html_preserve-->
+
+<p>And here is the script to generate the outputs:</p>
+<pre><code>doc_outputs &lt;- c(&quot;html_notebook&quot;, &quot;html_document&quot;, &quot;pdf_document&quot;, 
+                 &quot;word_document&quot;, &quot;odt_document&quot;, &quot;rtf_document&quot;, &quot;github_document&quot;)
+doc_exts &lt;- c(&quot;nb.html&quot;, &quot;html&quot;, &quot;pdf&quot;, &quot;docx&quot;, &quot;odt&quot;, &quot;rtf&quot;, &quot;md&quot;)
+
+purrr::walk2(
+  .x = doc_outputs,
+  .y = doc_exts,
+  ~ rmarkdown::render(
+    &quot;input/single.Rmd&quot;,
+    output_file = glue::glue(&quot;{.x}.{.y}&quot;),
+    output_dir = &quot;gallery/outputs/docs/&quot;,
+    output_format = .,
+    params = list(dynamictitle = glue::glue(&quot;Texas Housing Prices: `{.}`&quot;))
+    )
+)
+
+slide_outputs &lt;- c(&quot;ioslides_presentation&quot;, &quot;slidy_presentation&quot;, &quot;beamer_presentation&quot;, &quot;powerpoint_presentation&quot;)
+slide_exts &lt;- c(&quot;html&quot;, &quot;html&quot;, &quot;pdf&quot;, &quot;pptx&quot;)
+
+purrr::walk2(
+  .x = slide_outputs,
+  .y = slide_exts,
+  ~ rmarkdown::render(
+    &quot;input/single.Rmd&quot;,
+    output_file = glue::glue(&quot;{.x}.{.y}&quot;),
+    output_dir = &quot;gallery/outputs/slides/&quot;,
+    output_format = .,
+    params = list(dynamictitle = glue::glue(&quot;Texas Housing Prices: `{.}`&quot;))
+  )
+)
+</code></pre>
+<h1 id="viridis-options">Viridis options</h1>
+<!--html_preserve-->
+
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#okyhiqtgyg .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #000000;
+  font-size: 16px;
+  background-color: #FFFFFF;
+  /* table.background.color */
+  width: auto;
+  /* table.width */
+  border-top-style: solid;
+  /* table.border.top.style */
+  border-top-width: 2px;
+  /* table.border.top.width */
+  border-top-color: #A8A8A8;
+  /* table.border.top.color */
+}
+
+#okyhiqtgyg .gt_heading {
+  background-color: #FFFFFF;
+  /* heading.background.color */
+  border-bottom-color: #FFFFFF;
+}
+
+#okyhiqtgyg .gt_title {
+  color: #000000;
+  font-size: 125%;
+  /* heading.title.font.size */
+  padding-top: 4px;
+  /* heading.top.padding */
+  padding-bottom: 1px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#okyhiqtgyg .gt_subtitle {
+  color: #000000;
+  font-size: 85%;
+  /* heading.subtitle.font.size */
+  padding-top: 1px;
+  padding-bottom: 4px;
+  /* heading.bottom.padding */
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#okyhiqtgyg .gt_bottom_border {
+  border-bottom-style: solid;
+  /* heading.border.bottom.style */
+  border-bottom-width: 2px;
+  /* heading.border.bottom.width */
+  border-bottom-color: #A8A8A8;
+  /* heading.border.bottom.color */
+}
+
+#okyhiqtgyg .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#okyhiqtgyg .gt_col_heading {
+  color: #000000;
+  background-color: #FFFFFF;
+  /* column_labels.background.color */
+  font-size: 16px;
+  /* column_labels.font.size */
+  font-weight: initial;
+  /* column_labels.font.weight */
+  vertical-align: middle;
+  padding: 10px;
+  margin: 10px;
+}
+
+#okyhiqtgyg .gt_sep_right {
+  border-right: 5px solid #FFFFFF;
+}
+
+#okyhiqtgyg .gt_group_heading {
+  padding: 8px;
+  color: #000000;
+  background-color: #FFFFFF;
+  /* row_group.background.color */
+  font-size: 16px;
+  /* row_group.font.size */
+  font-weight: initial;
+  /* row_group.font.weight */
+  border-top-style: solid;
+  /* row_group.border.top.style */
+  border-top-width: 2px;
+  /* row_group.border.top.width */
+  border-top-color: #A8A8A8;
+  /* row_group.border.top.color */
+  border-bottom-style: solid;
+  /* row_group.border.bottom.style */
+  border-bottom-width: 2px;
+  /* row_group.border.bottom.width */
+  border-bottom-color: #A8A8A8;
+  /* row_group.border.bottom.color */
+  vertical-align: middle;
+}
+
+#okyhiqtgyg .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #000000;
+  background-color: #FFFFFF;
+  /* row_group.background.color */
+  font-size: 16px;
+  /* row_group.font.size */
+  font-weight: initial;
+  /* row_group.font.weight */
+  border-top-style: solid;
+  /* row_group.border.top.style */
+  border-top-width: 2px;
+  /* row_group.border.top.width */
+  border-top-color: #A8A8A8;
+  /* row_group.border.top.color */
+  border-bottom-style: solid;
+  /* row_group.border.bottom.style */
+  border-bottom-width: 2px;
+  /* row_group.border.bottom.width */
+  border-bottom-color: #A8A8A8;
+  /* row_group.border.bottom.color */
+  vertical-align: middle;
+}
+
+#okyhiqtgyg .gt_striped {
+  background-color: #f2f2f2;
+}
+
+#okyhiqtgyg .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#okyhiqtgyg .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#okyhiqtgyg .gt_row {
+  padding: 10px;
+  /* row.padding */
+  margin: 10px;
+  vertical-align: middle;
+}
+
+#okyhiqtgyg .gt_stub {
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #A8A8A8;
+  padding-left: 12px;
+}
+
+#okyhiqtgyg .gt_stub.gt_row {
+  background-color: #FFFFFF;
+}
+
+#okyhiqtgyg .gt_summary_row {
+  background-color: #FFFFFF;
+  /* summary_row.background.color */
+  padding: 6px;
+  /* summary_row.padding */
+  text-transform: inherit;
+  /* summary_row.text_transform */
+}
+
+#okyhiqtgyg .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+}
+
+#okyhiqtgyg .gt_table_body {
+  border-top-style: solid;
+  /* table_body.border.top.style */
+  border-top-width: 2px;
+  /* table_body.border.top.width */
+  border-top-color: #A8A8A8;
+  /* table_body.border.top.color */
+  border-bottom-style: solid;
+  /* table_body.border.bottom.style */
+  border-bottom-width: 2px;
+  /* table_body.border.bottom.width */
+  border-bottom-color: #A8A8A8;
+  /* table_body.border.bottom.color */
+}
+
+#okyhiqtgyg .gt_footnote {
+  font-size: 90%;
+  /* footnote.font.size */
+  padding: 4px;
+  /* footnote.padding */
+}
+
+#okyhiqtgyg .gt_sourcenote {
+  font-size: 90%;
+  /* sourcenote.font.size */
+  padding: 4px;
+  /* sourcenote.padding */
+}
+
+#okyhiqtgyg .gt_center {
+  text-align: center;
+}
+
+#okyhiqtgyg .gt_left {
+  text-align: left;
+}
+
+#okyhiqtgyg .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#okyhiqtgyg .gt_font_normal {
+  font-weight: normal;
+}
+
+#okyhiqtgyg .gt_font_bold {
+  font-weight: bold;
+}
+
+#okyhiqtgyg .gt_font_italic {
+  font-style: italic;
+}
+
+#okyhiqtgyg .gt_super {
+  font-size: 65%;
+}
+
+#okyhiqtgyg .gt_footnote_glyph {
+  font-style: italic;
+  font-size: 65%;
+}
+</style>
+
+<div id="okyhiqtgyg" style="overflow-x:auto;">
+
+<!--gt table start-->
+
+<table class="gt_table">
+
+<tr>
+
+<th class="gt_col_heading gt_center" rowspan="1" colspan="1">
+
+<p>List of viridis-options</p>
+</th>
+
+</tr>
+
+<tbody class="gt_table_body">
+
+<tr>
+
+<td class="gt_row gt_center">
+
+<div class="gt_from_md">
+
+<p>
+
+<p><a href="https://apreshill.github.io/rmd-render-factory/gallery/viridis-options/cividis.html">cividis</a></p>
+</p>
+
+</div>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td class="gt_row gt_center gt_striped">
+
+<div class="gt_from_md">
+
+<p>
+
+<p><a href="https://apreshill.github.io/rmd-render-factory/gallery/viridis-options/inferno.html">inferno</a></p>
+</p>
+
+</div>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td class="gt_row gt_center">
+
+<div class="gt_from_md">
+
+<p>
+
+<p><a href="https://apreshill.github.io/rmd-render-factory/gallery/viridis-options/magma.html">magma</a></p>
+</p>
+
+</div>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td class="gt_row gt_center gt_striped">
+
+<div class="gt_from_md">
+
+<p>
+
+<p><a href="https://apreshill.github.io/rmd-render-factory/gallery/viridis-options/plasma.html">plasma</a></p>
+</p>
+
+</div>
+
+</td>
+
+</tr>
+
+<tr>
+
+<td class="gt_row gt_center">
+
+<div class="gt_from_md">
+
+<p>
+
+<p><a href="https://apreshill.github.io/rmd-render-factory/gallery/viridis-options/viridis.html">viridis</a></p>
+</p>
+
+</div>
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
+
+<!--gt table end-->
+
+</div>
+
+<!--/html_preserve-->
+
+<p>And here is the script to generate the viridis palettes:</p>
+<pre><code>purrr::walk(
+  .x = c(&quot;magma&quot;, &quot;inferno&quot;, &quot;plasma&quot;, &quot;viridis&quot;, &quot;cividis&quot;),
+  ~ rmarkdown::render(
+    &quot;input/single.Rmd&quot;,
+    output_file = glue::glue(&quot;{.}.html&quot;),
+    output_dir = &quot;gallery/viridis-options/&quot;,
+    output_options = list(
+      toc = TRUE, 
+      toc_float = TRUE,
+      code_download = TRUE,
+      theme = &quot;cosmo&quot;,
+      highlight = &quot;tango&quot;
+    ),
+    params = list(dynamictitle = glue::glue(&quot;Texas Housing Prices: viridis color palette `{.}`&quot;),
+                  viridis_palette = .)
+  )
+)
+</code></pre>
+
+</body>
+</html>
