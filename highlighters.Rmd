@@ -41,6 +41,7 @@ hl_links %>%
 
 And here is the script to generate the highlighters:
 
-```{r echo = FALSE}
-render_factory("highlighters")
+
+```{r code = readLines('render_highlighters.R'), eval = FALSE}
 ```
+

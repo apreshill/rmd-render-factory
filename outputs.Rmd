@@ -31,6 +31,5 @@ output_links %>%
 
 And here is the script to generate the output formats:
 
-```{r echo = FALSE}
-render_factory("outputs")
+```{r code = readLines('render_outputs.R'), eval = FALSE}
 ```

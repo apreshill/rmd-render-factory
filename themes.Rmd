@@ -41,8 +41,7 @@ theme_links %>%
 
 And here is the script to generate the themes:
 
-```{r echo = FALSE}
-render_factory("themes")
+```{r code = readLines('render_themes.R'), eval = FALSE}
 ```
 
 

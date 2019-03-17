@@ -34,19 +34,13 @@ table_factory <- function(links){
 
 #' this function takes webshots of all (absolute) links
 webshot_factory <- function(links){
+  library(webshot)
   html_items <- links
   for_shots <- html_items %>% 
     mutate(type = fs::path_rel(rel_path, start = "gallery") %>% fs::path_dir(.))
-  webshot::webshot(glue::glue("{for_shots$abs_path}"),
+  webshot(glue::glue("{for_shots$abs_path}"),
                    glue::glue("thumbnails/{for_shots$type}-{for_shots$label_path}.png"), 
                    cliprect = "viewport") %>% 
     resize("55%") %>%
     shrink()
-}
-
-#' this function prints the contents of an R script in a readable code chunk "as is"
-render_factory <- function(type = c("single", "themes", "highlighters", "outputs", "palettes")){
-  type <- match.arg(type)
-  script <- readLines(glue::glue("render_{type}.R"))
-  cat(script, sep = "\n")
 }

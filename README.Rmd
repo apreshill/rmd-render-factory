@@ -15,7 +15,7 @@ library(tidyverse)
 ```{r factory_functions}
 link_factory <- function(dir = "gallery", 
                          type = c("themes", "highlighters", "outputs", "viridis-options"),
-                         root = "https://elastic-lovelace-155848.netlify.com"){
+                         root = "https://elastic-lovelace-155848.netlify.com/"){
   if(!missing(type) & length(type) > 1) stop("Only one 'type' allowed.")
   library(dplyr)
   type <- match.arg(type)
@@ -48,21 +48,14 @@ table_factory <- function(links){
 
 #' this function takes webshots of all (absolute) links
 webshot_factory <- function(links){
+  library(webshot)
   html_items <- links
   for_shots <- html_items %>% 
     mutate(type = fs::path_rel(rel_path, start = "gallery") %>% fs::path_dir(.))
-  webshot::webshot(glue::glue("{for_shots$abs_path}"),
+  webshot(glue::glue("{for_shots$abs_path}"),
                    glue::glue("thumbnails/{for_shots$type}-{for_shots$label_path}.png"), 
                    cliprect = "viewport") %>% 
-    resize("55%") %>%
-    shrink()
-}
-
-#' this function prints the contents of an R script in a readable code chunk "as is"
-render_factory <- function(type = c("single", "themes", "highlighters", "outputs", "palettes")){
-  type <- match.arg(type)
-  script <- readLines(glue::glue("render_{type}.R"))
-  cat(script, sep = "\n")
+    magick::image_scale("200")
 }
 ```
 
@@ -94,11 +87,6 @@ table_factory(links = theme_links)
 ```
 
 
-And here is the script to generate the themes:
-
-```{r}
-render_factory("themes")
-```
 
 # Highlighters
 
@@ -117,11 +105,7 @@ hl_links <- link_factory(type = "highlighters")
 table_factory(links = hl_links)
 ```
 
-And here is the script to generate the highlighters:
 
-```{r}
-render_factory("highlighters")
-```
 
 # Output formats 
 
@@ -130,11 +114,7 @@ output_links <- link_factory(type = "outputs")
 table_factory(links = output_links)
 ```
 
-And here is the script to generate the outputs:
 
-```{r}
-render_factory("outputs")
-```
 
 # Viridis options
 
@@ -143,11 +123,7 @@ viridis_links <- link_factory(type = "viridis-options")
 table_factory(links = viridis_links)
 ```
 
-And here is the script to generate the viridis palettes:
 
-```{r}
-render_factory("palettes")
-```
 
 
 ```{r eval = FALSE}
