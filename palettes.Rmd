@@ -1,0 +1,40 @@
+---
+title: "Viridis palettes"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(warning = FALSE, message = FALSE,
+                      comment = "#>", collapse = TRUE)
+source("utils.R")
+```
+
+
+# Options gallery
+
+
+```{r echo = FALSE}
+vir_links <- link_factory(type = "viridis-options")
+#table_factory(links = vir_links)
+```
+
+```{r results = "asis", echo = FALSE}
+vir_links %>% 
+  select(contains("list", ignore.case = TRUE), contains("image_html")) %>% 
+  gt::gt() %>% 
+    gt::fmt_markdown(
+      columns = everything()
+    )
+```
+
+---
+
+# My render script
+
+And here is the script to generate the themes:
+
+```{r code = readLines('render_palettes.R'), eval = FALSE}
+```
+
+
+
