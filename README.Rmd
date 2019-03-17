@@ -26,10 +26,10 @@ link_factory <- function(dir = "gallery",
     dplyr::mutate(abs_path = glue::glue("{root}{rel_path}")) %>% 
     dplyr::mutate(label_path = rel_path %>% fs::path_file(.) %>% 
                   fs::path_ext_remove(.) %>% as.character(.)) %>% 
-    dplyr::mutate(link = kableExtra::cell_spec(label_path, 
-                                               "html", 
-                                               link = abs_path)) %>% 
-    dplyr::rename_at(vars(link), ~glue::glue("List of {type}"))
+    dplyr::mutate(link = glue::glue("[{label_path}]({abs_path})")) %>% 
+    dplyr::rename_at(vars(link), ~glue::glue("List of {type}")) %>% 
+    dplyr::mutate(image_link = as.character(fs::dir_ls(path = "thumbnails", regexp = glue::glue("{type}")))) %>% 
+    dplyr::mutate(image_md = glue::glue("![]({image_link})"))
   return(html_items)
 }
 
@@ -38,9 +38,11 @@ link_factory <- function(dir = "gallery",
 table_factory <- function(links){
   html_items <- links
   html_table <- html_items %>% 
-    dplyr::select(-ends_with("_path")) %>% 
-    kableExtra::kable("html", escape = FALSE) %>%
-    kableExtra::kable_styling(bootstrap_options = c("hover", "condensed"))
+    dplyr::select(-ends_with("_path"), -starts_with("image_")) %>% 
+    gt::gt() %>% 
+    gt::fmt_markdown(
+      columns = contains("List")
+      )
   return(html_table)
 }
 
@@ -153,6 +155,12 @@ webshot_factory(links = output_links)
 webshot_factory(links = viridis_links)
 ```
 
+
+
+```{r, results ="asis", include = FALSE}
+fig_files <- fs::dir_ls(path = "thumbnails", regexp = "themes") 
+cat(paste0("* ", fig_files, " ![](", fig_files, ")\n"))
+```
 
 ```{r eval = FALSE, include = FALSE}
 # works just for one
