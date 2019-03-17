@@ -601,8 +601,60 @@ body {
 <body>
 
 <p>Herein lies a <code>README</code> to help you navigate the galleries.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" data-line-number="1">link_factory &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">dir =</span> <span class="st">&quot;gallery&quot;</span>, </a>
+<a class="sourceLine" id="cb1-2" data-line-number="2">                         <span class="dt">type =</span> <span class="kw">c</span>(<span class="st">&quot;themes&quot;</span>, <span class="st">&quot;highlighters&quot;</span>, <span class="st">&quot;outputs&quot;</span>, <span class="st">&quot;viridis-options&quot;</span>),</a>
+<a class="sourceLine" id="cb1-3" data-line-number="3">                         <span class="dt">root =</span> <span class="st">&quot;https://elastic-lovelace-155848.netlify.com&quot;</span>){</a>
+<a class="sourceLine" id="cb1-4" data-line-number="4">  <span class="cf">if</span>(<span class="op">!</span><span class="kw">missing</span>(type) <span class="op">&amp;</span><span class="st"> </span><span class="kw">length</span>(type) <span class="op">&gt;</span><span class="st"> </span><span class="dv">1</span>) <span class="kw">stop</span>(<span class="st">&quot;Only one 'type' allowed.&quot;</span>)</a>
+<a class="sourceLine" id="cb1-5" data-line-number="5">  <span class="kw">library</span>(dplyr)</a>
+<a class="sourceLine" id="cb1-6" data-line-number="6">  type &lt;-<span class="st"> </span><span class="kw">match.arg</span>(type)</a>
+<a class="sourceLine" id="cb1-7" data-line-number="7">  html_dir &lt;-<span class="st"> </span>fs<span class="op">::</span><span class="kw">dir_ls</span>(glue<span class="op">::</span><span class="kw">glue</span>(<span class="st">&quot;{dir}/{type}&quot;</span>), <span class="dt">recursive =</span> <span class="ot">TRUE</span>, <span class="dt">glob =</span> <span class="st">&quot;*.html&quot;</span>)</a>
+<a class="sourceLine" id="cb1-8" data-line-number="8">  html_items &lt;-<span class="st"> </span>html_dir <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1-9" data-line-number="9"><span class="st">    </span>tibble<span class="op">::</span><span class="kw">enframe</span>(<span class="dt">name =</span> <span class="st">&quot;rel_path&quot;</span>, <span class="dt">value =</span> <span class="st">&quot;junk&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1-10" data-line-number="10"><span class="st">    </span>dplyr<span class="op">::</span><span class="kw">select</span>(<span class="op">-</span>junk) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1-11" data-line-number="11"><span class="st">    </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">abs_path =</span> glue<span class="op">::</span><span class="kw">glue</span>(<span class="st">&quot;{root}{rel_path}&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1-12" data-line-number="12"><span class="st">    </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">label_path =</span> rel_path <span class="op">%&gt;%</span><span class="st"> </span>fs<span class="op">::</span><span class="kw">path_file</span>(.) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1-13" data-line-number="13"><span class="st">                  </span>fs<span class="op">::</span><span class="kw">path_ext_remove</span>(.) <span class="op">%&gt;%</span><span class="st"> </span><span class="kw">as.character</span>(.)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1-14" data-line-number="14"><span class="st">    </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">link =</span> glue<span class="op">::</span><span class="kw">glue</span>(<span class="st">&quot;[{label_path}]({abs_path})&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1-15" data-line-number="15"><span class="st">    </span>dplyr<span class="op">::</span><span class="kw">rename_at</span>(<span class="kw">vars</span>(link), <span class="op">~</span>glue<span class="op">::</span><span class="kw">glue</span>(<span class="st">&quot;List of {type}&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1-16" data-line-number="16"><span class="st">    </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">image_link =</span> <span class="kw">as.character</span>(fs<span class="op">::</span><span class="kw">dir_ls</span>(<span class="dt">path =</span> <span class="st">&quot;thumbnails&quot;</span>, <span class="dt">regexp =</span> glue<span class="op">::</span><span class="kw">glue</span>(<span class="st">&quot;{type}&quot;</span>)))) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1-17" data-line-number="17"><span class="st">    </span>dplyr<span class="op">::</span><span class="kw">mutate</span>(<span class="dt">image_md =</span> glue<span class="op">::</span><span class="kw">glue</span>(<span class="st">&quot;![]({image_link})&quot;</span>))</a>
+<a class="sourceLine" id="cb1-18" data-line-number="18">  <span class="kw">return</span>(html_items)</a>
+<a class="sourceLine" id="cb1-19" data-line-number="19">}</a>
+<a class="sourceLine" id="cb1-20" data-line-number="20"></a>
+<a class="sourceLine" id="cb1-21" data-line-number="21"><span class="co">#' this function takes a tibble of links from link_factory()</span></a>
+<a class="sourceLine" id="cb1-22" data-line-number="22"><span class="co">#' and converts to an html table</span></a>
+<a class="sourceLine" id="cb1-23" data-line-number="23">table_factory &lt;-<span class="st"> </span><span class="cf">function</span>(links){</a>
+<a class="sourceLine" id="cb1-24" data-line-number="24">  html_items &lt;-<span class="st"> </span>links</a>
+<a class="sourceLine" id="cb1-25" data-line-number="25">  html_table &lt;-<span class="st"> </span>html_items <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1-26" data-line-number="26"><span class="st">    </span>dplyr<span class="op">::</span><span class="kw">select</span>(<span class="op">-</span><span class="kw">ends_with</span>(<span class="st">&quot;_path&quot;</span>), <span class="op">-</span><span class="kw">starts_with</span>(<span class="st">&quot;image_&quot;</span>)) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1-27" data-line-number="27"><span class="st">    </span>gt<span class="op">::</span><span class="kw">gt</span>() <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1-28" data-line-number="28"><span class="st">    </span>gt<span class="op">::</span><span class="kw">fmt_markdown</span>(</a>
+<a class="sourceLine" id="cb1-29" data-line-number="29">      <span class="dt">columns =</span> <span class="kw">contains</span>(<span class="st">&quot;List&quot;</span>)</a>
+<a class="sourceLine" id="cb1-30" data-line-number="30">      )</a>
+<a class="sourceLine" id="cb1-31" data-line-number="31">  <span class="kw">return</span>(html_table)</a>
+<a class="sourceLine" id="cb1-32" data-line-number="32">}</a>
+<a class="sourceLine" id="cb1-33" data-line-number="33"></a>
+<a class="sourceLine" id="cb1-34" data-line-number="34"><span class="co">#' this function takes webshots of all (absolute) links</span></a>
+<a class="sourceLine" id="cb1-35" data-line-number="35">webshot_factory &lt;-<span class="st"> </span><span class="cf">function</span>(links){</a>
+<a class="sourceLine" id="cb1-36" data-line-number="36">  html_items &lt;-<span class="st"> </span>links</a>
+<a class="sourceLine" id="cb1-37" data-line-number="37">  for_shots &lt;-<span class="st"> </span>html_items <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1-38" data-line-number="38"><span class="st">    </span><span class="kw">mutate</span>(<span class="dt">type =</span> fs<span class="op">::</span><span class="kw">path_rel</span>(rel_path, <span class="dt">start =</span> <span class="st">&quot;gallery&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span>fs<span class="op">::</span><span class="kw">path_dir</span>(.))</a>
+<a class="sourceLine" id="cb1-39" data-line-number="39">  webshot<span class="op">::</span><span class="kw">webshot</span>(glue<span class="op">::</span><span class="kw">glue</span>(<span class="st">&quot;{for_shots$abs_path}&quot;</span>),</a>
+<a class="sourceLine" id="cb1-40" data-line-number="40">                   glue<span class="op">::</span><span class="kw">glue</span>(<span class="st">&quot;thumbnails/{for_shots$type}-{for_shots$label_path}.png&quot;</span>), </a>
+<a class="sourceLine" id="cb1-41" data-line-number="41">                   <span class="dt">cliprect =</span> <span class="st">&quot;viewport&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></a>
+<a class="sourceLine" id="cb1-42" data-line-number="42"><span class="st">    </span><span class="kw">resize</span>(<span class="st">&quot;55%&quot;</span>) <span class="op">%&gt;%</span></a>
+<a class="sourceLine" id="cb1-43" data-line-number="43"><span class="st">    </span><span class="kw">shrink</span>()</a>
+<a class="sourceLine" id="cb1-44" data-line-number="44">}</a>
+<a class="sourceLine" id="cb1-45" data-line-number="45"></a>
+<a class="sourceLine" id="cb1-46" data-line-number="46"><span class="co">#' this function prints the contents of an R script in a readable code chunk &quot;as is&quot;</span></a>
+<a class="sourceLine" id="cb1-47" data-line-number="47">render_factory &lt;-<span class="st"> </span><span class="cf">function</span>(<span class="dt">type =</span> <span class="kw">c</span>(<span class="st">&quot;single&quot;</span>, <span class="st">&quot;themes&quot;</span>, <span class="st">&quot;highlighters&quot;</span>, <span class="st">&quot;outputs&quot;</span>, <span class="st">&quot;palettes&quot;</span>)){</a>
+<a class="sourceLine" id="cb1-48" data-line-number="48">  type &lt;-<span class="st"> </span><span class="kw">match.arg</span>(type)</a>
+<a class="sourceLine" id="cb1-49" data-line-number="49">  script &lt;-<span class="st"> </span><span class="kw">readLines</span>(glue<span class="op">::</span><span class="kw">glue</span>(<span class="st">&quot;render_{type}.R&quot;</span>))</a>
+<a class="sourceLine" id="cb1-50" data-line-number="50">  <span class="kw">cat</span>(script, <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)</a>
+<a class="sourceLine" id="cb1-51" data-line-number="51">}</a></code></pre></div>
 <h1 id="the-single-file">The single file</h1>
 <p>All of the links below derive from a single R Markdown file titled <code>index.Rmd</code>. Here is the YAML:</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="kw">cat</span>(readr<span class="op">::</span><span class="kw">read_lines</span>(<span class="st">&quot;input/single.Rmd&quot;</span>, <span class="dt">n_max =</span> <span class="dv">11</span>), <span class="dt">sep =</span> <span class="st">&quot;</span><span class="ch">\n</span><span class="st">&quot;</span>)</a></code></pre></div>
 <pre><code>---
 title: &quot;`r params$dynamictitle`&quot;
 author: &quot;Alison Hill&quot;
@@ -617,17 +669,19 @@ output_format:
 </code></pre>
 <h1 id="themes">Themes</h1>
 <p>R Markdown comes with some several built-in <code>theme</code>s. Themes are drawn from the Bootswatch theme library. Valid themes include <code>default</code>, <code>cerulean</code>, <code>journal</code>, <code>flatly</code>, <code>darkly</code>, <code>readable</code>, <code>spacelab</code>, <code>united</code>, <code>cosmo</code>, <code>lumen</code>, <code>paper</code>, <code>sandstone</code>, <code>simplex</code>, and <code>yeti</code>. Pass <code>null</code> for no theme. To use a theme for a single .html file output from a .Rmd file, you edit your YAML:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb2-1" data-line-number="1"><span class="fu">title:</span><span class="at"> </span><span class="st">&quot;README.Rmd&quot;</span></a>
-<a class="sourceLine" id="cb2-2" data-line-number="2"><span class="fu">output_format:</span><span class="at"> </span></a>
-<a class="sourceLine" id="cb2-3" data-line-number="3">  <span class="fu">html_document:</span></a>
-<a class="sourceLine" id="cb2-4" data-line-number="4">    <span class="fu">theme:</span><span class="at"> flatly</span></a></code></pre></div>
+<div class="sourceCode" id="cb4"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="fu">title:</span><span class="at"> </span><span class="st">&quot;README.Rmd&quot;</span></a>
+<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="fu">output_format:</span><span class="at"> </span></a>
+<a class="sourceLine" id="cb4-3" data-line-number="3">  <span class="fu">html_document:</span></a>
+<a class="sourceLine" id="cb4-4" data-line-number="4">    <span class="fu">theme:</span><span class="at"> flatly</span></a></code></pre></div>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb5-1" data-line-number="1">theme_links &lt;-<span class="st"> </span><span class="kw">link_factory</span>(<span class="dt">type =</span> <span class="st">&quot;themes&quot;</span>)</a>
+<a class="sourceLine" id="cb5-2" data-line-number="2"><span class="kw">table_factory</span>(<span class="dt">links =</span> theme_links)</a></code></pre></div>
 <!--html_preserve-->
 
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#ympanlwgdt .gt_table {
+#qoegmuanlp .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -646,13 +700,13 @@ output_format:
   /* table.border.top.color */
 }
 
-#ympanlwgdt .gt_heading {
+#qoegmuanlp .gt_heading {
   background-color: #FFFFFF;
   /* heading.background.color */
   border-bottom-color: #FFFFFF;
 }
 
-#ympanlwgdt .gt_title {
+#qoegmuanlp .gt_title {
   color: #000000;
   font-size: 125%;
   /* heading.title.font.size */
@@ -663,7 +717,7 @@ output_format:
   border-bottom-width: 0;
 }
 
-#ympanlwgdt .gt_subtitle {
+#qoegmuanlp .gt_subtitle {
   color: #000000;
   font-size: 85%;
   /* heading.subtitle.font.size */
@@ -674,7 +728,7 @@ output_format:
   border-top-width: 0;
 }
 
-#ympanlwgdt .gt_bottom_border {
+#qoegmuanlp .gt_bottom_border {
   border-bottom-style: solid;
   /* heading.border.bottom.style */
   border-bottom-width: 2px;
@@ -683,7 +737,7 @@ output_format:
   /* heading.border.bottom.color */
 }
 
-#ympanlwgdt .gt_column_spanner {
+#qoegmuanlp .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #A8A8A8;
@@ -691,7 +745,7 @@ output_format:
   padding-bottom: 4px;
 }
 
-#ympanlwgdt .gt_col_heading {
+#qoegmuanlp .gt_col_heading {
   color: #000000;
   background-color: #FFFFFF;
   /* column_labels.background.color */
@@ -704,11 +758,11 @@ output_format:
   margin: 10px;
 }
 
-#ympanlwgdt .gt_sep_right {
+#qoegmuanlp .gt_sep_right {
   border-right: 5px solid #FFFFFF;
 }
 
-#ympanlwgdt .gt_group_heading {
+#qoegmuanlp .gt_group_heading {
   padding: 8px;
   color: #000000;
   background-color: #FFFFFF;
@@ -732,7 +786,7 @@ output_format:
   vertical-align: middle;
 }
 
-#ympanlwgdt .gt_empty_group_heading {
+#qoegmuanlp .gt_empty_group_heading {
   padding: 0.5px;
   color: #000000;
   background-color: #FFFFFF;
@@ -756,37 +810,37 @@ output_format:
   vertical-align: middle;
 }
 
-#ympanlwgdt .gt_striped {
+#qoegmuanlp .gt_striped {
   background-color: #f2f2f2;
 }
 
-#ympanlwgdt .gt_from_md > :first-child {
+#qoegmuanlp .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ympanlwgdt .gt_from_md > :last-child {
+#qoegmuanlp .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ympanlwgdt .gt_row {
+#qoegmuanlp .gt_row {
   padding: 10px;
   /* row.padding */
   margin: 10px;
   vertical-align: middle;
 }
 
-#ympanlwgdt .gt_stub {
+#qoegmuanlp .gt_stub {
   border-right-style: solid;
   border-right-width: 2px;
   border-right-color: #A8A8A8;
   padding-left: 12px;
 }
 
-#ympanlwgdt .gt_stub.gt_row {
+#qoegmuanlp .gt_stub.gt_row {
   background-color: #FFFFFF;
 }
 
-#ympanlwgdt .gt_summary_row {
+#qoegmuanlp .gt_summary_row {
   background-color: #FFFFFF;
   /* summary_row.background.color */
   padding: 6px;
@@ -795,13 +849,13 @@ output_format:
   /* summary_row.text_transform */
 }
 
-#ympanlwgdt .gt_first_summary_row {
+#qoegmuanlp .gt_first_summary_row {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #A8A8A8;
 }
 
-#ympanlwgdt .gt_table_body {
+#qoegmuanlp .gt_table_body {
   border-top-style: solid;
   /* table_body.border.top.style */
   border-top-width: 2px;
@@ -816,56 +870,56 @@ output_format:
   /* table_body.border.bottom.color */
 }
 
-#ympanlwgdt .gt_footnote {
+#qoegmuanlp .gt_footnote {
   font-size: 90%;
   /* footnote.font.size */
   padding: 4px;
   /* footnote.padding */
 }
 
-#ympanlwgdt .gt_sourcenote {
+#qoegmuanlp .gt_sourcenote {
   font-size: 90%;
   /* sourcenote.font.size */
   padding: 4px;
   /* sourcenote.padding */
 }
 
-#ympanlwgdt .gt_center {
+#qoegmuanlp .gt_center {
   text-align: center;
 }
 
-#ympanlwgdt .gt_left {
+#qoegmuanlp .gt_left {
   text-align: left;
 }
 
-#ympanlwgdt .gt_right {
+#qoegmuanlp .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ympanlwgdt .gt_font_normal {
+#qoegmuanlp .gt_font_normal {
   font-weight: normal;
 }
 
-#ympanlwgdt .gt_font_bold {
+#qoegmuanlp .gt_font_bold {
   font-weight: bold;
 }
 
-#ympanlwgdt .gt_font_italic {
+#qoegmuanlp .gt_font_italic {
   font-style: italic;
 }
 
-#ympanlwgdt .gt_super {
+#qoegmuanlp .gt_super {
   font-size: 65%;
 }
 
-#ympanlwgdt .gt_footnote_glyph {
+#qoegmuanlp .gt_footnote_glyph {
   font-style: italic;
   font-size: 65%;
 }
 </style>
 
-<div id="ympanlwgdt" style="overflow-x:auto;">
+<div id="qoegmuanlp" style="overflow-x:auto;">
 
 <!--gt table start-->
 
@@ -1131,6 +1185,7 @@ output_format:
 <!--/html_preserve-->
 
 <p>And here is the script to generate the themes:</p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb6-1" data-line-number="1"><span class="kw">render_factory</span>(<span class="st">&quot;themes&quot;</span>)</a></code></pre></div>
 <pre><code>purrr::walk(
   .x = as.list(rmarkdown:::themes()),
   ~ rmarkdown::render(
@@ -1149,17 +1204,19 @@ output_format:
 </code></pre>
 <h1 id="highlighters">Highlighters</h1>
 <p>R Markdown also comes with several built-in syntax highlighting styles. Supported styles include <code>default</code>, <code>tango</code>, <code>pygments</code>, <code>kate</code>, <code>monochrome</code>, <code>espresso</code>, <code>zenburn</code>, <code>haddock</code>, and <code>textmate</code>. Pass <code>null</code> to prevent syntax highlighting. To use a highlighter for a single .html file output from a .Rmd file, you edit your YAML:</p>
-<div class="sourceCode" id="cb4"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb4-1" data-line-number="1"><span class="fu">title:</span><span class="at"> </span><span class="st">&quot;README.Rmd&quot;</span></a>
-<a class="sourceLine" id="cb4-2" data-line-number="2"><span class="fu">output_format:</span><span class="at"> </span></a>
-<a class="sourceLine" id="cb4-3" data-line-number="3">  <span class="fu">html_document:</span></a>
-<a class="sourceLine" id="cb4-4" data-line-number="4">    <span class="fu">highlighter:</span><span class="at"> tango</span></a></code></pre></div>
+<div class="sourceCode" id="cb8"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb8-1" data-line-number="1"><span class="fu">title:</span><span class="at"> </span><span class="st">&quot;README.Rmd&quot;</span></a>
+<a class="sourceLine" id="cb8-2" data-line-number="2"><span class="fu">output_format:</span><span class="at"> </span></a>
+<a class="sourceLine" id="cb8-3" data-line-number="3">  <span class="fu">html_document:</span></a>
+<a class="sourceLine" id="cb8-4" data-line-number="4">    <span class="fu">highlighter:</span><span class="at"> tango</span></a></code></pre></div>
+<div class="sourceCode" id="cb9"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb9-1" data-line-number="1">hl_links &lt;-<span class="st"> </span><span class="kw">link_factory</span>(<span class="dt">type =</span> <span class="st">&quot;highlighters&quot;</span>)</a>
+<a class="sourceLine" id="cb9-2" data-line-number="2"><span class="kw">table_factory</span>(<span class="dt">links =</span> hl_links)</a></code></pre></div>
 <!--html_preserve-->
 
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#nglgayvugj .gt_table {
+#dwmvpmiyai .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -1178,13 +1235,13 @@ output_format:
   /* table.border.top.color */
 }
 
-#nglgayvugj .gt_heading {
+#dwmvpmiyai .gt_heading {
   background-color: #FFFFFF;
   /* heading.background.color */
   border-bottom-color: #FFFFFF;
 }
 
-#nglgayvugj .gt_title {
+#dwmvpmiyai .gt_title {
   color: #000000;
   font-size: 125%;
   /* heading.title.font.size */
@@ -1195,7 +1252,7 @@ output_format:
   border-bottom-width: 0;
 }
 
-#nglgayvugj .gt_subtitle {
+#dwmvpmiyai .gt_subtitle {
   color: #000000;
   font-size: 85%;
   /* heading.subtitle.font.size */
@@ -1206,7 +1263,7 @@ output_format:
   border-top-width: 0;
 }
 
-#nglgayvugj .gt_bottom_border {
+#dwmvpmiyai .gt_bottom_border {
   border-bottom-style: solid;
   /* heading.border.bottom.style */
   border-bottom-width: 2px;
@@ -1215,7 +1272,7 @@ output_format:
   /* heading.border.bottom.color */
 }
 
-#nglgayvugj .gt_column_spanner {
+#dwmvpmiyai .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #A8A8A8;
@@ -1223,7 +1280,7 @@ output_format:
   padding-bottom: 4px;
 }
 
-#nglgayvugj .gt_col_heading {
+#dwmvpmiyai .gt_col_heading {
   color: #000000;
   background-color: #FFFFFF;
   /* column_labels.background.color */
@@ -1236,11 +1293,11 @@ output_format:
   margin: 10px;
 }
 
-#nglgayvugj .gt_sep_right {
+#dwmvpmiyai .gt_sep_right {
   border-right: 5px solid #FFFFFF;
 }
 
-#nglgayvugj .gt_group_heading {
+#dwmvpmiyai .gt_group_heading {
   padding: 8px;
   color: #000000;
   background-color: #FFFFFF;
@@ -1264,7 +1321,7 @@ output_format:
   vertical-align: middle;
 }
 
-#nglgayvugj .gt_empty_group_heading {
+#dwmvpmiyai .gt_empty_group_heading {
   padding: 0.5px;
   color: #000000;
   background-color: #FFFFFF;
@@ -1288,37 +1345,37 @@ output_format:
   vertical-align: middle;
 }
 
-#nglgayvugj .gt_striped {
+#dwmvpmiyai .gt_striped {
   background-color: #f2f2f2;
 }
 
-#nglgayvugj .gt_from_md > :first-child {
+#dwmvpmiyai .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#nglgayvugj .gt_from_md > :last-child {
+#dwmvpmiyai .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#nglgayvugj .gt_row {
+#dwmvpmiyai .gt_row {
   padding: 10px;
   /* row.padding */
   margin: 10px;
   vertical-align: middle;
 }
 
-#nglgayvugj .gt_stub {
+#dwmvpmiyai .gt_stub {
   border-right-style: solid;
   border-right-width: 2px;
   border-right-color: #A8A8A8;
   padding-left: 12px;
 }
 
-#nglgayvugj .gt_stub.gt_row {
+#dwmvpmiyai .gt_stub.gt_row {
   background-color: #FFFFFF;
 }
 
-#nglgayvugj .gt_summary_row {
+#dwmvpmiyai .gt_summary_row {
   background-color: #FFFFFF;
   /* summary_row.background.color */
   padding: 6px;
@@ -1327,13 +1384,13 @@ output_format:
   /* summary_row.text_transform */
 }
 
-#nglgayvugj .gt_first_summary_row {
+#dwmvpmiyai .gt_first_summary_row {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #A8A8A8;
 }
 
-#nglgayvugj .gt_table_body {
+#dwmvpmiyai .gt_table_body {
   border-top-style: solid;
   /* table_body.border.top.style */
   border-top-width: 2px;
@@ -1348,56 +1405,56 @@ output_format:
   /* table_body.border.bottom.color */
 }
 
-#nglgayvugj .gt_footnote {
+#dwmvpmiyai .gt_footnote {
   font-size: 90%;
   /* footnote.font.size */
   padding: 4px;
   /* footnote.padding */
 }
 
-#nglgayvugj .gt_sourcenote {
+#dwmvpmiyai .gt_sourcenote {
   font-size: 90%;
   /* sourcenote.font.size */
   padding: 4px;
   /* sourcenote.padding */
 }
 
-#nglgayvugj .gt_center {
+#dwmvpmiyai .gt_center {
   text-align: center;
 }
 
-#nglgayvugj .gt_left {
+#dwmvpmiyai .gt_left {
   text-align: left;
 }
 
-#nglgayvugj .gt_right {
+#dwmvpmiyai .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#nglgayvugj .gt_font_normal {
+#dwmvpmiyai .gt_font_normal {
   font-weight: normal;
 }
 
-#nglgayvugj .gt_font_bold {
+#dwmvpmiyai .gt_font_bold {
   font-weight: bold;
 }
 
-#nglgayvugj .gt_font_italic {
+#dwmvpmiyai .gt_font_italic {
   font-style: italic;
 }
 
-#nglgayvugj .gt_super {
+#dwmvpmiyai .gt_super {
   font-size: 65%;
 }
 
-#nglgayvugj .gt_footnote_glyph {
+#dwmvpmiyai .gt_footnote_glyph {
   font-style: italic;
   font-size: 65%;
 }
 </style>
 
-<div id="nglgayvugj" style="overflow-x:auto;">
+<div id="dwmvpmiyai" style="overflow-x:auto;">
 
 <!--gt table start-->
 
@@ -1561,6 +1618,7 @@ output_format:
 <!--/html_preserve-->
 
 <p>And here is the script to generate the highlighters:</p>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb10-1" data-line-number="1"><span class="kw">render_factory</span>(<span class="st">&quot;highlighters&quot;</span>)</a></code></pre></div>
 <pre><code>purrr::walk(
   .x = as.list(rmarkdown:::highlighters()),
   ~ rmarkdown::render(
@@ -1579,13 +1637,15 @@ output_format:
 )
 </code></pre>
 <h1 id="output-formats">Output formats</h1>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb12-1" data-line-number="1">output_links &lt;-<span class="st"> </span><span class="kw">link_factory</span>(<span class="dt">type =</span> <span class="st">&quot;outputs&quot;</span>)</a>
+<a class="sourceLine" id="cb12-2" data-line-number="2"><span class="kw">table_factory</span>(<span class="dt">links =</span> output_links)</a></code></pre></div>
 <!--html_preserve-->
 
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#vkhoemrzlq .gt_table {
+#cnichgkxae .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -1604,13 +1664,13 @@ output_format:
   /* table.border.top.color */
 }
 
-#vkhoemrzlq .gt_heading {
+#cnichgkxae .gt_heading {
   background-color: #FFFFFF;
   /* heading.background.color */
   border-bottom-color: #FFFFFF;
 }
 
-#vkhoemrzlq .gt_title {
+#cnichgkxae .gt_title {
   color: #000000;
   font-size: 125%;
   /* heading.title.font.size */
@@ -1621,7 +1681,7 @@ output_format:
   border-bottom-width: 0;
 }
 
-#vkhoemrzlq .gt_subtitle {
+#cnichgkxae .gt_subtitle {
   color: #000000;
   font-size: 85%;
   /* heading.subtitle.font.size */
@@ -1632,7 +1692,7 @@ output_format:
   border-top-width: 0;
 }
 
-#vkhoemrzlq .gt_bottom_border {
+#cnichgkxae .gt_bottom_border {
   border-bottom-style: solid;
   /* heading.border.bottom.style */
   border-bottom-width: 2px;
@@ -1641,7 +1701,7 @@ output_format:
   /* heading.border.bottom.color */
 }
 
-#vkhoemrzlq .gt_column_spanner {
+#cnichgkxae .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #A8A8A8;
@@ -1649,7 +1709,7 @@ output_format:
   padding-bottom: 4px;
 }
 
-#vkhoemrzlq .gt_col_heading {
+#cnichgkxae .gt_col_heading {
   color: #000000;
   background-color: #FFFFFF;
   /* column_labels.background.color */
@@ -1662,11 +1722,11 @@ output_format:
   margin: 10px;
 }
 
-#vkhoemrzlq .gt_sep_right {
+#cnichgkxae .gt_sep_right {
   border-right: 5px solid #FFFFFF;
 }
 
-#vkhoemrzlq .gt_group_heading {
+#cnichgkxae .gt_group_heading {
   padding: 8px;
   color: #000000;
   background-color: #FFFFFF;
@@ -1690,7 +1750,7 @@ output_format:
   vertical-align: middle;
 }
 
-#vkhoemrzlq .gt_empty_group_heading {
+#cnichgkxae .gt_empty_group_heading {
   padding: 0.5px;
   color: #000000;
   background-color: #FFFFFF;
@@ -1714,37 +1774,37 @@ output_format:
   vertical-align: middle;
 }
 
-#vkhoemrzlq .gt_striped {
+#cnichgkxae .gt_striped {
   background-color: #f2f2f2;
 }
 
-#vkhoemrzlq .gt_from_md > :first-child {
+#cnichgkxae .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#vkhoemrzlq .gt_from_md > :last-child {
+#cnichgkxae .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#vkhoemrzlq .gt_row {
+#cnichgkxae .gt_row {
   padding: 10px;
   /* row.padding */
   margin: 10px;
   vertical-align: middle;
 }
 
-#vkhoemrzlq .gt_stub {
+#cnichgkxae .gt_stub {
   border-right-style: solid;
   border-right-width: 2px;
   border-right-color: #A8A8A8;
   padding-left: 12px;
 }
 
-#vkhoemrzlq .gt_stub.gt_row {
+#cnichgkxae .gt_stub.gt_row {
   background-color: #FFFFFF;
 }
 
-#vkhoemrzlq .gt_summary_row {
+#cnichgkxae .gt_summary_row {
   background-color: #FFFFFF;
   /* summary_row.background.color */
   padding: 6px;
@@ -1753,13 +1813,13 @@ output_format:
   /* summary_row.text_transform */
 }
 
-#vkhoemrzlq .gt_first_summary_row {
+#cnichgkxae .gt_first_summary_row {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #A8A8A8;
 }
 
-#vkhoemrzlq .gt_table_body {
+#cnichgkxae .gt_table_body {
   border-top-style: solid;
   /* table_body.border.top.style */
   border-top-width: 2px;
@@ -1774,56 +1834,56 @@ output_format:
   /* table_body.border.bottom.color */
 }
 
-#vkhoemrzlq .gt_footnote {
+#cnichgkxae .gt_footnote {
   font-size: 90%;
   /* footnote.font.size */
   padding: 4px;
   /* footnote.padding */
 }
 
-#vkhoemrzlq .gt_sourcenote {
+#cnichgkxae .gt_sourcenote {
   font-size: 90%;
   /* sourcenote.font.size */
   padding: 4px;
   /* sourcenote.padding */
 }
 
-#vkhoemrzlq .gt_center {
+#cnichgkxae .gt_center {
   text-align: center;
 }
 
-#vkhoemrzlq .gt_left {
+#cnichgkxae .gt_left {
   text-align: left;
 }
 
-#vkhoemrzlq .gt_right {
+#cnichgkxae .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#vkhoemrzlq .gt_font_normal {
+#cnichgkxae .gt_font_normal {
   font-weight: normal;
 }
 
-#vkhoemrzlq .gt_font_bold {
+#cnichgkxae .gt_font_bold {
   font-weight: bold;
 }
 
-#vkhoemrzlq .gt_font_italic {
+#cnichgkxae .gt_font_italic {
   font-style: italic;
 }
 
-#vkhoemrzlq .gt_super {
+#cnichgkxae .gt_super {
   font-size: 65%;
 }
 
-#vkhoemrzlq .gt_footnote_glyph {
+#cnichgkxae .gt_footnote_glyph {
   font-style: italic;
   font-size: 65%;
 }
 </style>
 
-<div id="vkhoemrzlq" style="overflow-x:auto;">
+<div id="cnichgkxae" style="overflow-x:auto;">
 
 <!--gt table start-->
 
@@ -1970,6 +2030,7 @@ output_format:
 <!--/html_preserve-->
 
 <p>And here is the script to generate the outputs:</p>
+<div class="sourceCode" id="cb13"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb13-1" data-line-number="1"><span class="kw">render_factory</span>(<span class="st">&quot;outputs&quot;</span>)</a></code></pre></div>
 <pre><code>doc_outputs &lt;- c(&quot;html_notebook&quot;, &quot;html_document&quot;, &quot;pdf_document&quot;, 
                  &quot;word_document&quot;, &quot;odt_document&quot;, &quot;rtf_document&quot;, &quot;github_document&quot;)
 doc_exts &lt;- c(&quot;nb.html&quot;, &quot;html&quot;, &quot;pdf&quot;, &quot;docx&quot;, &quot;odt&quot;, &quot;rtf&quot;, &quot;md&quot;)
@@ -2002,13 +2063,15 @@ purrr::walk2(
 )
 </code></pre>
 <h1 id="viridis-options">Viridis options</h1>
+<div class="sourceCode" id="cb15"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb15-1" data-line-number="1">viridis_links &lt;-<span class="st"> </span><span class="kw">link_factory</span>(<span class="dt">type =</span> <span class="st">&quot;viridis-options&quot;</span>)</a>
+<a class="sourceLine" id="cb15-2" data-line-number="2"><span class="kw">table_factory</span>(<span class="dt">links =</span> viridis_links)</a></code></pre></div>
 <!--html_preserve-->
 
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#qlrpevxaaj .gt_table {
+#ficadhrzhu .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -2027,13 +2090,13 @@ purrr::walk2(
   /* table.border.top.color */
 }
 
-#qlrpevxaaj .gt_heading {
+#ficadhrzhu .gt_heading {
   background-color: #FFFFFF;
   /* heading.background.color */
   border-bottom-color: #FFFFFF;
 }
 
-#qlrpevxaaj .gt_title {
+#ficadhrzhu .gt_title {
   color: #000000;
   font-size: 125%;
   /* heading.title.font.size */
@@ -2044,7 +2107,7 @@ purrr::walk2(
   border-bottom-width: 0;
 }
 
-#qlrpevxaaj .gt_subtitle {
+#ficadhrzhu .gt_subtitle {
   color: #000000;
   font-size: 85%;
   /* heading.subtitle.font.size */
@@ -2055,7 +2118,7 @@ purrr::walk2(
   border-top-width: 0;
 }
 
-#qlrpevxaaj .gt_bottom_border {
+#ficadhrzhu .gt_bottom_border {
   border-bottom-style: solid;
   /* heading.border.bottom.style */
   border-bottom-width: 2px;
@@ -2064,7 +2127,7 @@ purrr::walk2(
   /* heading.border.bottom.color */
 }
 
-#qlrpevxaaj .gt_column_spanner {
+#ficadhrzhu .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #A8A8A8;
@@ -2072,7 +2135,7 @@ purrr::walk2(
   padding-bottom: 4px;
 }
 
-#qlrpevxaaj .gt_col_heading {
+#ficadhrzhu .gt_col_heading {
   color: #000000;
   background-color: #FFFFFF;
   /* column_labels.background.color */
@@ -2085,11 +2148,11 @@ purrr::walk2(
   margin: 10px;
 }
 
-#qlrpevxaaj .gt_sep_right {
+#ficadhrzhu .gt_sep_right {
   border-right: 5px solid #FFFFFF;
 }
 
-#qlrpevxaaj .gt_group_heading {
+#ficadhrzhu .gt_group_heading {
   padding: 8px;
   color: #000000;
   background-color: #FFFFFF;
@@ -2113,7 +2176,7 @@ purrr::walk2(
   vertical-align: middle;
 }
 
-#qlrpevxaaj .gt_empty_group_heading {
+#ficadhrzhu .gt_empty_group_heading {
   padding: 0.5px;
   color: #000000;
   background-color: #FFFFFF;
@@ -2137,37 +2200,37 @@ purrr::walk2(
   vertical-align: middle;
 }
 
-#qlrpevxaaj .gt_striped {
+#ficadhrzhu .gt_striped {
   background-color: #f2f2f2;
 }
 
-#qlrpevxaaj .gt_from_md > :first-child {
+#ficadhrzhu .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#qlrpevxaaj .gt_from_md > :last-child {
+#ficadhrzhu .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#qlrpevxaaj .gt_row {
+#ficadhrzhu .gt_row {
   padding: 10px;
   /* row.padding */
   margin: 10px;
   vertical-align: middle;
 }
 
-#qlrpevxaaj .gt_stub {
+#ficadhrzhu .gt_stub {
   border-right-style: solid;
   border-right-width: 2px;
   border-right-color: #A8A8A8;
   padding-left: 12px;
 }
 
-#qlrpevxaaj .gt_stub.gt_row {
+#ficadhrzhu .gt_stub.gt_row {
   background-color: #FFFFFF;
 }
 
-#qlrpevxaaj .gt_summary_row {
+#ficadhrzhu .gt_summary_row {
   background-color: #FFFFFF;
   /* summary_row.background.color */
   padding: 6px;
@@ -2176,13 +2239,13 @@ purrr::walk2(
   /* summary_row.text_transform */
 }
 
-#qlrpevxaaj .gt_first_summary_row {
+#ficadhrzhu .gt_first_summary_row {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #A8A8A8;
 }
 
-#qlrpevxaaj .gt_table_body {
+#ficadhrzhu .gt_table_body {
   border-top-style: solid;
   /* table_body.border.top.style */
   border-top-width: 2px;
@@ -2197,56 +2260,56 @@ purrr::walk2(
   /* table_body.border.bottom.color */
 }
 
-#qlrpevxaaj .gt_footnote {
+#ficadhrzhu .gt_footnote {
   font-size: 90%;
   /* footnote.font.size */
   padding: 4px;
   /* footnote.padding */
 }
 
-#qlrpevxaaj .gt_sourcenote {
+#ficadhrzhu .gt_sourcenote {
   font-size: 90%;
   /* sourcenote.font.size */
   padding: 4px;
   /* sourcenote.padding */
 }
 
-#qlrpevxaaj .gt_center {
+#ficadhrzhu .gt_center {
   text-align: center;
 }
 
-#qlrpevxaaj .gt_left {
+#ficadhrzhu .gt_left {
   text-align: left;
 }
 
-#qlrpevxaaj .gt_right {
+#ficadhrzhu .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#qlrpevxaaj .gt_font_normal {
+#ficadhrzhu .gt_font_normal {
   font-weight: normal;
 }
 
-#qlrpevxaaj .gt_font_bold {
+#ficadhrzhu .gt_font_bold {
   font-weight: bold;
 }
 
-#qlrpevxaaj .gt_font_italic {
+#ficadhrzhu .gt_font_italic {
   font-style: italic;
 }
 
-#qlrpevxaaj .gt_super {
+#ficadhrzhu .gt_super {
   font-size: 65%;
 }
 
-#qlrpevxaaj .gt_footnote_glyph {
+#ficadhrzhu .gt_footnote_glyph {
   font-style: italic;
   font-size: 65%;
 }
 </style>
 
-<div id="qlrpevxaaj" style="overflow-x:auto;">
+<div id="ficadhrzhu" style="overflow-x:auto;">
 
 <!--gt table start-->
 
@@ -2359,6 +2422,7 @@ purrr::walk2(
 <!--/html_preserve-->
 
 <p>And here is the script to generate the viridis palettes:</p>
+<div class="sourceCode" id="cb16"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb16-1" data-line-number="1"><span class="kw">render_factory</span>(<span class="st">&quot;palettes&quot;</span>)</a></code></pre></div>
 <pre><code>purrr::walk(
   .x = c(&quot;magma&quot;, &quot;inferno&quot;, &quot;plasma&quot;, &quot;viridis&quot;, &quot;cividis&quot;),
   ~ rmarkdown::render(
@@ -2377,6 +2441,10 @@ purrr::walk2(
   )
 )
 </code></pre>
+<div class="sourceCode" id="cb18"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb18-1" data-line-number="1"><span class="kw">webshot_factory</span>(<span class="dt">links =</span> theme_links)</a>
+<a class="sourceLine" id="cb18-2" data-line-number="2"><span class="kw">webshot_factory</span>(<span class="dt">links =</span> hl_links)</a>
+<a class="sourceLine" id="cb18-3" data-line-number="3"><span class="kw">webshot_factory</span>(<span class="dt">links =</span> output_links)</a>
+<a class="sourceLine" id="cb18-4" data-line-number="4"><span class="kw">webshot_factory</span>(<span class="dt">links =</span> viridis_links)</a></code></pre></div>
 
 </body>
 </html>

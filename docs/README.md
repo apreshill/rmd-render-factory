@@ -1,10 +1,68 @@
 
 Herein lies a `README` to help you navigate the galleries.
 
+``` r
+link_factory <- function(dir = "gallery", 
+                         type = c("themes", "highlighters", "outputs", "viridis-options"),
+                         root = "https://elastic-lovelace-155848.netlify.com"){
+  if(!missing(type) & length(type) > 1) stop("Only one 'type' allowed.")
+  library(dplyr)
+  type <- match.arg(type)
+  html_dir <- fs::dir_ls(glue::glue("{dir}/{type}"), recursive = TRUE, glob = "*.html")
+  html_items <- html_dir %>% 
+    tibble::enframe(name = "rel_path", value = "junk") %>% 
+    dplyr::select(-junk) %>% 
+    dplyr::mutate(abs_path = glue::glue("{root}{rel_path}")) %>% 
+    dplyr::mutate(label_path = rel_path %>% fs::path_file(.) %>% 
+                  fs::path_ext_remove(.) %>% as.character(.)) %>% 
+    dplyr::mutate(link = glue::glue("[{label_path}]({abs_path})")) %>% 
+    dplyr::rename_at(vars(link), ~glue::glue("List of {type}")) %>% 
+    dplyr::mutate(image_link = as.character(fs::dir_ls(path = "thumbnails", regexp = glue::glue("{type}")))) %>% 
+    dplyr::mutate(image_md = glue::glue("![]({image_link})"))
+  return(html_items)
+}
+
+#' this function takes a tibble of links from link_factory()
+#' and converts to an html table
+table_factory <- function(links){
+  html_items <- links
+  html_table <- html_items %>% 
+    dplyr::select(-ends_with("_path"), -starts_with("image_")) %>% 
+    gt::gt() %>% 
+    gt::fmt_markdown(
+      columns = contains("List")
+      )
+  return(html_table)
+}
+
+#' this function takes webshots of all (absolute) links
+webshot_factory <- function(links){
+  html_items <- links
+  for_shots <- html_items %>% 
+    mutate(type = fs::path_rel(rel_path, start = "gallery") %>% fs::path_dir(.))
+  webshot::webshot(glue::glue("{for_shots$abs_path}"),
+                   glue::glue("thumbnails/{for_shots$type}-{for_shots$label_path}.png"), 
+                   cliprect = "viewport") %>% 
+    resize("55%") %>%
+    shrink()
+}
+
+#' this function prints the contents of an R script in a readable code chunk "as is"
+render_factory <- function(type = c("single", "themes", "highlighters", "outputs", "palettes")){
+  type <- match.arg(type)
+  script <- readLines(glue::glue("render_{type}.R"))
+  cat(script, sep = "\n")
+}
+```
+
 # The single file
 
 All of the links below derive from a single R Markdown file titled
 `index.Rmd`. Here is the YAML:
+
+``` r
+cat(readr::read_lines("input/single.Rmd", n_max = 11), sep = "\n")
+```
 
     ---
     title: "`r params$dynamictitle`"
@@ -34,13 +92,18 @@ output_format:
     theme: flatly
 ```
 
+``` r
+theme_links <- link_factory(type = "themes")
+table_factory(links = theme_links)
+```
+
 <!--html_preserve-->
 
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#ympanlwgdt .gt_table {
+#qoegmuanlp .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -59,13 +122,13 @@ output_format:
   /* table.border.top.color */
 }
 
-#ympanlwgdt .gt_heading {
+#qoegmuanlp .gt_heading {
   background-color: #FFFFFF;
   /* heading.background.color */
   border-bottom-color: #FFFFFF;
 }
 
-#ympanlwgdt .gt_title {
+#qoegmuanlp .gt_title {
   color: #000000;
   font-size: 125%;
   /* heading.title.font.size */
@@ -76,7 +139,7 @@ output_format:
   border-bottom-width: 0;
 }
 
-#ympanlwgdt .gt_subtitle {
+#qoegmuanlp .gt_subtitle {
   color: #000000;
   font-size: 85%;
   /* heading.subtitle.font.size */
@@ -87,7 +150,7 @@ output_format:
   border-top-width: 0;
 }
 
-#ympanlwgdt .gt_bottom_border {
+#qoegmuanlp .gt_bottom_border {
   border-bottom-style: solid;
   /* heading.border.bottom.style */
   border-bottom-width: 2px;
@@ -96,7 +159,7 @@ output_format:
   /* heading.border.bottom.color */
 }
 
-#ympanlwgdt .gt_column_spanner {
+#qoegmuanlp .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #A8A8A8;
@@ -104,7 +167,7 @@ output_format:
   padding-bottom: 4px;
 }
 
-#ympanlwgdt .gt_col_heading {
+#qoegmuanlp .gt_col_heading {
   color: #000000;
   background-color: #FFFFFF;
   /* column_labels.background.color */
@@ -117,11 +180,11 @@ output_format:
   margin: 10px;
 }
 
-#ympanlwgdt .gt_sep_right {
+#qoegmuanlp .gt_sep_right {
   border-right: 5px solid #FFFFFF;
 }
 
-#ympanlwgdt .gt_group_heading {
+#qoegmuanlp .gt_group_heading {
   padding: 8px;
   color: #000000;
   background-color: #FFFFFF;
@@ -145,7 +208,7 @@ output_format:
   vertical-align: middle;
 }
 
-#ympanlwgdt .gt_empty_group_heading {
+#qoegmuanlp .gt_empty_group_heading {
   padding: 0.5px;
   color: #000000;
   background-color: #FFFFFF;
@@ -169,37 +232,37 @@ output_format:
   vertical-align: middle;
 }
 
-#ympanlwgdt .gt_striped {
+#qoegmuanlp .gt_striped {
   background-color: #f2f2f2;
 }
 
-#ympanlwgdt .gt_from_md > :first-child {
+#qoegmuanlp .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ympanlwgdt .gt_from_md > :last-child {
+#qoegmuanlp .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ympanlwgdt .gt_row {
+#qoegmuanlp .gt_row {
   padding: 10px;
   /* row.padding */
   margin: 10px;
   vertical-align: middle;
 }
 
-#ympanlwgdt .gt_stub {
+#qoegmuanlp .gt_stub {
   border-right-style: solid;
   border-right-width: 2px;
   border-right-color: #A8A8A8;
   padding-left: 12px;
 }
 
-#ympanlwgdt .gt_stub.gt_row {
+#qoegmuanlp .gt_stub.gt_row {
   background-color: #FFFFFF;
 }
 
-#ympanlwgdt .gt_summary_row {
+#qoegmuanlp .gt_summary_row {
   background-color: #FFFFFF;
   /* summary_row.background.color */
   padding: 6px;
@@ -208,13 +271,13 @@ output_format:
   /* summary_row.text_transform */
 }
 
-#ympanlwgdt .gt_first_summary_row {
+#qoegmuanlp .gt_first_summary_row {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #A8A8A8;
 }
 
-#ympanlwgdt .gt_table_body {
+#qoegmuanlp .gt_table_body {
   border-top-style: solid;
   /* table_body.border.top.style */
   border-top-width: 2px;
@@ -229,56 +292,56 @@ output_format:
   /* table_body.border.bottom.color */
 }
 
-#ympanlwgdt .gt_footnote {
+#qoegmuanlp .gt_footnote {
   font-size: 90%;
   /* footnote.font.size */
   padding: 4px;
   /* footnote.padding */
 }
 
-#ympanlwgdt .gt_sourcenote {
+#qoegmuanlp .gt_sourcenote {
   font-size: 90%;
   /* sourcenote.font.size */
   padding: 4px;
   /* sourcenote.padding */
 }
 
-#ympanlwgdt .gt_center {
+#qoegmuanlp .gt_center {
   text-align: center;
 }
 
-#ympanlwgdt .gt_left {
+#qoegmuanlp .gt_left {
   text-align: left;
 }
 
-#ympanlwgdt .gt_right {
+#qoegmuanlp .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ympanlwgdt .gt_font_normal {
+#qoegmuanlp .gt_font_normal {
   font-weight: normal;
 }
 
-#ympanlwgdt .gt_font_bold {
+#qoegmuanlp .gt_font_bold {
   font-weight: bold;
 }
 
-#ympanlwgdt .gt_font_italic {
+#qoegmuanlp .gt_font_italic {
   font-style: italic;
 }
 
-#ympanlwgdt .gt_super {
+#qoegmuanlp .gt_super {
   font-size: 65%;
 }
 
-#ympanlwgdt .gt_footnote_glyph {
+#qoegmuanlp .gt_footnote_glyph {
   font-style: italic;
   font-size: 65%;
 }
 </style>
 
-<div id="ympanlwgdt" style="overflow-x:auto;">
+<div id="qoegmuanlp" style="overflow-x:auto;">
 
 <!--gt table start-->
 
@@ -561,6 +624,10 @@ themes
 
 And here is the script to generate the themes:
 
+``` r
+render_factory("themes")
+```
+
     purrr::walk(
       .x = as.list(rmarkdown:::themes()),
       ~ rmarkdown::render(
@@ -592,13 +659,18 @@ output_format:
     highlighter: tango
 ```
 
+``` r
+hl_links <- link_factory(type = "highlighters")
+table_factory(links = hl_links)
+```
+
 <!--html_preserve-->
 
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#nglgayvugj .gt_table {
+#dwmvpmiyai .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -617,13 +689,13 @@ output_format:
   /* table.border.top.color */
 }
 
-#nglgayvugj .gt_heading {
+#dwmvpmiyai .gt_heading {
   background-color: #FFFFFF;
   /* heading.background.color */
   border-bottom-color: #FFFFFF;
 }
 
-#nglgayvugj .gt_title {
+#dwmvpmiyai .gt_title {
   color: #000000;
   font-size: 125%;
   /* heading.title.font.size */
@@ -634,7 +706,7 @@ output_format:
   border-bottom-width: 0;
 }
 
-#nglgayvugj .gt_subtitle {
+#dwmvpmiyai .gt_subtitle {
   color: #000000;
   font-size: 85%;
   /* heading.subtitle.font.size */
@@ -645,7 +717,7 @@ output_format:
   border-top-width: 0;
 }
 
-#nglgayvugj .gt_bottom_border {
+#dwmvpmiyai .gt_bottom_border {
   border-bottom-style: solid;
   /* heading.border.bottom.style */
   border-bottom-width: 2px;
@@ -654,7 +726,7 @@ output_format:
   /* heading.border.bottom.color */
 }
 
-#nglgayvugj .gt_column_spanner {
+#dwmvpmiyai .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #A8A8A8;
@@ -662,7 +734,7 @@ output_format:
   padding-bottom: 4px;
 }
 
-#nglgayvugj .gt_col_heading {
+#dwmvpmiyai .gt_col_heading {
   color: #000000;
   background-color: #FFFFFF;
   /* column_labels.background.color */
@@ -675,11 +747,11 @@ output_format:
   margin: 10px;
 }
 
-#nglgayvugj .gt_sep_right {
+#dwmvpmiyai .gt_sep_right {
   border-right: 5px solid #FFFFFF;
 }
 
-#nglgayvugj .gt_group_heading {
+#dwmvpmiyai .gt_group_heading {
   padding: 8px;
   color: #000000;
   background-color: #FFFFFF;
@@ -703,7 +775,7 @@ output_format:
   vertical-align: middle;
 }
 
-#nglgayvugj .gt_empty_group_heading {
+#dwmvpmiyai .gt_empty_group_heading {
   padding: 0.5px;
   color: #000000;
   background-color: #FFFFFF;
@@ -727,37 +799,37 @@ output_format:
   vertical-align: middle;
 }
 
-#nglgayvugj .gt_striped {
+#dwmvpmiyai .gt_striped {
   background-color: #f2f2f2;
 }
 
-#nglgayvugj .gt_from_md > :first-child {
+#dwmvpmiyai .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#nglgayvugj .gt_from_md > :last-child {
+#dwmvpmiyai .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#nglgayvugj .gt_row {
+#dwmvpmiyai .gt_row {
   padding: 10px;
   /* row.padding */
   margin: 10px;
   vertical-align: middle;
 }
 
-#nglgayvugj .gt_stub {
+#dwmvpmiyai .gt_stub {
   border-right-style: solid;
   border-right-width: 2px;
   border-right-color: #A8A8A8;
   padding-left: 12px;
 }
 
-#nglgayvugj .gt_stub.gt_row {
+#dwmvpmiyai .gt_stub.gt_row {
   background-color: #FFFFFF;
 }
 
-#nglgayvugj .gt_summary_row {
+#dwmvpmiyai .gt_summary_row {
   background-color: #FFFFFF;
   /* summary_row.background.color */
   padding: 6px;
@@ -766,13 +838,13 @@ output_format:
   /* summary_row.text_transform */
 }
 
-#nglgayvugj .gt_first_summary_row {
+#dwmvpmiyai .gt_first_summary_row {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #A8A8A8;
 }
 
-#nglgayvugj .gt_table_body {
+#dwmvpmiyai .gt_table_body {
   border-top-style: solid;
   /* table_body.border.top.style */
   border-top-width: 2px;
@@ -787,56 +859,56 @@ output_format:
   /* table_body.border.bottom.color */
 }
 
-#nglgayvugj .gt_footnote {
+#dwmvpmiyai .gt_footnote {
   font-size: 90%;
   /* footnote.font.size */
   padding: 4px;
   /* footnote.padding */
 }
 
-#nglgayvugj .gt_sourcenote {
+#dwmvpmiyai .gt_sourcenote {
   font-size: 90%;
   /* sourcenote.font.size */
   padding: 4px;
   /* sourcenote.padding */
 }
 
-#nglgayvugj .gt_center {
+#dwmvpmiyai .gt_center {
   text-align: center;
 }
 
-#nglgayvugj .gt_left {
+#dwmvpmiyai .gt_left {
   text-align: left;
 }
 
-#nglgayvugj .gt_right {
+#dwmvpmiyai .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#nglgayvugj .gt_font_normal {
+#dwmvpmiyai .gt_font_normal {
   font-weight: normal;
 }
 
-#nglgayvugj .gt_font_bold {
+#dwmvpmiyai .gt_font_bold {
   font-weight: bold;
 }
 
-#nglgayvugj .gt_font_italic {
+#dwmvpmiyai .gt_font_italic {
   font-style: italic;
 }
 
-#nglgayvugj .gt_super {
+#dwmvpmiyai .gt_super {
   font-size: 65%;
 }
 
-#nglgayvugj .gt_footnote_glyph {
+#dwmvpmiyai .gt_footnote_glyph {
   font-style: italic;
   font-size: 65%;
 }
 </style>
 
-<div id="nglgayvugj" style="overflow-x:auto;">
+<div id="dwmvpmiyai" style="overflow-x:auto;">
 
 <!--gt table start-->
 
@@ -1011,6 +1083,10 @@ highlighters
 
 And here is the script to generate the highlighters:
 
+``` r
+render_factory("highlighters")
+```
+
     purrr::walk(
       .x = as.list(rmarkdown:::highlighters()),
       ~ rmarkdown::render(
@@ -1030,13 +1106,18 @@ And here is the script to generate the highlighters:
 
 # Output formats
 
+``` r
+output_links <- link_factory(type = "outputs")
+table_factory(links = output_links)
+```
+
 <!--html_preserve-->
 
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#vkhoemrzlq .gt_table {
+#cnichgkxae .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -1055,13 +1136,13 @@ And here is the script to generate the highlighters:
   /* table.border.top.color */
 }
 
-#vkhoemrzlq .gt_heading {
+#cnichgkxae .gt_heading {
   background-color: #FFFFFF;
   /* heading.background.color */
   border-bottom-color: #FFFFFF;
 }
 
-#vkhoemrzlq .gt_title {
+#cnichgkxae .gt_title {
   color: #000000;
   font-size: 125%;
   /* heading.title.font.size */
@@ -1072,7 +1153,7 @@ And here is the script to generate the highlighters:
   border-bottom-width: 0;
 }
 
-#vkhoemrzlq .gt_subtitle {
+#cnichgkxae .gt_subtitle {
   color: #000000;
   font-size: 85%;
   /* heading.subtitle.font.size */
@@ -1083,7 +1164,7 @@ And here is the script to generate the highlighters:
   border-top-width: 0;
 }
 
-#vkhoemrzlq .gt_bottom_border {
+#cnichgkxae .gt_bottom_border {
   border-bottom-style: solid;
   /* heading.border.bottom.style */
   border-bottom-width: 2px;
@@ -1092,7 +1173,7 @@ And here is the script to generate the highlighters:
   /* heading.border.bottom.color */
 }
 
-#vkhoemrzlq .gt_column_spanner {
+#cnichgkxae .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #A8A8A8;
@@ -1100,7 +1181,7 @@ And here is the script to generate the highlighters:
   padding-bottom: 4px;
 }
 
-#vkhoemrzlq .gt_col_heading {
+#cnichgkxae .gt_col_heading {
   color: #000000;
   background-color: #FFFFFF;
   /* column_labels.background.color */
@@ -1113,11 +1194,11 @@ And here is the script to generate the highlighters:
   margin: 10px;
 }
 
-#vkhoemrzlq .gt_sep_right {
+#cnichgkxae .gt_sep_right {
   border-right: 5px solid #FFFFFF;
 }
 
-#vkhoemrzlq .gt_group_heading {
+#cnichgkxae .gt_group_heading {
   padding: 8px;
   color: #000000;
   background-color: #FFFFFF;
@@ -1141,7 +1222,7 @@ And here is the script to generate the highlighters:
   vertical-align: middle;
 }
 
-#vkhoemrzlq .gt_empty_group_heading {
+#cnichgkxae .gt_empty_group_heading {
   padding: 0.5px;
   color: #000000;
   background-color: #FFFFFF;
@@ -1165,37 +1246,37 @@ And here is the script to generate the highlighters:
   vertical-align: middle;
 }
 
-#vkhoemrzlq .gt_striped {
+#cnichgkxae .gt_striped {
   background-color: #f2f2f2;
 }
 
-#vkhoemrzlq .gt_from_md > :first-child {
+#cnichgkxae .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#vkhoemrzlq .gt_from_md > :last-child {
+#cnichgkxae .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#vkhoemrzlq .gt_row {
+#cnichgkxae .gt_row {
   padding: 10px;
   /* row.padding */
   margin: 10px;
   vertical-align: middle;
 }
 
-#vkhoemrzlq .gt_stub {
+#cnichgkxae .gt_stub {
   border-right-style: solid;
   border-right-width: 2px;
   border-right-color: #A8A8A8;
   padding-left: 12px;
 }
 
-#vkhoemrzlq .gt_stub.gt_row {
+#cnichgkxae .gt_stub.gt_row {
   background-color: #FFFFFF;
 }
 
-#vkhoemrzlq .gt_summary_row {
+#cnichgkxae .gt_summary_row {
   background-color: #FFFFFF;
   /* summary_row.background.color */
   padding: 6px;
@@ -1204,13 +1285,13 @@ And here is the script to generate the highlighters:
   /* summary_row.text_transform */
 }
 
-#vkhoemrzlq .gt_first_summary_row {
+#cnichgkxae .gt_first_summary_row {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #A8A8A8;
 }
 
-#vkhoemrzlq .gt_table_body {
+#cnichgkxae .gt_table_body {
   border-top-style: solid;
   /* table_body.border.top.style */
   border-top-width: 2px;
@@ -1225,56 +1306,56 @@ And here is the script to generate the highlighters:
   /* table_body.border.bottom.color */
 }
 
-#vkhoemrzlq .gt_footnote {
+#cnichgkxae .gt_footnote {
   font-size: 90%;
   /* footnote.font.size */
   padding: 4px;
   /* footnote.padding */
 }
 
-#vkhoemrzlq .gt_sourcenote {
+#cnichgkxae .gt_sourcenote {
   font-size: 90%;
   /* sourcenote.font.size */
   padding: 4px;
   /* sourcenote.padding */
 }
 
-#vkhoemrzlq .gt_center {
+#cnichgkxae .gt_center {
   text-align: center;
 }
 
-#vkhoemrzlq .gt_left {
+#cnichgkxae .gt_left {
   text-align: left;
 }
 
-#vkhoemrzlq .gt_right {
+#cnichgkxae .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#vkhoemrzlq .gt_font_normal {
+#cnichgkxae .gt_font_normal {
   font-weight: normal;
 }
 
-#vkhoemrzlq .gt_font_bold {
+#cnichgkxae .gt_font_bold {
   font-weight: bold;
 }
 
-#vkhoemrzlq .gt_font_italic {
+#cnichgkxae .gt_font_italic {
   font-style: italic;
 }
 
-#vkhoemrzlq .gt_super {
+#cnichgkxae .gt_super {
   font-size: 65%;
 }
 
-#vkhoemrzlq .gt_footnote_glyph {
+#cnichgkxae .gt_footnote_glyph {
   font-style: italic;
   font-size: 65%;
 }
 </style>
 
-<div id="vkhoemrzlq" style="overflow-x:auto;">
+<div id="cnichgkxae" style="overflow-x:auto;">
 
 <!--gt table start-->
 
@@ -1431,6 +1512,10 @@ outputs
 
 And here is the script to generate the outputs:
 
+``` r
+render_factory("outputs")
+```
+
     doc_outputs <- c("html_notebook", "html_document", "pdf_document", 
                      "word_document", "odt_document", "rtf_document", "github_document")
     doc_exts <- c("nb.html", "html", "pdf", "docx", "odt", "rtf", "md")
@@ -1464,13 +1549,18 @@ And here is the script to generate the outputs:
 
 # Viridis options
 
+``` r
+viridis_links <- link_factory(type = "viridis-options")
+table_factory(links = viridis_links)
+```
+
 <!--html_preserve-->
 
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#qlrpevxaaj .gt_table {
+#ficadhrzhu .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -1489,13 +1579,13 @@ And here is the script to generate the outputs:
   /* table.border.top.color */
 }
 
-#qlrpevxaaj .gt_heading {
+#ficadhrzhu .gt_heading {
   background-color: #FFFFFF;
   /* heading.background.color */
   border-bottom-color: #FFFFFF;
 }
 
-#qlrpevxaaj .gt_title {
+#ficadhrzhu .gt_title {
   color: #000000;
   font-size: 125%;
   /* heading.title.font.size */
@@ -1506,7 +1596,7 @@ And here is the script to generate the outputs:
   border-bottom-width: 0;
 }
 
-#qlrpevxaaj .gt_subtitle {
+#ficadhrzhu .gt_subtitle {
   color: #000000;
   font-size: 85%;
   /* heading.subtitle.font.size */
@@ -1517,7 +1607,7 @@ And here is the script to generate the outputs:
   border-top-width: 0;
 }
 
-#qlrpevxaaj .gt_bottom_border {
+#ficadhrzhu .gt_bottom_border {
   border-bottom-style: solid;
   /* heading.border.bottom.style */
   border-bottom-width: 2px;
@@ -1526,7 +1616,7 @@ And here is the script to generate the outputs:
   /* heading.border.bottom.color */
 }
 
-#qlrpevxaaj .gt_column_spanner {
+#ficadhrzhu .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #A8A8A8;
@@ -1534,7 +1624,7 @@ And here is the script to generate the outputs:
   padding-bottom: 4px;
 }
 
-#qlrpevxaaj .gt_col_heading {
+#ficadhrzhu .gt_col_heading {
   color: #000000;
   background-color: #FFFFFF;
   /* column_labels.background.color */
@@ -1547,11 +1637,11 @@ And here is the script to generate the outputs:
   margin: 10px;
 }
 
-#qlrpevxaaj .gt_sep_right {
+#ficadhrzhu .gt_sep_right {
   border-right: 5px solid #FFFFFF;
 }
 
-#qlrpevxaaj .gt_group_heading {
+#ficadhrzhu .gt_group_heading {
   padding: 8px;
   color: #000000;
   background-color: #FFFFFF;
@@ -1575,7 +1665,7 @@ And here is the script to generate the outputs:
   vertical-align: middle;
 }
 
-#qlrpevxaaj .gt_empty_group_heading {
+#ficadhrzhu .gt_empty_group_heading {
   padding: 0.5px;
   color: #000000;
   background-color: #FFFFFF;
@@ -1599,37 +1689,37 @@ And here is the script to generate the outputs:
   vertical-align: middle;
 }
 
-#qlrpevxaaj .gt_striped {
+#ficadhrzhu .gt_striped {
   background-color: #f2f2f2;
 }
 
-#qlrpevxaaj .gt_from_md > :first-child {
+#ficadhrzhu .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#qlrpevxaaj .gt_from_md > :last-child {
+#ficadhrzhu .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#qlrpevxaaj .gt_row {
+#ficadhrzhu .gt_row {
   padding: 10px;
   /* row.padding */
   margin: 10px;
   vertical-align: middle;
 }
 
-#qlrpevxaaj .gt_stub {
+#ficadhrzhu .gt_stub {
   border-right-style: solid;
   border-right-width: 2px;
   border-right-color: #A8A8A8;
   padding-left: 12px;
 }
 
-#qlrpevxaaj .gt_stub.gt_row {
+#ficadhrzhu .gt_stub.gt_row {
   background-color: #FFFFFF;
 }
 
-#qlrpevxaaj .gt_summary_row {
+#ficadhrzhu .gt_summary_row {
   background-color: #FFFFFF;
   /* summary_row.background.color */
   padding: 6px;
@@ -1638,13 +1728,13 @@ And here is the script to generate the outputs:
   /* summary_row.text_transform */
 }
 
-#qlrpevxaaj .gt_first_summary_row {
+#ficadhrzhu .gt_first_summary_row {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #A8A8A8;
 }
 
-#qlrpevxaaj .gt_table_body {
+#ficadhrzhu .gt_table_body {
   border-top-style: solid;
   /* table_body.border.top.style */
   border-top-width: 2px;
@@ -1659,56 +1749,56 @@ And here is the script to generate the outputs:
   /* table_body.border.bottom.color */
 }
 
-#qlrpevxaaj .gt_footnote {
+#ficadhrzhu .gt_footnote {
   font-size: 90%;
   /* footnote.font.size */
   padding: 4px;
   /* footnote.padding */
 }
 
-#qlrpevxaaj .gt_sourcenote {
+#ficadhrzhu .gt_sourcenote {
   font-size: 90%;
   /* sourcenote.font.size */
   padding: 4px;
   /* sourcenote.padding */
 }
 
-#qlrpevxaaj .gt_center {
+#ficadhrzhu .gt_center {
   text-align: center;
 }
 
-#qlrpevxaaj .gt_left {
+#ficadhrzhu .gt_left {
   text-align: left;
 }
 
-#qlrpevxaaj .gt_right {
+#ficadhrzhu .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#qlrpevxaaj .gt_font_normal {
+#ficadhrzhu .gt_font_normal {
   font-weight: normal;
 }
 
-#qlrpevxaaj .gt_font_bold {
+#ficadhrzhu .gt_font_bold {
   font-weight: bold;
 }
 
-#qlrpevxaaj .gt_font_italic {
+#ficadhrzhu .gt_font_italic {
   font-style: italic;
 }
 
-#qlrpevxaaj .gt_super {
+#ficadhrzhu .gt_super {
   font-size: 65%;
 }
 
-#qlrpevxaaj .gt_footnote_glyph {
+#ficadhrzhu .gt_footnote_glyph {
   font-style: italic;
   font-size: 65%;
 }
 </style>
 
-<div id="qlrpevxaaj" style="overflow-x:auto;">
+<div id="ficadhrzhu" style="overflow-x:auto;">
 
 <!--gt table start-->
 
@@ -1829,6 +1919,10 @@ viridis-options
 
 And here is the script to generate the viridis palettes:
 
+``` r
+render_factory("palettes")
+```
+
     purrr::walk(
       .x = c("magma", "inferno", "plasma", "viridis", "cividis"),
       ~ rmarkdown::render(
@@ -1846,3 +1940,10 @@ And here is the script to generate the viridis palettes:
                       viridis_palette = .)
       )
     )
+
+``` r
+webshot_factory(links = theme_links)
+webshot_factory(links = hl_links)
+webshot_factory(links = output_links)
+webshot_factory(links = viridis_links)
+```

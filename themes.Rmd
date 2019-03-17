@@ -3,7 +3,7 @@ title: "CSS Themes"
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE,
+knitr::opts_chunk$set(warning = FALSE, message = FALSE,
                       comment = "#>", collapse = TRUE)
 source("utils.R")
 ```
@@ -21,12 +21,12 @@ output_format:
 # Options gallery
 
 
-```{r}
+```{r echo = FALSE}
 theme_links <- link_factory(type = "themes")
 #table_factory(links = theme_links)
 ```
 
-```{r results = "asis"}
+```{r results = "asis", echo = FALSE}
 theme_links %>% 
   select(contains("list", ignore.case = TRUE), contains("image_html")) %>% 
   gt::gt() %>% 
@@ -41,7 +41,7 @@ theme_links %>%
 
 And here is the script to generate the themes:
 
-```{r}
+```{r echo = FALSE}
 render_factory("themes")
 ```
 

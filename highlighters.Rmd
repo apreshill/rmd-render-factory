@@ -3,7 +3,7 @@ title: "Syntax Highlighting"
 ---
 
 ```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE,
+knitr::opts_chunk$set(warning = FALSE, message = FALSE,
                       comment = "#>", collapse = TRUE)
 source("utils.R")
 ```
@@ -21,12 +21,12 @@ output_format:
 
 # Options gallery
 
-```{r}
+```{r echo = FALSE}
 hl_links <- link_factory(type = "highlighters")
 #table_factory(links = hl_links)
 ```
 
-```{r results = "asis"}
+```{r results = "asis", echo = FALSE}
 hl_links %>% 
   select(contains("list", ignore.case = TRUE), contains("image_html")) %>% 
   gt::gt() %>% 
@@ -41,6 +41,6 @@ hl_links %>%
 
 And here is the script to generate the highlighters:
 
-```{r}
+```{r echo = FALSE}
 render_factory("highlighters")
 ```

@@ -8,7 +8,7 @@ output:
 Herein lies a `README` to help you navigate the galleries.
 
 ```{r include = FALSE}
-knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE, comment = NA)
+knitr::opts_chunk$set(warning = FALSE, message = FALSE, comment = NA)
 library(tidyverse)
 ```
 
