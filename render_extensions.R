@@ -1,6 +1,7 @@
-exts <- c("flexdashboard::flex_dashboard", "revealjs::revealjs_presentation")
+exts <- c("flexdashboard::flex_dashboard", "revealjs::revealjs_presentation",
+          "pagedown::html_paged")
 # won't work: any tufte
-file_exts <- c("html", "html")
+file_exts <- c("html", "html", "html")
 
 purrr::walk2(
   .x = exts,
