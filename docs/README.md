@@ -40,7 +40,7 @@ output_format:
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#svicnxodrh .gt_table {
+#ujbspeefxb .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -59,13 +59,13 @@ output_format:
   /* table.border.top.color */
 }
 
-#svicnxodrh .gt_heading {
+#ujbspeefxb .gt_heading {
   background-color: #FFFFFF;
   /* heading.background.color */
   border-bottom-color: #FFFFFF;
 }
 
-#svicnxodrh .gt_title {
+#ujbspeefxb .gt_title {
   color: #000000;
   font-size: 125%;
   /* heading.title.font.size */
@@ -76,7 +76,7 @@ output_format:
   border-bottom-width: 0;
 }
 
-#svicnxodrh .gt_subtitle {
+#ujbspeefxb .gt_subtitle {
   color: #000000;
   font-size: 85%;
   /* heading.subtitle.font.size */
@@ -87,7 +87,7 @@ output_format:
   border-top-width: 0;
 }
 
-#svicnxodrh .gt_bottom_border {
+#ujbspeefxb .gt_bottom_border {
   border-bottom-style: solid;
   /* heading.border.bottom.style */
   border-bottom-width: 2px;
@@ -96,7 +96,7 @@ output_format:
   /* heading.border.bottom.color */
 }
 
-#svicnxodrh .gt_column_spanner {
+#ujbspeefxb .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #A8A8A8;
@@ -104,7 +104,7 @@ output_format:
   padding-bottom: 4px;
 }
 
-#svicnxodrh .gt_col_heading {
+#ujbspeefxb .gt_col_heading {
   color: #000000;
   background-color: #FFFFFF;
   /* column_labels.background.color */
@@ -117,11 +117,11 @@ output_format:
   margin: 10px;
 }
 
-#svicnxodrh .gt_sep_right {
+#ujbspeefxb .gt_sep_right {
   border-right: 5px solid #FFFFFF;
 }
 
-#svicnxodrh .gt_group_heading {
+#ujbspeefxb .gt_group_heading {
   padding: 8px;
   color: #000000;
   background-color: #FFFFFF;
@@ -145,7 +145,7 @@ output_format:
   vertical-align: middle;
 }
 
-#svicnxodrh .gt_empty_group_heading {
+#ujbspeefxb .gt_empty_group_heading {
   padding: 0.5px;
   color: #000000;
   background-color: #FFFFFF;
@@ -169,37 +169,37 @@ output_format:
   vertical-align: middle;
 }
 
-#svicnxodrh .gt_striped {
+#ujbspeefxb .gt_striped {
   background-color: #f2f2f2;
 }
 
-#svicnxodrh .gt_from_md > :first-child {
+#ujbspeefxb .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#svicnxodrh .gt_from_md > :last-child {
+#ujbspeefxb .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#svicnxodrh .gt_row {
+#ujbspeefxb .gt_row {
   padding: 10px;
   /* row.padding */
   margin: 10px;
   vertical-align: middle;
 }
 
-#svicnxodrh .gt_stub {
+#ujbspeefxb .gt_stub {
   border-right-style: solid;
   border-right-width: 2px;
   border-right-color: #A8A8A8;
   padding-left: 12px;
 }
 
-#svicnxodrh .gt_stub.gt_row {
+#ujbspeefxb .gt_stub.gt_row {
   background-color: #FFFFFF;
 }
 
-#svicnxodrh .gt_summary_row {
+#ujbspeefxb .gt_summary_row {
   background-color: #FFFFFF;
   /* summary_row.background.color */
   padding: 6px;
@@ -208,13 +208,13 @@ output_format:
   /* summary_row.text_transform */
 }
 
-#svicnxodrh .gt_first_summary_row {
+#ujbspeefxb .gt_first_summary_row {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #A8A8A8;
 }
 
-#svicnxodrh .gt_table_body {
+#ujbspeefxb .gt_table_body {
   border-top-style: solid;
   /* table_body.border.top.style */
   border-top-width: 2px;
@@ -229,56 +229,56 @@ output_format:
   /* table_body.border.bottom.color */
 }
 
-#svicnxodrh .gt_footnote {
+#ujbspeefxb .gt_footnote {
   font-size: 90%;
   /* footnote.font.size */
   padding: 4px;
   /* footnote.padding */
 }
 
-#svicnxodrh .gt_sourcenote {
+#ujbspeefxb .gt_sourcenote {
   font-size: 90%;
   /* sourcenote.font.size */
   padding: 4px;
   /* sourcenote.padding */
 }
 
-#svicnxodrh .gt_center {
+#ujbspeefxb .gt_center {
   text-align: center;
 }
 
-#svicnxodrh .gt_left {
+#ujbspeefxb .gt_left {
   text-align: left;
 }
 
-#svicnxodrh .gt_right {
+#ujbspeefxb .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#svicnxodrh .gt_font_normal {
+#ujbspeefxb .gt_font_normal {
   font-weight: normal;
 }
 
-#svicnxodrh .gt_font_bold {
+#ujbspeefxb .gt_font_bold {
   font-weight: bold;
 }
 
-#svicnxodrh .gt_font_italic {
+#ujbspeefxb .gt_font_italic {
   font-style: italic;
 }
 
-#svicnxodrh .gt_super {
+#ujbspeefxb .gt_super {
   font-size: 65%;
 }
 
-#svicnxodrh .gt_footnote_glyph {
+#ujbspeefxb .gt_footnote_glyph {
   font-style: italic;
   font-size: 65%;
 }
 </style>
 
-<div id="svicnxodrh" style="overflow-x:auto;">
+<div id="ujbspeefxb" style="overflow-x:auto;">
 
 <!--gt table start-->
 
@@ -305,7 +305,7 @@ themes
 
 <p>
 
-<a href="https://apreshill.github.io/rmd-render-factory/gallery/themes/cerulean.html">cerulean</a>
+<a href="https://elastic-lovelace-155848.netlify.comgallery/themes/cerulean.html">cerulean</a>
 
 </p>
 
@@ -323,7 +323,7 @@ themes
 
 <p>
 
-<a href="https://apreshill.github.io/rmd-render-factory/gallery/themes/cosmo.html">cosmo</a>
+<a href="https://elastic-lovelace-155848.netlify.comgallery/themes/cosmo.html">cosmo</a>
 
 </p>
 
@@ -341,7 +341,7 @@ themes
 
 <p>
 
-<a href="https://apreshill.github.io/rmd-render-factory/gallery/themes/darkly.html">darkly</a>
+<a href="https://elastic-lovelace-155848.netlify.comgallery/themes/darkly.html">darkly</a>
 
 </p>
 
@@ -359,7 +359,7 @@ themes
 
 <p>
 
-<a href="https://apreshill.github.io/rmd-render-factory/gallery/themes/default.html">default</a>
+<a href="https://elastic-lovelace-155848.netlify.comgallery/themes/default.html">default</a>
 
 </p>
 
@@ -377,7 +377,7 @@ themes
 
 <p>
 
-<a href="https://apreshill.github.io/rmd-render-factory/gallery/themes/flatly.html">flatly</a>
+<a href="https://elastic-lovelace-155848.netlify.comgallery/themes/flatly.html">flatly</a>
 
 </p>
 
@@ -395,7 +395,7 @@ themes
 
 <p>
 
-<a href="https://apreshill.github.io/rmd-render-factory/gallery/themes/journal.html">journal</a>
+<a href="https://elastic-lovelace-155848.netlify.comgallery/themes/journal.html">journal</a>
 
 </p>
 
@@ -413,7 +413,7 @@ themes
 
 <p>
 
-<a href="https://apreshill.github.io/rmd-render-factory/gallery/themes/lumen.html">lumen</a>
+<a href="https://elastic-lovelace-155848.netlify.comgallery/themes/lumen.html">lumen</a>
 
 </p>
 
@@ -431,7 +431,7 @@ themes
 
 <p>
 
-<a href="https://apreshill.github.io/rmd-render-factory/gallery/themes/paper.html">paper</a>
+<a href="https://elastic-lovelace-155848.netlify.comgallery/themes/paper.html">paper</a>
 
 </p>
 
@@ -449,7 +449,7 @@ themes
 
 <p>
 
-<a href="https://apreshill.github.io/rmd-render-factory/gallery/themes/readable.html">readable</a>
+<a href="https://elastic-lovelace-155848.netlify.comgallery/themes/readable.html">readable</a>
 
 </p>
 
@@ -467,7 +467,7 @@ themes
 
 <p>
 
-<a href="https://apreshill.github.io/rmd-render-factory/gallery/themes/sandstone.html">sandstone</a>
+<a href="https://elastic-lovelace-155848.netlify.comgallery/themes/sandstone.html">sandstone</a>
 
 </p>
 
@@ -485,7 +485,7 @@ themes
 
 <p>
 
-<a href="https://apreshill.github.io/rmd-render-factory/gallery/themes/simplex.html">simplex</a>
+<a href="https://elastic-lovelace-155848.netlify.comgallery/themes/simplex.html">simplex</a>
 
 </p>
 
@@ -503,7 +503,7 @@ themes
 
 <p>
 
-<a href="https://apreshill.github.io/rmd-render-factory/gallery/themes/spacelab.html">spacelab</a>
+<a href="https://elastic-lovelace-155848.netlify.comgallery/themes/spacelab.html">spacelab</a>
 
 </p>
 
@@ -521,7 +521,7 @@ themes
 
 <p>
 
-<a href="https://apreshill.github.io/rmd-render-factory/gallery/themes/united.html">united</a>
+<a href="https://elastic-lovelace-155848.netlify.comgallery/themes/united.html">united</a>
 
 </p>
 
@@ -539,7 +539,7 @@ themes
 
 <p>
 
-<a href="https://apreshill.github.io/rmd-render-factory/gallery/themes/yeti.html">yeti</a>
+<a href="https://elastic-lovelace-155848.netlify.comgallery/themes/yeti.html">yeti</a>
 
 </p>
 
@@ -598,7 +598,7 @@ output_format:
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#ksrnlmfome .gt_table {
+#mmwuknddro .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -617,13 +617,13 @@ output_format:
   /* table.border.top.color */
 }
 
-#ksrnlmfome .gt_heading {
+#mmwuknddro .gt_heading {
   background-color: #FFFFFF;
   /* heading.background.color */
   border-bottom-color: #FFFFFF;
 }
 
-#ksrnlmfome .gt_title {
+#mmwuknddro .gt_title {
   color: #000000;
   font-size: 125%;
   /* heading.title.font.size */
@@ -634,7 +634,7 @@ output_format:
   border-bottom-width: 0;
 }
 
-#ksrnlmfome .gt_subtitle {
+#mmwuknddro .gt_subtitle {
   color: #000000;
   font-size: 85%;
   /* heading.subtitle.font.size */
@@ -645,7 +645,7 @@ output_format:
   border-top-width: 0;
 }
 
-#ksrnlmfome .gt_bottom_border {
+#mmwuknddro .gt_bottom_border {
   border-bottom-style: solid;
   /* heading.border.bottom.style */
   border-bottom-width: 2px;
@@ -654,7 +654,7 @@ output_format:
   /* heading.border.bottom.color */
 }
 
-#ksrnlmfome .gt_column_spanner {
+#mmwuknddro .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #A8A8A8;
@@ -662,7 +662,7 @@ output_format:
   padding-bottom: 4px;
 }
 
-#ksrnlmfome .gt_col_heading {
+#mmwuknddro .gt_col_heading {
   color: #000000;
   background-color: #FFFFFF;
   /* column_labels.background.color */
@@ -675,11 +675,11 @@ output_format:
   margin: 10px;
 }
 
-#ksrnlmfome .gt_sep_right {
+#mmwuknddro .gt_sep_right {
   border-right: 5px solid #FFFFFF;
 }
 
-#ksrnlmfome .gt_group_heading {
+#mmwuknddro .gt_group_heading {
   padding: 8px;
   color: #000000;
   background-color: #FFFFFF;
@@ -703,7 +703,7 @@ output_format:
   vertical-align: middle;
 }
 
-#ksrnlmfome .gt_empty_group_heading {
+#mmwuknddro .gt_empty_group_heading {
   padding: 0.5px;
   color: #000000;
   background-color: #FFFFFF;
@@ -727,37 +727,37 @@ output_format:
   vertical-align: middle;
 }
 
-#ksrnlmfome .gt_striped {
+#mmwuknddro .gt_striped {
   background-color: #f2f2f2;
 }
 
-#ksrnlmfome .gt_from_md > :first-child {
+#mmwuknddro .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ksrnlmfome .gt_from_md > :last-child {
+#mmwuknddro .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ksrnlmfome .gt_row {
+#mmwuknddro .gt_row {
   padding: 10px;
   /* row.padding */
   margin: 10px;
   vertical-align: middle;
 }
 
-#ksrnlmfome .gt_stub {
+#mmwuknddro .gt_stub {
   border-right-style: solid;
   border-right-width: 2px;
   border-right-color: #A8A8A8;
   padding-left: 12px;
 }
 
-#ksrnlmfome .gt_stub.gt_row {
+#mmwuknddro .gt_stub.gt_row {
   background-color: #FFFFFF;
 }
 
-#ksrnlmfome .gt_summary_row {
+#mmwuknddro .gt_summary_row {
   background-color: #FFFFFF;
   /* summary_row.background.color */
   padding: 6px;
@@ -766,13 +766,13 @@ output_format:
   /* summary_row.text_transform */
 }
 
-#ksrnlmfome .gt_first_summary_row {
+#mmwuknddro .gt_first_summary_row {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #A8A8A8;
 }
 
-#ksrnlmfome .gt_table_body {
+#mmwuknddro .gt_table_body {
   border-top-style: solid;
   /* table_body.border.top.style */
   border-top-width: 2px;
@@ -787,56 +787,56 @@ output_format:
   /* table_body.border.bottom.color */
 }
 
-#ksrnlmfome .gt_footnote {
+#mmwuknddro .gt_footnote {
   font-size: 90%;
   /* footnote.font.size */
   padding: 4px;
   /* footnote.padding */
 }
 
-#ksrnlmfome .gt_sourcenote {
+#mmwuknddro .gt_sourcenote {
   font-size: 90%;
   /* sourcenote.font.size */
   padding: 4px;
   /* sourcenote.padding */
 }
 
-#ksrnlmfome .gt_center {
+#mmwuknddro .gt_center {
   text-align: center;
 }
 
-#ksrnlmfome .gt_left {
+#mmwuknddro .gt_left {
   text-align: left;
 }
 
-#ksrnlmfome .gt_right {
+#mmwuknddro .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ksrnlmfome .gt_font_normal {
+#mmwuknddro .gt_font_normal {
   font-weight: normal;
 }
 
-#ksrnlmfome .gt_font_bold {
+#mmwuknddro .gt_font_bold {
   font-weight: bold;
 }
 
-#ksrnlmfome .gt_font_italic {
+#mmwuknddro .gt_font_italic {
   font-style: italic;
 }
 
-#ksrnlmfome .gt_super {
+#mmwuknddro .gt_super {
   font-size: 65%;
 }
 
-#ksrnlmfome .gt_footnote_glyph {
+#mmwuknddro .gt_footnote_glyph {
   font-style: italic;
   font-size: 65%;
 }
 </style>
 
-<div id="ksrnlmfome" style="overflow-x:auto;">
+<div id="mmwuknddro" style="overflow-x:auto;">
 
 <!--gt table start-->
 
@@ -863,7 +863,7 @@ highlighters
 
 <p>
 
-<a href="https://apreshill.github.io/rmd-render-factory/gallery/highlighters/default.html">default</a>
+<a href="https://elastic-lovelace-155848.netlify.comgallery/highlighters/default.html">default</a>
 
 </p>
 
@@ -881,7 +881,7 @@ highlighters
 
 <p>
 
-<a href="https://apreshill.github.io/rmd-render-factory/gallery/highlighters/espresso.html">espresso</a>
+<a href="https://elastic-lovelace-155848.netlify.comgallery/highlighters/espresso.html">espresso</a>
 
 </p>
 
@@ -899,7 +899,7 @@ highlighters
 
 <p>
 
-<a href="https://apreshill.github.io/rmd-render-factory/gallery/highlighters/haddock.html">haddock</a>
+<a href="https://elastic-lovelace-155848.netlify.comgallery/highlighters/haddock.html">haddock</a>
 
 </p>
 
@@ -917,7 +917,7 @@ highlighters
 
 <p>
 
-<a href="https://apreshill.github.io/rmd-render-factory/gallery/highlighters/kate.html">kate</a>
+<a href="https://elastic-lovelace-155848.netlify.comgallery/highlighters/kate.html">kate</a>
 
 </p>
 
@@ -935,7 +935,7 @@ highlighters
 
 <p>
 
-<a href="https://apreshill.github.io/rmd-render-factory/gallery/highlighters/monochrome.html">monochrome</a>
+<a href="https://elastic-lovelace-155848.netlify.comgallery/highlighters/monochrome.html">monochrome</a>
 
 </p>
 
@@ -953,7 +953,7 @@ highlighters
 
 <p>
 
-<a href="https://apreshill.github.io/rmd-render-factory/gallery/highlighters/pygments.html">pygments</a>
+<a href="https://elastic-lovelace-155848.netlify.comgallery/highlighters/pygments.html">pygments</a>
 
 </p>
 
@@ -971,7 +971,7 @@ highlighters
 
 <p>
 
-<a href="https://apreshill.github.io/rmd-render-factory/gallery/highlighters/tango.html">tango</a>
+<a href="https://elastic-lovelace-155848.netlify.comgallery/highlighters/tango.html">tango</a>
 
 </p>
 
@@ -989,7 +989,7 @@ highlighters
 
 <p>
 
-<a href="https://apreshill.github.io/rmd-render-factory/gallery/highlighters/zenburn.html">zenburn</a>
+<a href="https://elastic-lovelace-155848.netlify.comgallery/highlighters/zenburn.html">zenburn</a>
 
 </p>
 
@@ -1036,7 +1036,7 @@ And here is the script to generate the highlighters:
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#rxryhgxahr .gt_table {
+#rnxhxplegp .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -1055,13 +1055,13 @@ And here is the script to generate the highlighters:
   /* table.border.top.color */
 }
 
-#rxryhgxahr .gt_heading {
+#rnxhxplegp .gt_heading {
   background-color: #FFFFFF;
   /* heading.background.color */
   border-bottom-color: #FFFFFF;
 }
 
-#rxryhgxahr .gt_title {
+#rnxhxplegp .gt_title {
   color: #000000;
   font-size: 125%;
   /* heading.title.font.size */
@@ -1072,7 +1072,7 @@ And here is the script to generate the highlighters:
   border-bottom-width: 0;
 }
 
-#rxryhgxahr .gt_subtitle {
+#rnxhxplegp .gt_subtitle {
   color: #000000;
   font-size: 85%;
   /* heading.subtitle.font.size */
@@ -1083,7 +1083,7 @@ And here is the script to generate the highlighters:
   border-top-width: 0;
 }
 
-#rxryhgxahr .gt_bottom_border {
+#rnxhxplegp .gt_bottom_border {
   border-bottom-style: solid;
   /* heading.border.bottom.style */
   border-bottom-width: 2px;
@@ -1092,7 +1092,7 @@ And here is the script to generate the highlighters:
   /* heading.border.bottom.color */
 }
 
-#rxryhgxahr .gt_column_spanner {
+#rnxhxplegp .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #A8A8A8;
@@ -1100,7 +1100,7 @@ And here is the script to generate the highlighters:
   padding-bottom: 4px;
 }
 
-#rxryhgxahr .gt_col_heading {
+#rnxhxplegp .gt_col_heading {
   color: #000000;
   background-color: #FFFFFF;
   /* column_labels.background.color */
@@ -1113,11 +1113,11 @@ And here is the script to generate the highlighters:
   margin: 10px;
 }
 
-#rxryhgxahr .gt_sep_right {
+#rnxhxplegp .gt_sep_right {
   border-right: 5px solid #FFFFFF;
 }
 
-#rxryhgxahr .gt_group_heading {
+#rnxhxplegp .gt_group_heading {
   padding: 8px;
   color: #000000;
   background-color: #FFFFFF;
@@ -1141,7 +1141,7 @@ And here is the script to generate the highlighters:
   vertical-align: middle;
 }
 
-#rxryhgxahr .gt_empty_group_heading {
+#rnxhxplegp .gt_empty_group_heading {
   padding: 0.5px;
   color: #000000;
   background-color: #FFFFFF;
@@ -1165,37 +1165,37 @@ And here is the script to generate the highlighters:
   vertical-align: middle;
 }
 
-#rxryhgxahr .gt_striped {
+#rnxhxplegp .gt_striped {
   background-color: #f2f2f2;
 }
 
-#rxryhgxahr .gt_from_md > :first-child {
+#rnxhxplegp .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#rxryhgxahr .gt_from_md > :last-child {
+#rnxhxplegp .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#rxryhgxahr .gt_row {
+#rnxhxplegp .gt_row {
   padding: 10px;
   /* row.padding */
   margin: 10px;
   vertical-align: middle;
 }
 
-#rxryhgxahr .gt_stub {
+#rnxhxplegp .gt_stub {
   border-right-style: solid;
   border-right-width: 2px;
   border-right-color: #A8A8A8;
   padding-left: 12px;
 }
 
-#rxryhgxahr .gt_stub.gt_row {
+#rnxhxplegp .gt_stub.gt_row {
   background-color: #FFFFFF;
 }
 
-#rxryhgxahr .gt_summary_row {
+#rnxhxplegp .gt_summary_row {
   background-color: #FFFFFF;
   /* summary_row.background.color */
   padding: 6px;
@@ -1204,13 +1204,13 @@ And here is the script to generate the highlighters:
   /* summary_row.text_transform */
 }
 
-#rxryhgxahr .gt_first_summary_row {
+#rnxhxplegp .gt_first_summary_row {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #A8A8A8;
 }
 
-#rxryhgxahr .gt_table_body {
+#rnxhxplegp .gt_table_body {
   border-top-style: solid;
   /* table_body.border.top.style */
   border-top-width: 2px;
@@ -1225,56 +1225,56 @@ And here is the script to generate the highlighters:
   /* table_body.border.bottom.color */
 }
 
-#rxryhgxahr .gt_footnote {
+#rnxhxplegp .gt_footnote {
   font-size: 90%;
   /* footnote.font.size */
   padding: 4px;
   /* footnote.padding */
 }
 
-#rxryhgxahr .gt_sourcenote {
+#rnxhxplegp .gt_sourcenote {
   font-size: 90%;
   /* sourcenote.font.size */
   padding: 4px;
   /* sourcenote.padding */
 }
 
-#rxryhgxahr .gt_center {
+#rnxhxplegp .gt_center {
   text-align: center;
 }
 
-#rxryhgxahr .gt_left {
+#rnxhxplegp .gt_left {
   text-align: left;
 }
 
-#rxryhgxahr .gt_right {
+#rnxhxplegp .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#rxryhgxahr .gt_font_normal {
+#rnxhxplegp .gt_font_normal {
   font-weight: normal;
 }
 
-#rxryhgxahr .gt_font_bold {
+#rnxhxplegp .gt_font_bold {
   font-weight: bold;
 }
 
-#rxryhgxahr .gt_font_italic {
+#rnxhxplegp .gt_font_italic {
   font-style: italic;
 }
 
-#rxryhgxahr .gt_super {
+#rnxhxplegp .gt_super {
   font-size: 65%;
 }
 
-#rxryhgxahr .gt_footnote_glyph {
+#rnxhxplegp .gt_footnote_glyph {
   font-style: italic;
   font-size: 65%;
 }
 </style>
 
-<div id="rxryhgxahr" style="overflow-x:auto;">
+<div id="rnxhxplegp" style="overflow-x:auto;">
 
 <!--gt table start-->
 
@@ -1301,7 +1301,7 @@ outputs
 
 <p>
 
-<a href="https://apreshill.github.io/rmd-render-factory/gallery/outputs/docs/github_document.html">github\_document</a>
+<a href="https://elastic-lovelace-155848.netlify.comgallery/outputs/docs/github_document.html">github\_document</a>
 
 </p>
 
@@ -1319,7 +1319,7 @@ outputs
 
 <p>
 
-<a href="https://apreshill.github.io/rmd-render-factory/gallery/outputs/docs/html_document.html">html\_document</a>
+<a href="https://elastic-lovelace-155848.netlify.comgallery/outputs/docs/html_document.html">html\_document</a>
 
 </p>
 
@@ -1337,7 +1337,7 @@ outputs
 
 <p>
 
-<a href="https://apreshill.github.io/rmd-render-factory/gallery/outputs/docs/html_notebook.nb.html">html\_notebook.nb</a>
+<a href="https://elastic-lovelace-155848.netlify.comgallery/outputs/docs/html_notebook.nb.html">html\_notebook.nb</a>
 
 </p>
 
@@ -1355,7 +1355,7 @@ outputs
 
 <p>
 
-<a href="https://apreshill.github.io/rmd-render-factory/gallery/outputs/exts/flexdashboard::flex_dashboard.html">flexdashboard::flex\_dashboard</a>
+<a href="https://elastic-lovelace-155848.netlify.comgallery/outputs/exts/flexdashboard::flex_dashboard.html">flexdashboard::flex\_dashboard</a>
 
 </p>
 
@@ -1373,7 +1373,7 @@ outputs
 
 <p>
 
-<a href="https://apreshill.github.io/rmd-render-factory/gallery/outputs/exts/revealjs::revealjs_presentation.html">revealjs::revealjs\_presentation</a>
+<a href="https://elastic-lovelace-155848.netlify.comgallery/outputs/exts/revealjs::revealjs_presentation.html">revealjs::revealjs\_presentation</a>
 
 </p>
 
@@ -1391,7 +1391,7 @@ outputs
 
 <p>
 
-<a href="https://apreshill.github.io/rmd-render-factory/gallery/outputs/slides/ioslides_presentation.html">ioslides\_presentation</a>
+<a href="https://elastic-lovelace-155848.netlify.comgallery/outputs/slides/ioslides_presentation.html">ioslides\_presentation</a>
 
 </p>
 
@@ -1409,7 +1409,7 @@ outputs
 
 <p>
 
-<a href="https://apreshill.github.io/rmd-render-factory/gallery/outputs/slides/slidy_presentation.html">slidy\_presentation</a>
+<a href="https://elastic-lovelace-155848.netlify.comgallery/outputs/slides/slidy_presentation.html">slidy\_presentation</a>
 
 </p>
 
@@ -1470,7 +1470,7 @@ And here is the script to generate the outputs:
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#fnzjopwzjp .gt_table {
+#kdadkwzswo .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
@@ -1489,13 +1489,13 @@ And here is the script to generate the outputs:
   /* table.border.top.color */
 }
 
-#fnzjopwzjp .gt_heading {
+#kdadkwzswo .gt_heading {
   background-color: #FFFFFF;
   /* heading.background.color */
   border-bottom-color: #FFFFFF;
 }
 
-#fnzjopwzjp .gt_title {
+#kdadkwzswo .gt_title {
   color: #000000;
   font-size: 125%;
   /* heading.title.font.size */
@@ -1506,7 +1506,7 @@ And here is the script to generate the outputs:
   border-bottom-width: 0;
 }
 
-#fnzjopwzjp .gt_subtitle {
+#kdadkwzswo .gt_subtitle {
   color: #000000;
   font-size: 85%;
   /* heading.subtitle.font.size */
@@ -1517,7 +1517,7 @@ And here is the script to generate the outputs:
   border-top-width: 0;
 }
 
-#fnzjopwzjp .gt_bottom_border {
+#kdadkwzswo .gt_bottom_border {
   border-bottom-style: solid;
   /* heading.border.bottom.style */
   border-bottom-width: 2px;
@@ -1526,7 +1526,7 @@ And here is the script to generate the outputs:
   /* heading.border.bottom.color */
 }
 
-#fnzjopwzjp .gt_column_spanner {
+#kdadkwzswo .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #A8A8A8;
@@ -1534,7 +1534,7 @@ And here is the script to generate the outputs:
   padding-bottom: 4px;
 }
 
-#fnzjopwzjp .gt_col_heading {
+#kdadkwzswo .gt_col_heading {
   color: #000000;
   background-color: #FFFFFF;
   /* column_labels.background.color */
@@ -1547,11 +1547,11 @@ And here is the script to generate the outputs:
   margin: 10px;
 }
 
-#fnzjopwzjp .gt_sep_right {
+#kdadkwzswo .gt_sep_right {
   border-right: 5px solid #FFFFFF;
 }
 
-#fnzjopwzjp .gt_group_heading {
+#kdadkwzswo .gt_group_heading {
   padding: 8px;
   color: #000000;
   background-color: #FFFFFF;
@@ -1575,7 +1575,7 @@ And here is the script to generate the outputs:
   vertical-align: middle;
 }
 
-#fnzjopwzjp .gt_empty_group_heading {
+#kdadkwzswo .gt_empty_group_heading {
   padding: 0.5px;
   color: #000000;
   background-color: #FFFFFF;
@@ -1599,37 +1599,37 @@ And here is the script to generate the outputs:
   vertical-align: middle;
 }
 
-#fnzjopwzjp .gt_striped {
+#kdadkwzswo .gt_striped {
   background-color: #f2f2f2;
 }
 
-#fnzjopwzjp .gt_from_md > :first-child {
+#kdadkwzswo .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#fnzjopwzjp .gt_from_md > :last-child {
+#kdadkwzswo .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#fnzjopwzjp .gt_row {
+#kdadkwzswo .gt_row {
   padding: 10px;
   /* row.padding */
   margin: 10px;
   vertical-align: middle;
 }
 
-#fnzjopwzjp .gt_stub {
+#kdadkwzswo .gt_stub {
   border-right-style: solid;
   border-right-width: 2px;
   border-right-color: #A8A8A8;
   padding-left: 12px;
 }
 
-#fnzjopwzjp .gt_stub.gt_row {
+#kdadkwzswo .gt_stub.gt_row {
   background-color: #FFFFFF;
 }
 
-#fnzjopwzjp .gt_summary_row {
+#kdadkwzswo .gt_summary_row {
   background-color: #FFFFFF;
   /* summary_row.background.color */
   padding: 6px;
@@ -1638,13 +1638,13 @@ And here is the script to generate the outputs:
   /* summary_row.text_transform */
 }
 
-#fnzjopwzjp .gt_first_summary_row {
+#kdadkwzswo .gt_first_summary_row {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #A8A8A8;
 }
 
-#fnzjopwzjp .gt_table_body {
+#kdadkwzswo .gt_table_body {
   border-top-style: solid;
   /* table_body.border.top.style */
   border-top-width: 2px;
@@ -1659,56 +1659,56 @@ And here is the script to generate the outputs:
   /* table_body.border.bottom.color */
 }
 
-#fnzjopwzjp .gt_footnote {
+#kdadkwzswo .gt_footnote {
   font-size: 90%;
   /* footnote.font.size */
   padding: 4px;
   /* footnote.padding */
 }
 
-#fnzjopwzjp .gt_sourcenote {
+#kdadkwzswo .gt_sourcenote {
   font-size: 90%;
   /* sourcenote.font.size */
   padding: 4px;
   /* sourcenote.padding */
 }
 
-#fnzjopwzjp .gt_center {
+#kdadkwzswo .gt_center {
   text-align: center;
 }
 
-#fnzjopwzjp .gt_left {
+#kdadkwzswo .gt_left {
   text-align: left;
 }
 
-#fnzjopwzjp .gt_right {
+#kdadkwzswo .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#fnzjopwzjp .gt_font_normal {
+#kdadkwzswo .gt_font_normal {
   font-weight: normal;
 }
 
-#fnzjopwzjp .gt_font_bold {
+#kdadkwzswo .gt_font_bold {
   font-weight: bold;
 }
 
-#fnzjopwzjp .gt_font_italic {
+#kdadkwzswo .gt_font_italic {
   font-style: italic;
 }
 
-#fnzjopwzjp .gt_super {
+#kdadkwzswo .gt_super {
   font-size: 65%;
 }
 
-#fnzjopwzjp .gt_footnote_glyph {
+#kdadkwzswo .gt_footnote_glyph {
   font-style: italic;
   font-size: 65%;
 }
 </style>
 
-<div id="fnzjopwzjp" style="overflow-x:auto;">
+<div id="kdadkwzswo" style="overflow-x:auto;">
 
 <!--gt table start-->
 
@@ -1735,7 +1735,7 @@ viridis-options
 
 <p>
 
-<a href="https://apreshill.github.io/rmd-render-factory/gallery/viridis-options/cividis.html">cividis</a>
+<a href="https://elastic-lovelace-155848.netlify.comgallery/viridis-options/cividis.html">cividis</a>
 
 </p>
 
@@ -1753,7 +1753,7 @@ viridis-options
 
 <p>
 
-<a href="https://apreshill.github.io/rmd-render-factory/gallery/viridis-options/inferno.html">inferno</a>
+<a href="https://elastic-lovelace-155848.netlify.comgallery/viridis-options/inferno.html">inferno</a>
 
 </p>
 
@@ -1771,7 +1771,7 @@ viridis-options
 
 <p>
 
-<a href="https://apreshill.github.io/rmd-render-factory/gallery/viridis-options/magma.html">magma</a>
+<a href="https://elastic-lovelace-155848.netlify.comgallery/viridis-options/magma.html">magma</a>
 
 </p>
 
@@ -1789,7 +1789,7 @@ viridis-options
 
 <p>
 
-<a href="https://apreshill.github.io/rmd-render-factory/gallery/viridis-options/plasma.html">plasma</a>
+<a href="https://elastic-lovelace-155848.netlify.comgallery/viridis-options/plasma.html">plasma</a>
 
 </p>
 
@@ -1807,7 +1807,7 @@ viridis-options
 
 <p>
 
-<a href="https://apreshill.github.io/rmd-render-factory/gallery/viridis-options/viridis.html">viridis</a>
+<a href="https://elastic-lovelace-155848.netlify.comgallery/viridis-options/viridis.html">viridis</a>
 
 </p>
 

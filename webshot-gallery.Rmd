@@ -14,18 +14,16 @@ Let's try themes first...
 
 ```{r try1}
 paths <- fs::dir_ls(path = "thumbnails", regexp = "themes") %>% 
-  tibble(image_path = ., image_placeholder = 1:length(.))
+  tibble(image_path = as.character(.), image_placeholder = 1:length(.))
 
 paths
 
 tab_1 <- paths %>% 
   gt() %>% 
   text_transform(
-    locations = cells_data(vars(image_placeholder)),
+    locations = cells_data(vars(image_path)),
     fn = function(x) {
-      local_image(
-        file = image_path,
-      )
+      knitr::include_graphics(x)
     }
   )
 

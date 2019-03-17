@@ -1,0 +1,48 @@
+---
+title: "CSS Themes"
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, warning = FALSE, message = FALSE)
+source("utils.R")
+```
+
+
+R Markdown comes with some several built-in `theme`s. Themes are drawn from the Bootswatch theme library. Valid themes include `r knitr::combine_words(rmarkdown:::themes(), before='\x60')`. Pass `null` for no theme. To use a theme for a single .html file output from a .Rmd file, you edit your YAML:
+
+```yaml
+title: "Texas Housing Prices"
+output_format: 
+  html_document:
+    theme: flatly
+```
+
+# Options gallery
+
+
+```{r}
+theme_links <- link_factory(type = "themes")
+#table_factory(links = theme_links)
+```
+
+```{r results = "asis"}
+theme_links %>% 
+  select(contains("list", ignore.case = TRUE), contains("image_html")) %>% 
+  gt::gt() %>% 
+    gt::fmt_markdown(
+      columns = everything()
+    )
+```
+
+---
+
+# My render script
+
+And here is the script to generate the themes:
+
+```{r}
+render_factory("themes")
+```
+
+
+

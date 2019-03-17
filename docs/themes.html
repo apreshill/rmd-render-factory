@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+
+<meta charset="utf-8" />
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta name="generator" content="pandoc" />
+
+
+
+
+<title>CSS Themes</title>
+
+<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<link href="site_libs/bootstrap-3.3.5/css/yeti.min.css" rel="stylesheet" />
+<script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
+<script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
+<link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
+<script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
+<script src="site_libs/navigation-1.1/tabsets.js"></script>
+<link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
+<link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
+
+
+<style type="text/css">code{white-space: pre;}</style>
+<style type="text/css" data-origin="pandoc">
+a.sourceLine { display: inline-block; line-height: 1.25; }
+a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
+a.sourceLine:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode { white-space: pre; position: relative; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+code.sourceCode { white-space: pre-wrap; }
+a.sourceLine { text-indent: -1em; padding-left: 1em; }
+}
+pre.numberSource a.sourceLine
+  { position: relative; left: -4em; }
+pre.numberSource a.sourceLine::before
+  { content: attr(data-line-number);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; pointer-events: all; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  { background-color: #f8f8f8; }
+@media screen {
+a.sourceLine::before { text-decoration: underline; }
+}
+code span.al { color: #ef2929; } /* Alert */
+code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #c4a000; } /* Attribute */
+code span.bn { color: #0000cf; } /* BaseN */
+code span.cf { color: #204a87; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4e9a06; } /* Char */
+code span.cn { color: #000000; } /* Constant */
+code span.co { color: #8f5902; font-style: italic; } /* Comment */
+code span.cv { color: #8f5902; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #8f5902; font-weight: bold; font-style: italic; } /* Documentation */
+code span.dt { color: #204a87; } /* DataType */
+code span.dv { color: #0000cf; } /* DecVal */
+code span.er { color: #a40000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #0000cf; } /* Float */
+code span.fu { color: #000000; } /* Function */
+code span.im { } /* Import */
+code span.in { color: #8f5902; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #204a87; font-weight: bold; } /* Keyword */
+code span.op { color: #ce5c00; font-weight: bold; } /* Operator */
+code span.ot { color: #8f5902; } /* Other */
+code span.pp { color: #8f5902; font-style: italic; } /* Preprocessor */
+code span.sc { color: #000000; } /* SpecialChar */
+code span.ss { color: #4e9a06; } /* SpecialString */
+code span.st { color: #4e9a06; } /* String */
+code span.va { color: #000000; } /* Variable */
+code span.vs { color: #4e9a06; } /* VerbatimString */
+code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warning */
+
+</style>
+<script>
+// apply pandoc div.sourceCode style to pre.sourceCode instead
+(function() {
+  var sheets = document.styleSheets;
+  for (var i = 0; i < sheets.length; i++) {
+    if (sheets[i].ownerNode.dataset["origin"] !== "pandoc") continue;
+    try { var rules = sheets[i].cssRules; } catch (e) { continue; }
+    for (var j = 0; j < rules.length; j++) {
+      var rule = rules[j];
+      // check if there is a div.sourceCode rule
+      if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
+      var style = rule.style.cssText;
+      // check if color or background-color is set
+      if (rule.style.color === '' || rule.style.backgroundColor === '') continue;
+      // replace div.sourceCode by a pre.sourceCode rule
+      sheets[i].deleteRule(j);
+      sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
+    }
+  }
+})();
+</script>
+<style type="text/css">
+  pre:not([class]) {
+    background-color: white;
+  }
+</style>
+
+
+<style type="text/css">
+h1 {
+  font-size: 34px;
+}
+h1.title {
+  font-size: 38px;
+}
+h2 {
+  font-size: 30px;
+}
+h3 {
+  font-size: 24px;
+}
+h4 {
+  font-size: 18px;
+}
+h5 {
+  font-size: 16px;
+}
+h6 {
+  font-size: 12px;
+}
+.table th:not([align]) {
+  text-align: left;
+}
+</style>
+
+
+
+
+<style type = "text/css">
+.main-container {
+  max-width: 940px;
+  margin-left: auto;
+  margin-right: auto;
+}
+code {
+  color: inherit;
+  background-color: rgba(0, 0, 0, 0.04);
+}
+img {
+  max-width:100%;
+  height: auto;
+}
+.tabbed-pane {
+  padding-top: 12px;
+}
+.html-widget {
+  margin-bottom: 20px;
+}
+button.code-folding-btn:focus {
+  outline: none;
+}
+summary {
+  display: list-item;
+}
+</style>
+
+
+<style type="text/css">
+/* padding for bootstrap navbar */
+body {
+  padding-top: 45px;
+  padding-bottom: 40px;
+}
+/* offset scroll position for anchor links (for fixed navbar)  */
+.section h1 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h2 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h3 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h4 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h5 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.section h6 {
+  padding-top: 50px;
+  margin-top: -50px;
+}
+.dropdown-submenu {
+  position: relative;
+}
+.dropdown-submenu>.dropdown-menu {
+  top: 0;
+  left: 100%;
+  margin-top: -6px;
+  margin-left: -1px;
+  border-radius: 0 6px 6px 6px;
+}
+.dropdown-submenu:hover>.dropdown-menu {
+  display: block;
+}
+.dropdown-submenu>a:after {
+  display: block;
+  content: " ";
+  float: right;
+  width: 0;
+  height: 0;
+  border-color: transparent;
+  border-style: solid;
+  border-width: 5px 0 5px 5px;
+  border-left-color: #cccccc;
+  margin-top: 5px;
+  margin-right: -10px;
+}
+.dropdown-submenu:hover>a:after {
+  border-left-color: #ffffff;
+}
+.dropdown-submenu.pull-left {
+  float: none;
+}
+.dropdown-submenu.pull-left>.dropdown-menu {
+  left: -100%;
+  margin-left: 10px;
+  border-radius: 6px 0 6px 6px;
+}
+</style>
+
+<script>
+// manage active state of menu based on current page
+$(document).ready(function () {
+  // active menu anchor
+  href = window.location.pathname
+  href = href.substr(href.lastIndexOf('/') + 1)
+  if (href === "")
+    href = "index.html";
+  var menuAnchor = $('a[href="' + href + '"]');
+
+  // mark it active
+  menuAnchor.parent().addClass('active');
+
+  // if it's got a parent navbar menu mark it active as well
+  menuAnchor.closest('li.dropdown').addClass('active');
+});
+</script>
+
+<!-- tabsets -->
+
+<style type="text/css">
+.tabset-dropdown > .nav-tabs {
+  display: inline-table;
+  max-height: 500px;
+  min-height: 44px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs > li.active:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li.active:before {
+  content: "&#xe258;";
+  border: none;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open:before {
+  content: "";
+  font-family: 'Glyphicons Halflings';
+  display: inline-block;
+  padding: 10px;
+  border-right: 1px solid #ddd;
+}
+
+.tabset-dropdown > .nav-tabs > li.active {
+  display: block;
+}
+
+.tabset-dropdown > .nav-tabs > li > a,
+.tabset-dropdown > .nav-tabs > li > a:focus,
+.tabset-dropdown > .nav-tabs > li > a:hover {
+  border: none;
+  display: inline-block;
+  border-radius: 4px;
+}
+
+.tabset-dropdown > .nav-tabs.nav-tabs-open > li {
+  display: block;
+  float: none;
+}
+
+.tabset-dropdown > .nav-tabs > li {
+  display: none;
+}
+</style>
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open')
+  });
+});
+</script>
+
+<!-- code folding -->
+
+
+
+<script>
+$(document).ready(function ()  {
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
+</script>
+
+<style type="text/css">
+
+#TOC {
+  margin: 25px 0px 20px 0px;
+}
+@media (max-width: 768px) {
+#TOC {
+  position: relative;
+  width: 100%;
+}
+}
+
+
+.toc-content {
+  padding-left: 30px;
+  padding-right: 40px;
+}
+
+div.main-container {
+  max-width: 1200px;
+}
+
+div.tocify {
+  width: 20%;
+  max-width: 260px;
+  max-height: 85%;
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+  div.tocify {
+    width: 25%;
+  }
+}
+
+@media (max-width: 767px) {
+  div.tocify {
+    width: 100%;
+    max-width: none;
+  }
+}
+
+.tocify ul, .tocify li {
+  line-height: 20px;
+}
+
+.tocify-subheader .tocify-item {
+  font-size: 0.90em;
+  padding-left: 25px;
+  text-indent: 0;
+}
+
+.tocify .list-group-item {
+  border-radius: 0px;
+}
+
+
+</style>
+
+
+
+</head>
+
+<body>
+
+
+<div class="container-fluid main-container">
+
+
+<!-- setup 3col/9col grid for toc_float and main content  -->
+<div class="row-fluid">
+<div class="col-xs-12 col-sm-4 col-md-3">
+<div id="TOC" class="tocify">
+</div>
+</div>
+
+<div class="toc-content col-xs-12 col-sm-8 col-md-9">
+
+
+
+
+<div class="navbar navbar-inverse  navbar-fixed-top" role="navigation">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="index.html">.Rmd render factory</a>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <ul class="nav navbar-nav">
+        <li>
+  <a href="index.html">Home</a>
+</li>
+<li>
+  <a href="about.html">About</a>
+</li>
+<li>
+  <a href="themes.html">Themes</a>
+</li>
+<li>
+  <a href="highlighters.html">Highlighters</a>
+</li>
+<li>
+  <a href="outputs.html">Outputs</a>
+</li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li>
+  <a href="https://github.com/apreshill/rmd-render-factory">
+    <span class="fa fa-github fa-lg"></span>
+     
+  </a>
+</li>
+      </ul>
+    </div><!--/.nav-collapse -->
+  </div><!--/.container -->
+</div><!--/.navbar -->
+
+<div class="fluid-row" id="header">
+
+
+
+<h1 class="title toc-ignore">CSS Themes</h1>
+
+</div>
+
+
+<p>R Markdown comes with some several built-in <code>theme</code>s. Themes are drawn from the Bootswatch theme library. Valid themes include <code>default</code>, <code>cerulean</code>, <code>journal</code>, <code>flatly</code>, <code>darkly</code>, <code>readable</code>, <code>spacelab</code>, <code>united</code>, <code>cosmo</code>, <code>lumen</code>, <code>paper</code>, <code>sandstone</code>, <code>simplex</code>, and <code>yeti</code>. Pass <code>null</code> for no theme. To use a theme for a single .html file output from a .Rmd file, you edit your YAML:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="fu">title:</span><span class="at"> </span><span class="st">&quot;Texas Housing Prices&quot;</span></a>
+<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="fu">output_format:</span><span class="at"> </span></a>
+<a class="sourceLine" id="cb1-3" data-line-number="3">  <span class="fu">html_document:</span></a>
+<a class="sourceLine" id="cb1-4" data-line-number="4">    <span class="fu">theme:</span><span class="at"> flatly</span></a></code></pre></div>
+<div id="options-gallery" class="section level1">
+<h1>Options gallery</h1>
+<style>html {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
+}
+
+#mriolzoegf .gt_table {
+  display: table;
+  border-collapse: collapse;
+  margin-left: auto;
+  margin-right: auto;
+  color: #000000;
+  font-size: 16px;
+  background-color: #FFFFFF;
+  /* table.background.color */
+  width: auto;
+  /* table.width */
+  border-top-style: solid;
+  /* table.border.top.style */
+  border-top-width: 2px;
+  /* table.border.top.width */
+  border-top-color: #A8A8A8;
+  /* table.border.top.color */
+}
+
+#mriolzoegf .gt_heading {
+  background-color: #FFFFFF;
+  /* heading.background.color */
+  border-bottom-color: #FFFFFF;
+}
+
+#mriolzoegf .gt_title {
+  color: #000000;
+  font-size: 125%;
+  /* heading.title.font.size */
+  padding-top: 4px;
+  /* heading.top.padding */
+  padding-bottom: 1px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#mriolzoegf .gt_subtitle {
+  color: #000000;
+  font-size: 85%;
+  /* heading.subtitle.font.size */
+  padding-top: 1px;
+  padding-bottom: 4px;
+  /* heading.bottom.padding */
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#mriolzoegf .gt_bottom_border {
+  border-bottom-style: solid;
+  /* heading.border.bottom.style */
+  border-bottom-width: 2px;
+  /* heading.border.bottom.width */
+  border-bottom-color: #A8A8A8;
+  /* heading.border.bottom.color */
+}
+
+#mriolzoegf .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#mriolzoegf .gt_col_heading {
+  color: #000000;
+  background-color: #FFFFFF;
+  /* column_labels.background.color */
+  font-size: 16px;
+  /* column_labels.font.size */
+  font-weight: initial;
+  /* column_labels.font.weight */
+  vertical-align: middle;
+  padding: 10px;
+  margin: 10px;
+}
+
+#mriolzoegf .gt_sep_right {
+  border-right: 5px solid #FFFFFF;
+}
+
+#mriolzoegf .gt_group_heading {
+  padding: 8px;
+  color: #000000;
+  background-color: #FFFFFF;
+  /* row_group.background.color */
+  font-size: 16px;
+  /* row_group.font.size */
+  font-weight: initial;
+  /* row_group.font.weight */
+  border-top-style: solid;
+  /* row_group.border.top.style */
+  border-top-width: 2px;
+  /* row_group.border.top.width */
+  border-top-color: #A8A8A8;
+  /* row_group.border.top.color */
+  border-bottom-style: solid;
+  /* row_group.border.bottom.style */
+  border-bottom-width: 2px;
+  /* row_group.border.bottom.width */
+  border-bottom-color: #A8A8A8;
+  /* row_group.border.bottom.color */
+  vertical-align: middle;
+}
+
+#mriolzoegf .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #000000;
+  background-color: #FFFFFF;
+  /* row_group.background.color */
+  font-size: 16px;
+  /* row_group.font.size */
+  font-weight: initial;
+  /* row_group.font.weight */
+  border-top-style: solid;
+  /* row_group.border.top.style */
+  border-top-width: 2px;
+  /* row_group.border.top.width */
+  border-top-color: #A8A8A8;
+  /* row_group.border.top.color */
+  border-bottom-style: solid;
+  /* row_group.border.bottom.style */
+  border-bottom-width: 2px;
+  /* row_group.border.bottom.width */
+  border-bottom-color: #A8A8A8;
+  /* row_group.border.bottom.color */
+  vertical-align: middle;
+}
+
+#mriolzoegf .gt_striped {
+  background-color: #f2f2f2;
+}
+
+#mriolzoegf .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#mriolzoegf .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#mriolzoegf .gt_row {
+  padding: 10px;
+  /* row.padding */
+  margin: 10px;
+  vertical-align: middle;
+}
+
+#mriolzoegf .gt_stub {
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #A8A8A8;
+  padding-left: 12px;
+}
+
+#mriolzoegf .gt_stub.gt_row {
+  background-color: #FFFFFF;
+}
+
+#mriolzoegf .gt_summary_row {
+  background-color: #FFFFFF;
+  /* summary_row.background.color */
+  padding: 6px;
+  /* summary_row.padding */
+  text-transform: inherit;
+  /* summary_row.text_transform */
+}
+
+#mriolzoegf .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+}
+
+#mriolzoegf .gt_table_body {
+  border-top-style: solid;
+  /* table_body.border.top.style */
+  border-top-width: 2px;
+  /* table_body.border.top.width */
+  border-top-color: #A8A8A8;
+  /* table_body.border.top.color */
+  border-bottom-style: solid;
+  /* table_body.border.bottom.style */
+  border-bottom-width: 2px;
+  /* table_body.border.bottom.width */
+  border-bottom-color: #A8A8A8;
+  /* table_body.border.bottom.color */
+}
+
+#mriolzoegf .gt_footnote {
+  font-size: 90%;
+  /* footnote.font.size */
+  padding: 4px;
+  /* footnote.padding */
+}
+
+#mriolzoegf .gt_sourcenote {
+  font-size: 90%;
+  /* sourcenote.font.size */
+  padding: 4px;
+  /* sourcenote.padding */
+}
+
+#mriolzoegf .gt_center {
+  text-align: center;
+}
+
+#mriolzoegf .gt_left {
+  text-align: left;
+}
+
+#mriolzoegf .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#mriolzoegf .gt_font_normal {
+  font-weight: normal;
+}
+
+#mriolzoegf .gt_font_bold {
+  font-weight: bold;
+}
+
+#mriolzoegf .gt_font_italic {
+  font-style: italic;
+}
+
+#mriolzoegf .gt_super {
+  font-size: 65%;
+}
+
+#mriolzoegf .gt_footnote_glyph {
+  font-style: italic;
+  font-size: 65%;
+}
+</style>
+<div id="mriolzoegf" style="overflow-x:auto;"><!--gt table start-->
+<table class='gt_table'>
+<tr>
+<th class='gt_col_heading gt_center' rowspan='1' colspan='1'>List of themes</th>
+<th class='gt_col_heading gt_center' rowspan='1' colspan='1'>image_html</th>
+</tr>
+<tbody class='gt_table_body'>
+<tr>
+<td class='gt_row gt_center'><div class='gt_from_md'><p><a href="https://elastic-lovelace-155848.netlify.com/gallery/themes/cerulean.html">cerulean</a></p>
+</div></td>
+<td class='gt_row gt_center'><div class='gt_from_md'><p><a href='https://elastic-lovelace-155848.netlify.com/gallery/themes/cerulean.html'><img src='thumbnails/themes-cerulean.png'></a></p>
+</div></td>
+</tr>
+<tr>
+<td class='gt_row gt_center gt_striped'><div class='gt_from_md'><p><a href="https://elastic-lovelace-155848.netlify.com/gallery/themes/cosmo.html">cosmo</a></p>
+</div></td>
+<td class='gt_row gt_center gt_striped'><div class='gt_from_md'><p><a href='https://elastic-lovelace-155848.netlify.com/gallery/themes/cosmo.html'><img src='thumbnails/themes-cosmo.png'></a></p>
+</div></td>
+</tr>
+<tr>
+<td class='gt_row gt_center'><div class='gt_from_md'><p><a href="https://elastic-lovelace-155848.netlify.com/gallery/themes/darkly.html">darkly</a></p>
+</div></td>
+<td class='gt_row gt_center'><div class='gt_from_md'><p><a href='https://elastic-lovelace-155848.netlify.com/gallery/themes/darkly.html'><img src='thumbnails/themes-darkly.png'></a></p>
+</div></td>
+</tr>
+<tr>
+<td class='gt_row gt_center gt_striped'><div class='gt_from_md'><p><a href="https://elastic-lovelace-155848.netlify.com/gallery/themes/default.html">default</a></p>
+</div></td>
+<td class='gt_row gt_center gt_striped'><div class='gt_from_md'><p><a href='https://elastic-lovelace-155848.netlify.com/gallery/themes/default.html'><img src='thumbnails/themes-default.png'></a></p>
+</div></td>
+</tr>
+<tr>
+<td class='gt_row gt_center'><div class='gt_from_md'><p><a href="https://elastic-lovelace-155848.netlify.com/gallery/themes/flatly.html">flatly</a></p>
+</div></td>
+<td class='gt_row gt_center'><div class='gt_from_md'><p><a href='https://elastic-lovelace-155848.netlify.com/gallery/themes/flatly.html'><img src='thumbnails/themes-flatly.png'></a></p>
+</div></td>
+</tr>
+<tr>
+<td class='gt_row gt_center gt_striped'><div class='gt_from_md'><p><a href="https://elastic-lovelace-155848.netlify.com/gallery/themes/journal.html">journal</a></p>
+</div></td>
+<td class='gt_row gt_center gt_striped'><div class='gt_from_md'><p><a href='https://elastic-lovelace-155848.netlify.com/gallery/themes/journal.html'><img src='thumbnails/themes-journal.png'></a></p>
+</div></td>
+</tr>
+<tr>
+<td class='gt_row gt_center'><div class='gt_from_md'><p><a href="https://elastic-lovelace-155848.netlify.com/gallery/themes/lumen.html">lumen</a></p>
+</div></td>
+<td class='gt_row gt_center'><div class='gt_from_md'><p><a href='https://elastic-lovelace-155848.netlify.com/gallery/themes/lumen.html'><img src='thumbnails/themes-lumen.png'></a></p>
+</div></td>
+</tr>
+<tr>
+<td class='gt_row gt_center gt_striped'><div class='gt_from_md'><p><a href="https://elastic-lovelace-155848.netlify.com/gallery/themes/paper.html">paper</a></p>
+</div></td>
+<td class='gt_row gt_center gt_striped'><div class='gt_from_md'><p><a href='https://elastic-lovelace-155848.netlify.com/gallery/themes/paper.html'><img src='thumbnails/themes-paper.png'></a></p>
+</div></td>
+</tr>
+<tr>
+<td class='gt_row gt_center'><div class='gt_from_md'><p><a href="https://elastic-lovelace-155848.netlify.com/gallery/themes/readable.html">readable</a></p>
+</div></td>
+<td class='gt_row gt_center'><div class='gt_from_md'><p><a href='https://elastic-lovelace-155848.netlify.com/gallery/themes/readable.html'><img src='thumbnails/themes-readable.png'></a></p>
+</div></td>
+</tr>
+<tr>
+<td class='gt_row gt_center gt_striped'><div class='gt_from_md'><p><a href="https://elastic-lovelace-155848.netlify.com/gallery/themes/sandstone.html">sandstone</a></p>
+</div></td>
+<td class='gt_row gt_center gt_striped'><div class='gt_from_md'><p><a href='https://elastic-lovelace-155848.netlify.com/gallery/themes/sandstone.html'><img src='thumbnails/themes-sandstone.png'></a></p>
+</div></td>
+</tr>
+<tr>
+<td class='gt_row gt_center'><div class='gt_from_md'><p><a href="https://elastic-lovelace-155848.netlify.com/gallery/themes/simplex.html">simplex</a></p>
+</div></td>
+<td class='gt_row gt_center'><div class='gt_from_md'><p><a href='https://elastic-lovelace-155848.netlify.com/gallery/themes/simplex.html'><img src='thumbnails/themes-simplex.png'></a></p>
+</div></td>
+</tr>
+<tr>
+<td class='gt_row gt_center gt_striped'><div class='gt_from_md'><p><a href="https://elastic-lovelace-155848.netlify.com/gallery/themes/spacelab.html">spacelab</a></p>
+</div></td>
+<td class='gt_row gt_center gt_striped'><div class='gt_from_md'><p><a href='https://elastic-lovelace-155848.netlify.com/gallery/themes/spacelab.html'><img src='thumbnails/themes-spacelab.png'></a></p>
+</div></td>
+</tr>
+<tr>
+<td class='gt_row gt_center'><div class='gt_from_md'><p><a href="https://elastic-lovelace-155848.netlify.com/gallery/themes/united.html">united</a></p>
+</div></td>
+<td class='gt_row gt_center'><div class='gt_from_md'><p><a href='https://elastic-lovelace-155848.netlify.com/gallery/themes/united.html'><img src='thumbnails/themes-united.png'></a></p>
+</div></td>
+</tr>
+<tr>
+<td class='gt_row gt_center gt_striped'><div class='gt_from_md'><p><a href="https://elastic-lovelace-155848.netlify.com/gallery/themes/yeti.html">yeti</a></p>
+</div></td>
+<td class='gt_row gt_center gt_striped'><div class='gt_from_md'><p><a href='https://elastic-lovelace-155848.netlify.com/gallery/themes/yeti.html'><img src='thumbnails/themes-yeti.png'></a></p>
+</div></td>
+</tr>
+</tbody>
+</table>
+<!--gt table end-->
+</div>
+<hr />
+</div>
+<div id="my-render-script" class="section level1">
+<h1>My render script</h1>
+<p>And here is the script to generate the themes:</p>
+<pre><code>## purrr::walk(
+##   .x = as.list(rmarkdown:::themes()),
+##   ~ rmarkdown::render(
+##     &quot;input/single.Rmd&quot;,
+##     output_file = glue::glue(&quot;{.}.html&quot;),
+##     output_dir = &quot;gallery/themes/&quot;,
+##     output_options = list(
+##       toc = TRUE, 
+##       toc_float = TRUE,
+##       code_download = TRUE,
+##       theme = .x
+##     ),
+##     params = list(dynamictitle = glue::glue(&quot;Texas Housing Prices: `{.}` theme&quot;))
+##   )
+## )</code></pre>
+</div>
+
+
+
+</div>
+</div>
+
+</div>
+
+<script>
+
+// add bootstrap table styles to pandoc tables
+function bootstrapStylePandocTables() {
+  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+}
+$(document).ready(function () {
+  bootstrapStylePandocTables();
+});
+
+
+</script>
+
+<!-- dynamically load mathjax for compatibility with self-contained -->
+<script>
+  (function () {
+    var script = document.createElement("script");
+    script.type = "text/javascript";
+    script.src  = "https://mathjax.rstudio.com/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML";
+    document.getElementsByTagName("head")[0].appendChild(script);
+  })();
+</script>
+
+</body>
+</html>

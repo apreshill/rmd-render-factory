@@ -15,7 +15,7 @@ library(tidyverse)
 ```{r factory_functions}
 link_factory <- function(dir = "gallery", 
                          type = c("themes", "highlighters", "outputs", "viridis-options"),
-                         root = "https://apreshill.github.io/rmd-render-factory/"){
+                         root = "https://elastic-lovelace-155848.netlify.com"){
   if(!missing(type) & length(type) > 1) stop("Only one 'type' allowed.")
   library(dplyr)
   type <- match.arg(type)
@@ -53,7 +53,9 @@ webshot_factory <- function(links){
     mutate(type = fs::path_rel(rel_path, start = "gallery") %>% fs::path_dir(.))
   webshot::webshot(glue::glue("{for_shots$abs_path}"),
                    glue::glue("thumbnails/{for_shots$type}-{for_shots$label_path}.png"), 
-                   cliprect = "viewport")
+                   cliprect = "viewport") %>% 
+    resize("55%") %>%
+    shrink()
 }
 
 #' this function prints the contents of an R script in a readable code chunk "as is"
@@ -69,7 +71,7 @@ render_factory <- function(type = c("single", "themes", "highlighters", "outputs
 All of the links below derive from a single R Markdown file titled `index.Rmd`. Here is the YAML:
 
 ```{r}
-cat(readr::read_lines("index.Rmd", n_max = 11), sep = "\n")
+cat(readr::read_lines("input/single.Rmd", n_max = 11), sep = "\n")
 ```
 
 
@@ -86,7 +88,7 @@ output_format:
 ```
 
 
-```{r results = "asis"}
+```{r}
 theme_links <- link_factory(type = "themes")
 table_factory(links = theme_links)
 ```

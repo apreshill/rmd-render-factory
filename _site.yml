@@ -1,15 +1,27 @@
-name: "my-website"
-theme: "flatly"
+name: ".Rmd render factory"
 output_dir: "docs"
+exclude: ["README*"]
 navbar:
-  title: "My Website"
+  type: inverse
+  title: ".Rmd render factory"
   left:
     - text: "Home"
       href: index.html
     - text: "About"
       href: about.html
+    - text: "Themes"
+      href: themes.html
+    - text: "Highlighters"
+      href: highlighters.html
+    - text: "Outputs"
+      href: outputs.html
+  right:
+    - icon: fa-github fa-lg
+      href: https://github.com/apreshill/rmd-render-factory
 output:
   html_document:
-    theme: flatly
+    theme: yeti
     highlight: tango
+    toc: true
+    toc_float: true
 
