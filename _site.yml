@@ -1,5 +1,6 @@
 name: "my-website"
 theme: "flatly"
+output_dir: "docs"
 navbar:
   title: "My Website"
   left:
