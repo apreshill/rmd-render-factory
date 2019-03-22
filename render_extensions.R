@@ -1,5 +1,5 @@
 exts <- c("flexdashboard::flex_dashboard", "revealjs::revealjs_presentation",
-          "pagedown::html_paged")
+          "pagedown::html_paged", "xaringan::moon_reader")
 # won't work: any tufte
 
 purrr::walk(

@@ -7,7 +7,8 @@ params:
 output:
   html_document:
     highlighter: null
-    theme: null
+    theme: "flatly"
+    code_download: TRUE
 ---
 
 ```{r setup, include = FALSE}
