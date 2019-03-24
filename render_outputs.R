@@ -1,8 +1,7 @@
-doc_outputs <- c("html_notebook", "html_document", "pdf_document", 
-                 "word_document", "odt_document", "rtf_document", "github_document")
+doc_outputs <- grep('^[^_]+_(document|notebook)$', ls(asNamespace('rmarkdown')), value = TRUE)
 
 purrr::walk(
-  .x = doc_outputs,
+  .x = as.list(doc_outputs),
   ~ rmarkdown::render(
     "input/single.Rmd",
     output_file = glue::glue("{.}"),
@@ -12,10 +11,10 @@ purrr::walk(
     )
 )
 
-slide_outputs <- c("ioslides_presentation", "slidy_presentation", "beamer_presentation", "powerpoint_presentation")
+slide_outputs <- grep('^[^_]+_(presentation)$', ls(asNamespace('rmarkdown')), value = TRUE)
 
 purrr::walk(
-  .x = slide_outputs,
+  .x = as.list(slide_outputs),
   ~ rmarkdown::render(
     "input/single.Rmd",
     output_file = glue::glue("{.}"),
