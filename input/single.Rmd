@@ -4,6 +4,7 @@ author: "Alison Hill"
 params:
   dynamictitle: Texas Housing Prices
   viridis_palette: viridis
+  viridis_alpha: 1
 output:
   html_document:
     highlighter: null
@@ -21,7 +22,8 @@ The `txhousing` data is available when you install and load the `ggplot2` packag
 ```{r}
 library(tidyverse)
 txsamp <- txhousing %>% 
-  filter(city %in% c("Houston", "Fort Worth", "San Antonio", "Dallas", "Austin"))
+  filter(city %in% c("Houston", "Fort Worth", "San Antonio", 
+                     "Dallas", "Austin"))
 ```
 
 # Austin is expensive
@@ -29,7 +31,8 @@ txsamp <- txhousing %>%
 ```{r}
 ggplot(data = txsamp, aes(x = sales, y = median)) +
    geom_point(aes(colour = city)) + 
-   scale_colour_viridis_d("City\nCenter", option = params$viridis_palette)
+   scale_colour_viridis_d("City\nCenter", option = params$viridis_palette, 
+                          alpha = params$viridis_alpha)
 ```
 
 # Austin prices on the rise 
@@ -37,7 +40,8 @@ ggplot(data = txsamp, aes(x = sales, y = median)) +
 ```{r}
 ggplot(data = filter(txsamp, city == "Austin"), aes(x = sales, y = median)) +
    geom_point(aes(colour = year)) + 
-   scale_colour_viridis_c("Austin by year", option = params$viridis_palette, direction = -1) 
+   scale_colour_viridis_c("Austin by year", option = params$viridis_palette, 
+                          alpha = params$viridis_alpha, direction = -1) 
 ```
 
 # Fort Worth has more affordable housing
@@ -46,7 +50,7 @@ ggplot(data = filter(txsamp, city == "Austin"), aes(x = sales, y = median)) +
 library(scales) # to make y-axis in non-scientific notation
 ggplot(txsamp, aes(x = median, fill = city)) +
   geom_histogram(aes(weight = sales), position = "dodge", binwidth = 15000) +
-  scale_fill_viridis_d(option = params$viridis_palette)+
+  scale_fill_viridis_d(option = params$viridis_palette, alpha = params$viridis_alpha)+
   scale_y_continuous(labels = comma)
 ```
 
@@ -58,7 +62,8 @@ ggplot(txsamp, aes(x = median, fill = city)) +
 ggplot(data = txsamp, aes(x = year, y = inventory, colour = city)) +
   geom_point() + 
   geom_smooth(se = FALSE) +
-  scale_colour_viridis_d("City\nCenter", option = params$viridis_palette) 
+  scale_colour_viridis_d("City\nCenter", option = params$viridis_palette, 
+                         alpha = params$viridis_alpha) 
 ```
 
 # Thanks to...

@@ -2,8 +2,6 @@ Texas Housing Prices: `github_document`
 ================
 Alison Hill
 
-# Packages and data
-
 The `txhousing` data is available when you install and load the
 `ggplot2` package.
 

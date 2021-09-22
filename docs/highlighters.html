@@ -1,24 +1,34 @@
 <!DOCTYPE html>
 
-<html xmlns="http://www.w3.org/1999/xhtml">
+<html>
 
 <head>
 
 <meta charset="utf-8" />
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="generator" content="pandoc" />
+<meta http-equiv="X-UA-Compatible" content="IE=EDGE" />
 
 
 
 
 <title>Syntax Highlighting</title>
 
-<script src="site_libs/jquery-1.11.3/jquery.min.js"></script>
+<script src="site_libs/header-attrs-2.11/header-attrs.js"></script>
+<script src="site_libs/jquery-3.6.0/jquery-3.6.0.min.js"></script>
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <link href="site_libs/bootstrap-3.3.5/css/yeti.min.css" rel="stylesheet" />
 <script src="site_libs/bootstrap-3.3.5/js/bootstrap.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/html5shiv.min.js"></script>
 <script src="site_libs/bootstrap-3.3.5/shim/respond.min.js"></script>
+<style>h1 {font-size: 34px;}
+       h1.title {font-size: 38px;}
+       h2 {font-size: 30px;}
+       h3 {font-size: 24px;}
+       h4 {font-size: 18px;}
+       h5 {font-size: 16px;}
+       h6 {font-size: 12px;}
+       code {color: inherit; background-color: rgba(0, 0, 0, 0.04);}
+       pre:not([class]) { background-color: white }</style>
 <script src="site_libs/jqueryui-1.11.4/jquery-ui.min.js"></script>
 <link href="site_libs/tocify-1.9.1/jquery.tocify.css" rel="stylesheet" />
 <script src="site_libs/tocify-1.9.1/jquery.tocify.js"></script>
@@ -26,29 +36,47 @@
 <link href="site_libs/font-awesome-5.1.0/css/all.css" rel="stylesheet" />
 <link href="site_libs/font-awesome-5.1.0/css/v4-shims.css" rel="stylesheet" />
 
+<style type="text/css">
+  code{white-space: pre-wrap;}
+  span.smallcaps{font-variant: small-caps;}
+  span.underline{text-decoration: underline;}
+  div.column{display: inline-block; vertical-align: top; width: 50%;}
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+  ul.task-list{list-style: none;}
+    </style>
 
-<style type="text/css">code{white-space: pre;}</style>
+
+<style type="text/css">
+  code {
+    white-space: pre;
+  }
+  .sourceCode {
+    overflow: visible;
+  }
+</style>
 <style type="text/css" data-origin="pandoc">
-a.sourceLine { display: inline-block; line-height: 1.25; }
-a.sourceLine { pointer-events: none; color: inherit; text-decoration: inherit; }
-a.sourceLine:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 div.sourceCode { margin: 1em 0; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-a.sourceLine { text-indent: -1em; padding-left: 1em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-pre.numberSource a.sourceLine
-  { position: relative; left: -4em; }
-pre.numberSource a.sourceLine::before
-  { content: attr(data-line-number);
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
     position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; pointer-events: all; display: inline-block;
+    border: none; display: inline-block;
     -webkit-touch-callout: none; -webkit-user-select: none;
     -khtml-user-select: none; -moz-user-select: none;
     -ms-user-select: none; user-select: none;
@@ -57,9 +85,9 @@ pre.numberSource a.sourceLine::before
   }
 pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
 div.sourceCode
-  { background-color: #f8f8f8; }
+  {  background-color: #f8f8f8; }
 @media screen {
-a.sourceLine::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ef2929; } /* Alert */
 code span.an { color: #8f5902; font-weight: bold; font-style: italic; } /* Annotation */
@@ -104,7 +132,7 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
       if (rule.type !== rule.STYLE_RULE || rule.selectorText !== "div.sourceCode") continue;
       var style = rule.style.cssText;
       // check if color or background-color is set
-      if (rule.style.color === '' || rule.style.backgroundColor === '') continue;
+      if (rule.style.color === '' && rule.style.backgroundColor === '') continue;
       // replace div.sourceCode by a pre.sourceCode rule
       sheets[i].deleteRule(j);
       sheets[i].insertRule('pre.sourceCode{' + style + '}', j);
@@ -112,39 +140,9 @@ code span.wa { color: #8f5902; font-weight: bold; font-style: italic; } /* Warni
   }
 })();
 </script>
-<style type="text/css">
-  pre:not([class]) {
-    background-color: white;
-  }
-</style>
 
 
-<style type="text/css">
-h1 {
-  font-size: 34px;
-}
-h1.title {
-  font-size: 38px;
-}
-h2 {
-  font-size: 30px;
-}
-h3 {
-  font-size: 24px;
-}
-h4 {
-  font-size: 18px;
-}
-h5 {
-  font-size: 16px;
-}
-h6 {
-  font-size: 12px;
-}
-.table th:not([align]) {
-  text-align: left;
-}
-</style>
+
 
 
 
@@ -155,13 +153,8 @@ h6 {
   margin-left: auto;
   margin-right: auto;
 }
-code {
-  color: inherit;
-  background-color: rgba(0, 0, 0, 0.04);
-}
 img {
   max-width:100%;
-  height: auto;
 }
 .tabbed-pane {
   padding-top: 12px;
@@ -175,40 +168,13 @@ button.code-folding-btn:focus {
 summary {
   display: list-item;
 }
+pre code {
+  padding: 0;
+}
 </style>
 
 
 <style type="text/css">
-/* padding for bootstrap navbar */
-body {
-  padding-top: 45px;
-  padding-bottom: 40px;
-}
-/* offset scroll position for anchor links (for fixed navbar)  */
-.section h1 {
-  padding-top: 50px;
-  margin-top: -50px;
-}
-.section h2 {
-  padding-top: 50px;
-  margin-top: -50px;
-}
-.section h3 {
-  padding-top: 50px;
-  margin-top: -50px;
-}
-.section h4 {
-  padding-top: 50px;
-  margin-top: -50px;
-}
-.section h5 {
-  padding-top: 50px;
-  margin-top: -50px;
-}
-.section h6 {
-  padding-top: 50px;
-  margin-top: -50px;
-}
 .dropdown-submenu {
   position: relative;
 }
@@ -236,7 +202,7 @@ body {
   margin-right: -10px;
 }
 .dropdown-submenu:hover>a:after {
-  border-left-color: #ffffff;
+  border-left-color: #adb5bd;
 }
 .dropdown-submenu.pull-left {
   float: none;
@@ -248,7 +214,7 @@ body {
 }
 </style>
 
-<script>
+<script type="text/javascript">
 // manage active state of menu based on current page
 $(document).ready(function () {
   // active menu anchor
@@ -259,10 +225,23 @@ $(document).ready(function () {
   var menuAnchor = $('a[href="' + href + '"]');
 
   // mark it active
-  menuAnchor.parent().addClass('active');
+  menuAnchor.tab('show');
 
   // if it's got a parent navbar menu mark it active as well
   menuAnchor.closest('li.dropdown').addClass('active');
+
+  // Navbar adjustments
+  var navHeight = $(".navbar").first().height() + 15;
+  var style = document.createElement('style');
+  var pt = "padding-top: " + navHeight + "px; ";
+  var mt = "margin-top: -" + navHeight + "px; ";
+  var css = "";
+  // offset scroll position for anchor links (for fixed navbar)
+  for (var i = 1; i <= 6; i++) {
+    css += ".section h" + i + "{ " + pt + mt + "}\n";
+  }
+  style.innerHTML = "body {" + pt + "padding-bottom: 40px; }\n" + css;
+  document.head.appendChild(style);
 });
 </script>
 
@@ -274,7 +253,6 @@ $(document).ready(function () {
   max-height: 500px;
   min-height: 44px;
   overflow-y: auto;
-  background: white;
   border: 1px solid #ddd;
   border-radius: 4px;
 }
@@ -310,6 +288,7 @@ $(document).ready(function () {
   border: none;
   display: inline-block;
   border-radius: 4px;
+  background-color: transparent;
 }
 
 .tabset-dropdown > .nav-tabs.nav-tabs-open > li {
@@ -322,48 +301,9 @@ $(document).ready(function () {
 }
 </style>
 
-<script>
-$(document).ready(function () {
-  window.buildTabsets("TOC");
-});
-
-$(document).ready(function () {
-  $('.tabset-dropdown > .nav-tabs > li').click(function () {
-    $(this).parent().toggleClass('nav-tabs-open')
-  });
-});
-</script>
-
 <!-- code folding -->
 
 
-
-<script>
-$(document).ready(function ()  {
-
-    // move toc-ignore selectors from section div to header
-    $('div.section.toc-ignore')
-        .removeClass('toc-ignore')
-        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
-
-    // establish options
-    var options = {
-      selectors: "h1,h2,h3",
-      theme: "bootstrap3",
-      context: '.toc-content',
-      hashGenerator: function (text) {
-        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_').toLowerCase();
-      },
-      ignoreSelector: ".toc-ignore",
-      scrollTo: 0
-    };
-    options.showAndHide = true;
-    options.smoothScroll = true;
-
-    // tocify
-    var toc = $("#TOC").tocify(options).data("toc-tocify");
-});
-</script>
 
 <style type="text/css">
 
@@ -377,6 +317,12 @@ $(document).ready(function ()  {
 }
 }
 
+@media print {
+.toc-content {
+  /* see https://github.com/w3c/csswg-drafts/issues/4434 */
+  float: right;
+}
+}
 
 .toc-content {
   padding-left: 30px;
@@ -412,8 +358,6 @@ div.tocify {
 
 .tocify-subheader .tocify-item {
   font-size: 0.90em;
-  padding-left: 25px;
-  text-indent: 0;
 }
 
 .tocify .list-group-item {
@@ -434,7 +378,7 @@ div.tocify {
 
 
 <!-- setup 3col/9col grid for toc_float and main content  -->
-<div class="row-fluid">
+<div class="row">
 <div class="col-xs-12 col-sm-4 col-md-3">
 <div id="TOC" class="tocify">
 </div>
@@ -488,7 +432,7 @@ div.tocify {
   </div><!--/.container -->
 </div><!--/.navbar -->
 
-<div class="fluid-row" id="header">
+<div id="header">
 
 
 
@@ -497,334 +441,418 @@ div.tocify {
 </div>
 
 
-<p>R Markdown also comes with several built-in syntax highlighting styles. Supported styles include <code>default</code>, <code>tango</code>, <code>pygments</code>, <code>kate</code>, <code>monochrome</code>, <code>espresso</code>, <code>zenburn</code>, <code>haddock</code>, and <code>textmate</code>. Pass <code>null</code> to prevent syntax highlighting. To use a highlighter for a single .html file output from a .Rmd file, you edit your YAML:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode yaml"><code class="sourceCode yaml"><a class="sourceLine" id="cb1-1" data-line-number="1"><span class="fu">title:</span><span class="at"> </span><span class="st">&quot;README.Rmd&quot;</span></a>
-<a class="sourceLine" id="cb1-2" data-line-number="2"><span class="fu">output_format:</span><span class="at"> </span></a>
-<a class="sourceLine" id="cb1-3" data-line-number="3">  <span class="fu">html_document:</span></a>
-<a class="sourceLine" id="cb1-4" data-line-number="4">    <span class="fu">highlighter:</span><span class="at"> tango</span></a></code></pre></div>
+<p>R Markdown also comes with several built-in syntax highlighting styles. Supported styles include <code>default</code>, <code>tango</code>, <code>pygments</code>, <code>kate</code>, <code>monochrome</code>, <code>espresso</code>, <code>zenburn</code>, <code>haddock</code>, <code>breezedark</code>, and <code>textmate</code>. Pass <code>null</code> to prevent syntax highlighting. To use a highlighter for a single .html file output from a .Rmd file, you edit your YAML:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode yaml"><code class="sourceCode yaml"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">title</span><span class="kw">:</span><span class="at"> </span><span class="st">&quot;README.Rmd&quot;</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">output_format</span><span class="kw">:</span><span class="at"> </span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="at">  </span><span class="fu">html_document</span><span class="kw">:</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="at">    </span><span class="fu">highlighter</span><span class="kw">:</span><span class="at"> tango</span></span></code></pre></div>
 <div id="options-gallery" class="section level1">
 <h1>Options gallery</h1>
+<div id="morrkuyobu" style="overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
 <style>html {
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', 'Fira Sans', 'Droid Sans', Arial, sans-serif;
 }
 
-#gkxiuktbso .gt_table {
+#morrkuyobu .gt_table {
   display: table;
   border-collapse: collapse;
   margin-left: auto;
   margin-right: auto;
-  color: #000000;
+  color: #333333;
   font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
   background-color: #FFFFFF;
-  /* table.background.color */
   width: auto;
-  /* table.width */
   border-top-style: solid;
-  /* table.border.top.style */
   border-top-width: 2px;
-  /* table.border.top.width */
   border-top-color: #A8A8A8;
-  /* table.border.top.color */
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
 }
 
-#gkxiuktbso .gt_heading {
+#morrkuyobu .gt_heading {
   background-color: #FFFFFF;
-  /* heading.background.color */
+  text-align: center;
   border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
 }
 
-#gkxiuktbso .gt_title {
-  color: #000000;
+#morrkuyobu .gt_title {
+  color: #333333;
   font-size: 125%;
-  /* heading.title.font.size */
+  font-weight: initial;
   padding-top: 4px;
-  /* heading.top.padding */
-  padding-bottom: 1px;
+  padding-bottom: 4px;
   border-bottom-color: #FFFFFF;
   border-bottom-width: 0;
 }
 
-#gkxiuktbso .gt_subtitle {
-  color: #000000;
+#morrkuyobu .gt_subtitle {
+  color: #333333;
   font-size: 85%;
-  /* heading.subtitle.font.size */
-  padding-top: 1px;
+  font-weight: initial;
+  padding-top: 0;
   padding-bottom: 4px;
-  /* heading.bottom.padding */
   border-top-color: #FFFFFF;
   border-top-width: 0;
 }
 
-#gkxiuktbso .gt_bottom_border {
-  border-bottom-style: solid;
-  /* heading.border.bottom.style */
-  border-bottom-width: 2px;
-  /* heading.border.bottom.width */
-  border-bottom-color: #A8A8A8;
-  /* heading.border.bottom.color */
-}
-
-#gkxiuktbso .gt_column_spanner {
+#morrkuyobu .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
-  border-bottom-color: #A8A8A8;
-  padding-top: 4px;
-  padding-bottom: 4px;
+  border-bottom-color: #D3D3D3;
 }
 
-#gkxiuktbso .gt_col_heading {
-  color: #000000;
+#morrkuyobu .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#morrkuyobu .gt_col_heading {
+  color: #333333;
   background-color: #FFFFFF;
-  /* column_labels.background.color */
-  font-size: 16px;
-  /* column_labels.font.size */
-  font-weight: initial;
-  /* column_labels.font.weight */
-  vertical-align: middle;
-  padding: 10px;
-  margin: 10px;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
 }
 
-#gkxiuktbso .gt_sep_right {
-  border-right: 5px solid #FFFFFF;
+#morrkuyobu .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
 }
 
-#gkxiuktbso .gt_group_heading {
+#morrkuyobu .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#morrkuyobu .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#morrkuyobu .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#morrkuyobu .gt_group_heading {
   padding: 8px;
-  color: #000000;
+  color: #333333;
   background-color: #FFFFFF;
-  /* row_group.background.color */
-  font-size: 16px;
-  /* row_group.font.size */
+  font-size: 100%;
   font-weight: initial;
-  /* row_group.font.weight */
+  text-transform: inherit;
   border-top-style: solid;
-  /* row_group.border.top.style */
   border-top-width: 2px;
-  /* row_group.border.top.width */
-  border-top-color: #A8A8A8;
-  /* row_group.border.top.color */
+  border-top-color: #D3D3D3;
   border-bottom-style: solid;
-  /* row_group.border.bottom.style */
   border-bottom-width: 2px;
-  /* row_group.border.bottom.width */
-  border-bottom-color: #A8A8A8;
-  /* row_group.border.bottom.color */
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
   vertical-align: middle;
 }
 
-#gkxiuktbso .gt_empty_group_heading {
+#morrkuyobu .gt_empty_group_heading {
   padding: 0.5px;
-  color: #000000;
+  color: #333333;
   background-color: #FFFFFF;
-  /* row_group.background.color */
-  font-size: 16px;
-  /* row_group.font.size */
+  font-size: 100%;
   font-weight: initial;
-  /* row_group.font.weight */
   border-top-style: solid;
-  /* row_group.border.top.style */
   border-top-width: 2px;
-  /* row_group.border.top.width */
-  border-top-color: #A8A8A8;
-  /* row_group.border.top.color */
+  border-top-color: #D3D3D3;
   border-bottom-style: solid;
-  /* row_group.border.bottom.style */
   border-bottom-width: 2px;
-  /* row_group.border.bottom.width */
-  border-bottom-color: #A8A8A8;
-  /* row_group.border.bottom.color */
+  border-bottom-color: #D3D3D3;
   vertical-align: middle;
 }
 
-#gkxiuktbso .gt_striped {
-  background-color: #f2f2f2;
-}
-
-#gkxiuktbso .gt_from_md > :first-child {
+#morrkuyobu .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#gkxiuktbso .gt_from_md > :last-child {
+#morrkuyobu .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#gkxiuktbso .gt_row {
-  padding: 10px;
-  /* row.padding */
+#morrkuyobu .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
   margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
   vertical-align: middle;
+  overflow-x: hidden;
 }
 
-#gkxiuktbso .gt_stub {
+#morrkuyobu .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
   border-right-style: solid;
   border-right-width: 2px;
-  border-right-color: #A8A8A8;
+  border-right-color: #D3D3D3;
   padding-left: 12px;
 }
 
-#gkxiuktbso .gt_stub.gt_row {
+#morrkuyobu .gt_summary_row {
+  color: #333333;
   background-color: #FFFFFF;
-}
-
-#gkxiuktbso .gt_summary_row {
-  background-color: #FFFFFF;
-  /* summary_row.background.color */
-  padding: 6px;
-  /* summary_row.padding */
   text-transform: inherit;
-  /* summary_row.text_transform */
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
 }
 
-#gkxiuktbso .gt_first_summary_row {
+#morrkuyobu .gt_first_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
   border-top-style: solid;
   border-top-width: 2px;
-  border-top-color: #A8A8A8;
+  border-top-color: #D3D3D3;
 }
 
-#gkxiuktbso .gt_table_body {
+#morrkuyobu .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#morrkuyobu .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#morrkuyobu .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#morrkuyobu .gt_table_body {
   border-top-style: solid;
-  /* table_body.border.top.style */
   border-top-width: 2px;
-  /* table_body.border.top.width */
-  border-top-color: #A8A8A8;
-  /* table_body.border.top.color */
+  border-top-color: #D3D3D3;
   border-bottom-style: solid;
-  /* table_body.border.bottom.style */
   border-bottom-width: 2px;
-  /* table_body.border.bottom.width */
-  border-bottom-color: #A8A8A8;
-  /* table_body.border.bottom.color */
+  border-bottom-color: #D3D3D3;
 }
 
-#gkxiuktbso .gt_footnote {
+#morrkuyobu .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#morrkuyobu .gt_footnote {
+  margin: 0px;
   font-size: 90%;
-  /* footnote.font.size */
   padding: 4px;
-  /* footnote.padding */
 }
 
-#gkxiuktbso .gt_sourcenote {
+#morrkuyobu .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#morrkuyobu .gt_sourcenote {
   font-size: 90%;
-  /* sourcenote.font.size */
   padding: 4px;
-  /* sourcenote.padding */
 }
 
-#gkxiuktbso .gt_center {
-  text-align: center;
-}
-
-#gkxiuktbso .gt_left {
+#morrkuyobu .gt_left {
   text-align: left;
 }
 
-#gkxiuktbso .gt_right {
+#morrkuyobu .gt_center {
+  text-align: center;
+}
+
+#morrkuyobu .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#gkxiuktbso .gt_font_normal {
+#morrkuyobu .gt_font_normal {
   font-weight: normal;
 }
 
-#gkxiuktbso .gt_font_bold {
+#morrkuyobu .gt_font_bold {
   font-weight: bold;
 }
 
-#gkxiuktbso .gt_font_italic {
+#morrkuyobu .gt_font_italic {
   font-style: italic;
 }
 
-#gkxiuktbso .gt_super {
+#morrkuyobu .gt_super {
   font-size: 65%;
 }
 
-#gkxiuktbso .gt_footnote_glyph {
+#morrkuyobu .gt_footnote_marks {
   font-style: italic;
+  font-weight: normal;
   font-size: 65%;
 }
 </style>
-<div id="gkxiuktbso" style="overflow-x:auto;"><!--gt table start-->
-<table class='gt_table'>
-<tr>
-<th class='gt_col_heading gt_center' rowspan='1' colspan='1'>List of highlighters</th>
-<th class='gt_col_heading gt_center' rowspan='1' colspan='1'>image_html</th>
-</tr>
-<tbody class='gt_table_body'>
-<tr>
-<td class='gt_row gt_center'><div class='gt_from_md'><p><a href="https://elastic-lovelace-155848.netlify.com/gallery/highlighters/default.html">default</a></p>
+<table class="gt_table">
+  
+  <thead class="gt_col_headings">
+    <tr>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">List of highlighters</th>
+      <th class="gt_col_heading gt_columns_bottom_border gt_center" rowspan="1" colspan="1">image_html</th>
+    </tr>
+  </thead>
+  <tbody class="gt_table_body">
+    <tr><td class="gt_row gt_center"><div class='gt_from_md'><p><a href="https://elastic-lovelace-155848.netlify.com/gallery/highlighters/default.html">default</a></p>
 </div></td>
-<td class='gt_row gt_center'><div class='gt_from_md'><p><a href='https://elastic-lovelace-155848.netlify.com/gallery/highlighters/default.html'><img src='thumbnails/highlighters-default.png'></a></p>
+<td class="gt_row gt_center"><div class='gt_from_md'><p><a href='https://elastic-lovelace-155848.netlify.com/gallery/highlighters/default.html'><img src='thumbnails/highlighters-default.png'></a></p>
+</div></td></tr>
+    <tr><td class="gt_row gt_center"><div class='gt_from_md'><p><a href="https://elastic-lovelace-155848.netlify.com/gallery/highlighters/espresso.html">espresso</a></p>
 </div></td>
-</tr>
-<tr>
-<td class='gt_row gt_center gt_striped'><div class='gt_from_md'><p><a href="https://elastic-lovelace-155848.netlify.com/gallery/highlighters/espresso.html">espresso</a></p>
+<td class="gt_row gt_center"><div class='gt_from_md'><p><a href='https://elastic-lovelace-155848.netlify.com/gallery/highlighters/espresso.html'><img src='thumbnails/highlighters-espresso.png'></a></p>
+</div></td></tr>
+    <tr><td class="gt_row gt_center"><div class='gt_from_md'><p><a href="https://elastic-lovelace-155848.netlify.com/gallery/highlighters/haddock.html">haddock</a></p>
 </div></td>
-<td class='gt_row gt_center gt_striped'><div class='gt_from_md'><p><a href='https://elastic-lovelace-155848.netlify.com/gallery/highlighters/espresso.html'><img src='thumbnails/highlighters-espresso.png'></a></p>
+<td class="gt_row gt_center"><div class='gt_from_md'><p><a href='https://elastic-lovelace-155848.netlify.com/gallery/highlighters/haddock.html'><img src='thumbnails/highlighters-haddock.png'></a></p>
+</div></td></tr>
+    <tr><td class="gt_row gt_center"><div class='gt_from_md'><p><a href="https://elastic-lovelace-155848.netlify.com/gallery/highlighters/kate.html">kate</a></p>
 </div></td>
-</tr>
-<tr>
-<td class='gt_row gt_center'><div class='gt_from_md'><p><a href="https://elastic-lovelace-155848.netlify.com/gallery/highlighters/haddock.html">haddock</a></p>
+<td class="gt_row gt_center"><div class='gt_from_md'><p><a href='https://elastic-lovelace-155848.netlify.com/gallery/highlighters/kate.html'><img src='thumbnails/highlighters-kate.png'></a></p>
+</div></td></tr>
+    <tr><td class="gt_row gt_center"><div class='gt_from_md'><p><a href="https://elastic-lovelace-155848.netlify.com/gallery/highlighters/monochrome.html">monochrome</a></p>
 </div></td>
-<td class='gt_row gt_center'><div class='gt_from_md'><p><a href='https://elastic-lovelace-155848.netlify.com/gallery/highlighters/haddock.html'><img src='thumbnails/highlighters-haddock.png'></a></p>
+<td class="gt_row gt_center"><div class='gt_from_md'><p><a href='https://elastic-lovelace-155848.netlify.com/gallery/highlighters/monochrome.html'><img src='thumbnails/highlighters-monochrome.png'></a></p>
+</div></td></tr>
+    <tr><td class="gt_row gt_center"><div class='gt_from_md'><p><a href="https://elastic-lovelace-155848.netlify.com/gallery/highlighters/pygments.html">pygments</a></p>
 </div></td>
-</tr>
-<tr>
-<td class='gt_row gt_center gt_striped'><div class='gt_from_md'><p><a href="https://elastic-lovelace-155848.netlify.com/gallery/highlighters/kate.html">kate</a></p>
+<td class="gt_row gt_center"><div class='gt_from_md'><p><a href='https://elastic-lovelace-155848.netlify.com/gallery/highlighters/pygments.html'><img src='thumbnails/highlighters-pygments.png'></a></p>
+</div></td></tr>
+    <tr><td class="gt_row gt_center"><div class='gt_from_md'><p><a href="https://elastic-lovelace-155848.netlify.com/gallery/highlighters/tango.html">tango</a></p>
 </div></td>
-<td class='gt_row gt_center gt_striped'><div class='gt_from_md'><p><a href='https://elastic-lovelace-155848.netlify.com/gallery/highlighters/kate.html'><img src='thumbnails/highlighters-kate.png'></a></p>
+<td class="gt_row gt_center"><div class='gt_from_md'><p><a href='https://elastic-lovelace-155848.netlify.com/gallery/highlighters/tango.html'><img src='thumbnails/highlighters-tango.png'></a></p>
+</div></td></tr>
+    <tr><td class="gt_row gt_center"><div class='gt_from_md'><p><a href="https://elastic-lovelace-155848.netlify.com/gallery/highlighters/zenburn.html">zenburn</a></p>
 </div></td>
-</tr>
-<tr>
-<td class='gt_row gt_center'><div class='gt_from_md'><p><a href="https://elastic-lovelace-155848.netlify.com/gallery/highlighters/monochrome.html">monochrome</a></p>
-</div></td>
-<td class='gt_row gt_center'><div class='gt_from_md'><p><a href='https://elastic-lovelace-155848.netlify.com/gallery/highlighters/monochrome.html'><img src='thumbnails/highlighters-monochrome.png'></a></p>
-</div></td>
-</tr>
-<tr>
-<td class='gt_row gt_center gt_striped'><div class='gt_from_md'><p><a href="https://elastic-lovelace-155848.netlify.com/gallery/highlighters/pygments.html">pygments</a></p>
-</div></td>
-<td class='gt_row gt_center gt_striped'><div class='gt_from_md'><p><a href='https://elastic-lovelace-155848.netlify.com/gallery/highlighters/pygments.html'><img src='thumbnails/highlighters-pygments.png'></a></p>
-</div></td>
-</tr>
-<tr>
-<td class='gt_row gt_center'><div class='gt_from_md'><p><a href="https://elastic-lovelace-155848.netlify.com/gallery/highlighters/tango.html">tango</a></p>
-</div></td>
-<td class='gt_row gt_center'><div class='gt_from_md'><p><a href='https://elastic-lovelace-155848.netlify.com/gallery/highlighters/tango.html'><img src='thumbnails/highlighters-tango.png'></a></p>
-</div></td>
-</tr>
-<tr>
-<td class='gt_row gt_center gt_striped'><div class='gt_from_md'><p><a href="https://elastic-lovelace-155848.netlify.com/gallery/highlighters/zenburn.html">zenburn</a></p>
-</div></td>
-<td class='gt_row gt_center gt_striped'><div class='gt_from_md'><p><a href='https://elastic-lovelace-155848.netlify.com/gallery/highlighters/zenburn.html'><img src='thumbnails/highlighters-zenburn.png'></a></p>
-</div></td>
-</tr>
-</tbody>
+<td class="gt_row gt_center"><div class='gt_from_md'><p><a href='https://elastic-lovelace-155848.netlify.com/gallery/highlighters/zenburn.html'><img src='thumbnails/highlighters-zenburn.png'></a></p>
+</div></td></tr>
+  </tbody>
+  
+  
 </table>
-<!--gt table end-->
 </div>
 <hr />
 </div>
 <div id="my-render-script" class="section level1">
 <h1>My render script</h1>
 <p>And here is the script to generate the highlighters:</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" data-line-number="1">purrr<span class="op">::</span><span class="kw">walk</span>(</a>
-<a class="sourceLine" id="cb2-2" data-line-number="2">  <span class="dt">.x =</span> <span class="kw">as.list</span>(rmarkdown<span class="op">:::</span><span class="kw">highlighters</span>()),</a>
-<a class="sourceLine" id="cb2-3" data-line-number="3">  <span class="op">~</span><span class="st"> </span>rmarkdown<span class="op">::</span><span class="kw">render</span>(</a>
-<a class="sourceLine" id="cb2-4" data-line-number="4">    <span class="st">&quot;input/single.Rmd&quot;</span>,</a>
-<a class="sourceLine" id="cb2-5" data-line-number="5">    <span class="dt">output_file =</span> glue<span class="op">::</span><span class="kw">glue</span>(<span class="st">&quot;{.}.html&quot;</span>),</a>
-<a class="sourceLine" id="cb2-6" data-line-number="6">    <span class="dt">output_dir =</span> <span class="st">&quot;gallery/highlighters/&quot;</span>,</a>
-<a class="sourceLine" id="cb2-7" data-line-number="7">    <span class="dt">output_options =</span> <span class="kw">list</span>(</a>
-<a class="sourceLine" id="cb2-8" data-line-number="8">      <span class="dt">toc =</span> <span class="ot">TRUE</span>, </a>
-<a class="sourceLine" id="cb2-9" data-line-number="9">      <span class="dt">toc_float =</span> <span class="ot">TRUE</span>,</a>
-<a class="sourceLine" id="cb2-10" data-line-number="10">      <span class="dt">theme =</span> <span class="st">&quot;cosmo&quot;</span>,</a>
-<a class="sourceLine" id="cb2-11" data-line-number="11">      <span class="dt">code_download =</span> <span class="ot">TRUE</span>,</a>
-<a class="sourceLine" id="cb2-12" data-line-number="12">      <span class="dt">highlight =</span> .x</a>
-<a class="sourceLine" id="cb2-13" data-line-number="13">    ),</a>
-<a class="sourceLine" id="cb2-14" data-line-number="14">    <span class="dt">params =</span> <span class="kw">list</span>(<span class="dt">dynamictitle =</span> glue<span class="op">::</span><span class="kw">glue</span>(<span class="st">&quot;Texas Housing Prices: `{.}` highlighter&quot;</span>))</a>
-<a class="sourceLine" id="cb2-15" data-line-number="15">  )</a>
-<a class="sourceLine" id="cb2-16" data-line-number="16">)</a></code></pre></div>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>purrr<span class="sc">::</span><span class="fu">walk</span>(</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">.x =</span> <span class="fu">as.list</span>(rmarkdown<span class="sc">:::</span><span class="fu">highlighters</span>()),</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="sc">~</span> rmarkdown<span class="sc">::</span><span class="fu">render</span>(</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>    <span class="st">&quot;input/single.Rmd&quot;</span>,</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">output_file =</span> glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">&quot;{.}.html&quot;</span>),</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">output_dir =</span> <span class="st">&quot;gallery/highlighters/&quot;</span>,</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">output_options =</span> <span class="fu">list</span>(</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>      <span class="at">toc =</span> <span class="cn">TRUE</span>, </span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>      <span class="at">toc_float =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>      <span class="at">theme =</span> <span class="st">&quot;cosmo&quot;</span>,</span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>      <span class="at">code_download =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>      <span class="at">highlight =</span> .x</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">params =</span> <span class="fu">list</span>(<span class="at">dynamictitle =</span> glue<span class="sc">::</span><span class="fu">glue</span>(<span class="st">&quot;Texas Housing Prices: `{.}` highlighter&quot;</span>))</span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>)</span></code></pre></div>
 </div>
 
 
@@ -838,13 +866,59 @@ div.tocify {
 
 // add bootstrap table styles to pandoc tables
 function bootstrapStylePandocTables() {
-  $('tr.header').parent('thead').parent('table').addClass('table table-condensed');
+  $('tr.odd').parent('tbody').parent('table').addClass('table table-condensed');
 }
 $(document).ready(function () {
   bootstrapStylePandocTables();
 });
 
 
+</script>
+
+<!-- tabsets -->
+
+<script>
+$(document).ready(function () {
+  window.buildTabsets("TOC");
+});
+
+$(document).ready(function () {
+  $('.tabset-dropdown > .nav-tabs > li').click(function () {
+    $(this).parent().toggleClass('nav-tabs-open');
+  });
+});
+</script>
+
+<!-- code folding -->
+
+<script>
+$(document).ready(function ()  {
+
+    // temporarily add toc-ignore selector to headers for the consistency with Pandoc
+    $('.unlisted.unnumbered').addClass('toc-ignore')
+
+    // move toc-ignore selectors from section div to header
+    $('div.section.toc-ignore')
+        .removeClass('toc-ignore')
+        .children('h1,h2,h3,h4,h5').addClass('toc-ignore');
+
+    // establish options
+    var options = {
+      selectors: "h1,h2,h3",
+      theme: "bootstrap3",
+      context: '.toc-content',
+      hashGenerator: function (text) {
+        return text.replace(/[.\\/?&!#<>]/g, '').replace(/\s/g, '_');
+      },
+      ignoreSelector: ".toc-ignore",
+      scrollTo: 0
+    };
+    options.showAndHide = true;
+    options.smoothScroll = true;
+
+    // tocify
+    var toc = $("#TOC").tocify(options).data("toc-tocify");
+});
 </script>
 
 <!-- dynamically load mathjax for compatibility with self-contained -->
